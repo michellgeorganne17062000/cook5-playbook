@@ -257,6 +257,7 @@ function search(q){const r=$("#results"),c=$("#cards");q=q.trim().toLowerCase();
     return `<a class="hit" href="${h.href}"><small>${esc(h.where)}</small><b>${esc(h.head)}</b><span>${a?"…":""}${snip}…</span></a>`}).join(""):`<p class="empty">${t(UI.noresults)}</p>`)+"</div>"}
 
 /* ---------- board ---------- */
+const LGI={AJ:"operators/nomad.png",HB:"gadgets/hard-breach.png","🔥":"gadgets/capitao-bolt.png","📷":"utility/bp-camera.png","💨":"utility/smoke-grenade.png",CA:"gadgets/castle-panel.png"};
 function legendHTML(){return LEGEND.map(([k,txt,c])=>{let sw;
   if(k==="redwall")sw=`<i class="sw" style="background:#dc2626;height:8px;width:24px;border-radius:2px"></i>`;
   else if(k==="elec")sw=`<i class="sw" style="background:#facc15;border-radius:50%;width:18px;height:18px;font-style:normal;font-size:11px;display:grid;place-items:center">⚡</i>`;
@@ -264,6 +265,7 @@ function legendHTML(){return LEGEND.map(([k,txt,c])=>{let sw;
   else if(k==="site")sw=`<i class="sw" style="background:#2563eb;color:#fff;font:700 9px/16px sans-serif;padding:0 4px;border-radius:4px">${t(UI.site)}</i>`;
   else if(k==="move")sw=`<i class="sw" style="border-top:3px dashed #7a4fd1;width:24px"></i>`;
   else if(k==="floor")sw=`<i class="sw" style="border-top:3px dotted #dc2626;width:24px"></i>`;
+  else if(LGI[k])sw=`<img class="sw" src="img/r6/icons/${LGI[k]}" alt="" style="width:22px;height:22px;object-fit:contain;background:#fff;border:2px solid ${c||"#555"};border-radius:5px;padding:1px;box-sizing:border-box">`;
   else if(c)sw=`<i class="sw" style="background:${c};color:#fff;font:700 9px/16px monospace;padding:0 3px;border-radius:4px">${k}</i>`;
   else sw=`<i class="sw" style="font-style:normal">${k}</i>`;
   return `<span>${sw}${esc(t(txt))}</span>`}).join("")}
