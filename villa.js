@@ -24,21 +24,21 @@ STRATS.push({id:"vAG",name:"Aviator / Games",side:"d",floor:"v2",
   G("v2",1,"HH2",470,935,"rotate"),G("v2",1,"HV",375,1075),G("v2",1,"HH2",415,1110),G("v2",1,"HS",595,1110),G("v2",1,"HH2",250,1245),G("v2",1,"HS",30,1290),
   G("v2",1,"HV",810,292),G("v2",1,"HV",905,190),G("v2",1,"HH2",430,270),
   /* Games (Smoke): canisters */
-  IC(1,"gadgets/gadget-27.png",610,935,"",VC.g),IC(1,"gadgets/gadget-27.png",75,1320,"",VC.g),
+  IC(1,"gadgets/remote-gas-grenade.png",610,935,"",VC.g),IC(1,"gadgets/remote-gas-grenade.png",75,1320,"",VC.g),
   /* Aviator: Kibas + panel */
-  IC(1,"gadgets/gadget-12.png",640,965,"",VC.a),IC(1,"gadgets/gadget-12.png",640,1025,"",VC.a),IC(1,"gadgets/gadget-18.png",600,1065,"",VC.a),
+  IC(1,"gadgets/kiba-barrier.png",640,965,"",VC.a),IC(1,"gadgets/kiba-barrier.png",640,1025,"",VC.a),IC(1,"utility/deployable-shield.png",600,1065,"",VC.a),
   /* Brown Stairs: panels */
-  IC(1,"gadgets/gadget-18.png",95,1300,"",VC.b),IC(1,"gadgets/gadget-18.png",210,1430,"",VC.b),
+  IC(1,"utility/deployable-shield.png",95,1300,"",VC.b),IC(1,"utility/deployable-shield.png",210,1430,"",VC.b),
   /* Statue roam (Thorn / Ela / Denari) */
   IC(1,"gadgets/gadget-37.png",770,200,"",VC.s),IC(1,"gadgets/gadget-37.png",745,300,"",VC.s),IC(1,"gadgets/gadget-37.png",850,480,"",VC.s),IC(1,"gadgets/gadget-37.png",850,540,"",VC.s),
   IC(1,"gadgets/gadget-37.png",990,600,"",VC.s),IC(1,"gadgets/gadget-37.png",1080,600,"",VC.s),IC(1,"gadgets/gadget-37.png",1090,300,"",VC.s),
-  IC(1,"utility/utility-11.png",840,150,"",VC.s),IC(1,"utility/utility-11.png",1035,600,"",VC.s),
-  IC(1,"gadgets/gadget-19.png",395,135,"",VC.s),IC(1,"gadgets/gadget-19.png",990,140,"",VC.s),IC(1,"gadgets/gadget-19.png",1070,360,"",VC.s),
-  IC(1,"gadgets/gadget-09.png",445,135,"",VC.s),IC(1,"gadgets/gadget-09.png",1040,140,"",VC.s),IC(1,"gadgets/gadget-09.png",1070,420,"",VC.s),
+  IC(1,"utility/barbed-wire.png",840,150,"",VC.s),IC(1,"utility/barbed-wire.png",1035,600,"",VC.s),
+  IC(1,"gadgets/grzmot-mine.png",395,135,"",VC.s),IC(1,"gadgets/grzmot-mine.png",990,140,"",VC.s),IC(1,"gadgets/grzmot-mine.png",1070,360,"",VC.s),
+  IC(1,"gadgets/razorbloom-shell.png",445,135,"",VC.s),IC(1,"gadgets/razorbloom-shell.png",1040,140,"",VC.s),IC(1,"gadgets/razorbloom-shell.png",1070,420,"",VC.s),
   /* Trophy roam (Sentry / Solis / Valkyrie) */
-  IC(1,"utility/utility-11.png",500,60,"",VC.t),IC(1,"utility/utility-16.png",550,60,"",VC.t),
-  IC(1,"utility/utility-11.png",720,150,"",VC.t),IC(1,"utility/utility-16.png",720,205,"",VC.t),
-  IC(1,"utility/utility-11.png",395,600,"",VC.t),IC(1,"utility/utility-16.png",395,655,"",VC.t),
+  IC(1,"utility/barbed-wire.png",500,60,"",VC.t),IC(1,"utility/proximity-alarm.png",550,60,"",VC.t),
+  IC(1,"utility/barbed-wire.png",720,150,"",VC.t),IC(1,"utility/proximity-alarm.png",720,205,"",VC.t),
+  IC(1,"utility/barbed-wire.png",395,600,"",VC.t),IC(1,"utility/proximity-alarm.png",395,655,"",VC.t),
   /* phase 1 positions */
   T("v2",1,"sanya","Echo",230,1030),T("v2",1,"renat","Azami",545,955),T("v2",1,"roman","Wamai",240,1300),
   T("v2",1,"nikita","Ela",745,400),T("v2",1,"dima","Valkyrie",450,400),

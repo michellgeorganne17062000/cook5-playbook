@@ -4,12 +4,22 @@ const PN={dima:"Dima",renat:"Renat",roman:"Roman",nikita:"Nikita",sanya:"Sanya"}
 const GC={CA:"#9a3412",SM:"#78716c",CAM:"#0e7490",RF:"#4b5563",RT:"#0f8f86",FH:"#64748b",HH:"#0369a1",AJ:"#7c3aed",HB:"#dc2626",FL:"#ea580c",TR:"#a16207",PL:"#be123c"};
 const R6="img/r6/icons/",OPS=new Set(["ace","alibi","amaru","aruni","azami","bandit","blackbeard","blitz","brava","buck","capitao","castle","caveira","clash","deimos","denari","doc","dokkaebi","echo","ela","fenrir","finka","flores","frost","fuze","glaz","goyo","gridlock","grim","hibana","iana","iq","jackal","jager","kaid","kali","kapkan","lesion","lion","maestro","melusi","mira","montagne","mozzie","mute","nokk","nomad","oryx","osa","pulse","ram","rauora","rook","sens","sentry","skopos","sledge","smoke","solid-snake","solis","striker","tachanka","thatcher","thermite","thorn","thunderbird","tubarao","twitch","valkyrie","vigil","wamai","warden","ying","zero","zofia"]);
 const OPF=s=>{if(!s)return null;const k=s.split("/")[0].trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g,"-");return OPS.has(k)?R6+"operators/"+k+".png":null};
-const GI={HB:"gadgets/hard-breach.png",FL:"gadgets/capitao-bolt.png",CA:"gadgets/castle-panel.png",CAM:"utility/bp-camera.png",SM:"utility/smoke-grenade.png"};
-const TRAPPERS=["thorn","fenrir","kapkan","frost","lesion","ela","melusi"];
-function gIcon(i){if(GI[i.t])return{src:R6+GI[i.t],op:0};
-  if(i.t==="AJ")return{src:OPF("Nomad"),op:1};
-  if(i.t==="TR"){let s=OPF(i.l);if(!s){const tk=cur.items.find(x=>x.k==="tok"&&x.op&&x.op.toLowerCase().split("/").some(o=>TRAPPERS.includes(o.trim())));if(tk){const o=tk.op.split("/").map(o=>o.trim()).find(o=>TRAPPERS.includes(o.toLowerCase()));s=OPF(o)}}return s?{src:s,op:1}:null}
+const GN=new Set(["active-defense-system","adrenal-surge","airjab-launcher","argus-launcher","armor-pack","armor-panel","banshee-sonic-defense","black-eye","black-mirror","breaching-rounds","breaching-torch","bu-gi-auto-breacher","candela","cce-shield","cluster-charge","deathmark-tracker","ee-one-d","electronics-detector","entry-denial-device","erc-7","evil-eye","eyenox-model-iii","f-natt-dread-mine","flash-shield","flip-sight","garra-hook","gemini-replicator","glance-smart-glasses","grzmot-mine","gu-mines","heartbeat-sensor","kawan-hive-launcher","kiba-barrier","kludge-drone","kona-station","ks79-lifeline","lv-explosive-lance","mag-net-system","pest-launcher","prisma","razorbloom-shell","rce-ratero-charge","remah-dash","remote-gas-grenade","rou-projector-system","rtila-electroclaw","selma-aqua-breacher","shock-wire","shumikha-launcher","signal-disruptor","silent-step","spec-io-electro-sensor","stim-pistol","surya-gate","tactical-crossbow","talon-8-clear-shield","volcan-shield","welcome-mat","zoto-canister"]),UN=new Set(["barbed-wire","barricade","breach-charge","bulletproof-camera","claymore","deployable-shield","frag-grenade","hard-breach-charge","impact-emp-grenade","impact-grenade","observation-blocker","proximity-alarm","rappel","smoke-grenade","stun-grenade"]);
+/* deck gadget icon by name ("kiba-barrier", "barbed-wire"…) */
+const GSRC=n=>GN.has(n)?R6+"gadgets/"+n+".png":UN.has(n)?R6+"utility/"+n+".png":null;
+const GI={HB:"hard-breach-charge",FL:"tactical-crossbow",CA:"armor-panel",CAM:"bulletproof-camera",SM:"smoke-grenade",AJ:"airjab-launcher",
+  BW:"barbed-wire",DS:"deployable-shield",PA:"proximity-alarm",CL:"claymore",BC:"breach-charge",IG:"impact-grenade",EMP:"impact-emp-grenade",FR:"frag-grenade",ST:"stun-grenade",OB:"observation-blocker"};
+const TRAPG={thorn:"razorbloom-shell",fenrir:"f-natt-dread-mine",kapkan:"entry-denial-device",frost:"welcome-mat",lesion:"gu-mines",ela:"grzmot-mine",melusi:"banshee-sonic-defense"};
+const TRAPPERS=Object.keys(TRAPG);
+function gIcon(i){if(GI[i.t])return{src:GSRC(GI[i.t]),op:0};
+  if(i.t&&i.t[0]==="@"){const s=GSRC(i.t.slice(1));return s?{src:s,op:0}:null}
+  if(i.t==="TR"){const own=o=>o&&TRAPG[o.split("/")[0].trim().toLowerCase()];let g=own(i.l);
+    if(!g){const tk=cur.items.find(x=>x.k==="tok"&&x.op&&x.op.toLowerCase().split("/").some(o=>TRAPPERS.includes(o.trim())));
+      if(tk)g=TRAPG[tk.op.toLowerCase().split("/").map(o=>o.trim()).find(o=>TRAPPERS.includes(o))]}
+    return g?{src:GSRC(g),op:0}:null}
   return null}
+/* electrified walls: Bandit's shock wire, or Kaid's claw if only Kaid is in the strat */
+const ELEC=()=>{const ops=cur.items.filter(x=>x.k==="tok"&&x.op).map(x=>x.op.toLowerCase());return GSRC(ops.some(o=>o.includes("bandit"))||!ops.some(o=>o.includes("kaid"))?"shock-wire":"rtila-electroclaw")};
 const FLOORS={t:{label:"2F",img:"img/fp-top.png",w:2200,h:1651,vb:[430,100,1290,1460]},
               g:{label:"1F",img:"img/fp-ground.png",w:2200,h:1651,vb:[460,80,1370,1490]},
               b:{label:"Basement",img:"img/fp-base.png",w:2203,h:1638,vb:[410,350,1320,1080]}};
@@ -230,7 +240,7 @@ function draw(){
         el("rect",{x:best[0]-pad,y:best[1]-pad,width:best[2]+pad*2,height:best[3]+pad*2,rx:2,fill:"#dc2626",stroke:"#7f1d1d","stroke-width":2},g);
         var bx=best[0]+best[2],by=best[1];}
       else{el("rect",{x:i.x-27,y:i.y-8,width:54,height:16,rx:3,fill:"#dc2626",stroke:"#7f1d1d","stroke-width":2},g);var bx=i.x+27,by=i.y-8;}
-      if(i.t==="RFE"){el("circle",{cx:bx+6,cy:by-6,r:15,fill:"#facc15",stroke:"#111","stroke-width":2},g);el("path",{d:`M${bx+9},${by-19} L${bx},${by-4} L${bx+7},${by-4} L${bx+3},${by+7} L${bx+13},${by-9} L${bx+6},${by-9} Z`,fill:"#111"},g)}
+      if(i.t==="RFE"){el("circle",{cx:bx+6,cy:by-6,r:17,fill:"#facc15",stroke:"#111","stroke-width":2},g);el("image",{href:ELEC(),x:bx-6,y:by-18,width:24,height:24,preserveAspectRatio:"xMidYMid meet"},g)}
       if(i.l){const s2=el("text",{x:i.x,y:i.y+42,"text-anchor":"middle",fill:"#111","font-size":22,"font-weight":600,"font-family":"Source Sans 3,sans-serif",stroke:"#fff","stroke-width":5,"paint-order":"stroke"},g);s2.textContent=tr(i.l)}
       return}
     if(i.t==="RV"||i.t==="RH"){const v=i.t==="RV",w=v?30:52,h=v?52:30;

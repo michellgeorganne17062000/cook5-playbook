@@ -272,10 +272,10 @@ function search(q){const r=$("#results"),c=$("#cards");q=q.trim().toLowerCase();
     return `<a class="hit" href="${h.href}"><small>${esc(h.where)}</small><b>${esc(h.head)}</b><span>${a?"…":""}${snip}…</span></a>`}).join(""):`<p class="empty">${t(UI.noresults)}</p>`)+"</div>"}
 
 /* ---------- board ---------- */
-const LGI={AJ:"operators/nomad.png",HB:"gadgets/hard-breach.png","🔥":"gadgets/capitao-bolt.png","📷":"utility/bp-camera.png","💨":"utility/smoke-grenade.png",CA:"gadgets/castle-panel.png"};
+const LGI={AJ:"gadgets/airjab-launcher.png",HB:"utility/hard-breach-charge.png","🔥":"gadgets/tactical-crossbow.png",TR:"gadgets/entry-denial-device.png","📷":"utility/bulletproof-camera.png","💨":"utility/smoke-grenade.png",CA:"gadgets/armor-panel.png"};
 function legendHTML(){return LEGEND.map(([k,txt,c])=>{let sw;
   if(k==="redwall")sw=`<i class="sw" style="background:#dc2626;height:8px;width:24px;border-radius:2px"></i>`;
-  else if(k==="elec")sw=`<i class="sw" style="background:#facc15;border-radius:50%;width:18px;height:18px;font-style:normal;font-size:11px;display:grid;place-items:center">⚡</i>`;
+  else if(k==="elec")sw=`<i class="sw" style="background:#facc15;border-radius:50%;width:20px;height:20px;display:grid;place-items:center"><img src="img/r6/icons/gadgets/shock-wire.png" alt="" style="width:14px;height:14px"></i>`;
   else if(k==="defuser")sw=`<svg width="22" height="22" viewBox="0 -4 48 48"><rect x="2" y="12" width="44" height="30" rx="5" fill="#1f2937" stroke="#facc15" stroke-width="3"/><rect x="9" y="19" width="20" height="9" rx="2" fill="#22d3ee"/><circle cx="42" cy="0" r="4" fill="#ef4444"/></svg>`;
   else if(k==="site")sw=`<i class="sw" style="background:#2563eb;color:#fff;font:700 9px/16px sans-serif;padding:0 4px;border-radius:4px">${t(UI.site)}</i>`;
   else if(k==="move")sw=`<i class="sw" style="border-top:3px dashed #7a4fd1;width:24px"></i>`;

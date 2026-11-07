@@ -21,7 +21,7 @@ const LEGEND=[
   ["elec",["Electrified (Kaid / Bandit)","Под током (Kaid / Bandit)"]],
   ["🔄",["Rotate hole","Ротейт"]],["👣",["Feet holes","Дыры под ноги"]],["👀",["Head holes","Дыры на уровне головы"]],
   ["AJ",["Nomad Airjab","Эйрджеб Nomad"],"#7c3aed"],["HB",["Hard breach","Хард-брич"],"#dc2626"],["🔥",["Capitão flame","Огонь Capitão"]],
-  ["TR",["Traps","Ловушки"],"#a16207"],["📷",["Camera (BP cam)","Камера (BP)"]],["💨",["Smoke grenade","Дымовая граната"]],["CA",["Castle barricade","Баррикада Castle"],"#9a3412"],
+  ["TR",["Traps (owner's gadget: Thorn, Fenrir, Kapkan…)","Ловушки (гаджет владельца: Thorn, Fenrir, Kapkan…)"],"#a16207"],["📷",["Camera (BP cam)","Камера (BP)"]],["💨",["Smoke grenade","Дымовая граната"]],["CA",["Castle barricade","Баррикада Castle"],"#9a3412"],
   ["defuser",["Plant spot (defuser)","Точка планта (дефузер)"]],["site",["Bomb site","Бомб-точка"]],
   ["move",["Move · dashed = fall-back","Движение · пунктир = отход"]],["floor",["Floor opened (vertical)","Открытый пол (вертикаль)"]]
 ];
