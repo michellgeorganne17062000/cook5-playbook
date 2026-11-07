@@ -171,15 +171,15 @@ const KAFE=[
 ];
 
 const PROFILES={
- dima:{nick:"peacedim",alt:"dimadetected",role:["Flex / IGL","Флекс / IGL"],rank:["Gold IV (was Gold II before 06.11)","Gold IV (до 06.11 — Gold II)"],
+ dima:{nick:"peacedim",alt:"",role:["Flex / IGL","Флекс / IGL"],rank:["Gold IV (was Gold II before 06.11)","Gold IV (до 06.11 — Gold II)"],
   ops:[["Rauora 9/18 (50%)",["Grim 14/35 (backup only) · Blitz 6/9 prov.","Grim 14/35 (только запасной) · Blitz 6/9 предв."],"Kaid / Bandit 9/13 (69%)","Thorn 5/12",["Grim as default · Wamai 1/4","Grim по умолчанию · Wamai 1/4"]]],
   habit:["No first contact before your utility is out. Target: first of the team to die ≤20% (14% on 02.11, 22% on 06.11).","Никакого первого контакта, пока не потрачена утилита. Цель: умирать первым ≤20% (14% 02.11, 22% 06.11)."],
   last:[["8","28–49","0.57","5–5","22%"]],trend:[1.21,0.93,1.18,0.76,1.41,0.57]},
- renat:{nick:"rena1ss4nce_",alt:"JohnnyMarlison",role:["Entry / roamer","Энтри / роумер"],rank:["Gold IV (was Gold II before 06.11)","Gold IV (до 06.11 — Gold II)"],
+ renat:{nick:"rena1ss4nce_",alt:"",role:["Entry / roamer","Энтри / роумер"],rank:["Gold IV (was Gold II before 06.11)","Gold IV (до 06.11 — Gold II)"],
   ops:[["Blackbeard 30/61 (49%)",["Solid Snake 16/32 (situational) · Lion 3/3","Solid Snake 16/32 (ситуативно) · Lion 3/3"],"Azami 14/30 (47%)","Denari 4/7",["Dokkaebi · Sens 0/2 · Ying 0/3","Dokkaebi · Sens 0/2 · Ying 0/3"]]],
   habit:["Snake only 1–2 rounds per match, called in the lobby so Roman takes Blackbeard. You were the bright spot on 06.11 — if you lead openings again, you join the entry pair.","Snake — только 1–2 раунда за матч и объявлять в лобби, чтобы Роман взял Blackbeard. 06.11 ты был лучшим — если снова выиграешь больше всех первых дуэлей, встаёшь в пару открывающих."],
   last:[["8","55–42","1.31","5–2","10%"]],trend:[1.54,1.13,1.24,1.63,0.79,1.31]},
- roman:{nick:"D8_gRom",alt:"D8_Ramirez",role:["Trader / shallow roam","Трейдер / ближний роум"],rank:["Gold III (was Gold I before 06.11)","Gold III (до 06.11 — Gold I)"],
+ roman:{nick:"D8_gRom",alt:"",role:["Trader / shallow roam","Трейдер / ближний роум"],rank:["Gold III (was Gold I before 06.11)","Gold III (до 06.11 — Gold I)"],
   ops:[[["Glaz 21/43 (49%) — 6/17 since 30.10, watch it","Glaz 21/43 (49%) — с 30.10 6/17, следить"],["Ace 4/5 · Blackbeard in Snake rounds","Ace 4/5 · Blackbeard в раундах Snake"],"Wamai 6/12 (50%)","Mira 3/3",["**Sledge 5/20 (25%)** · Osa as default · Goyo 0/3","**Sledge 5/20 (25%)** · Osa по умолчанию · Goyo 0/3"]]],
   habit:["On defence, no first-angle peek before info: 6 of your 8 first deaths on 06.11 were on defence. On attack you open with Dima.","В защите не выглядывать на первый угол без информации: 6 из 8 первых смертей 06.11 — в защите. В атаке ты открываешь вместе с Димой."],
   last:[["8","32–37","0.86","3–8","22%"]],trend:[1.71,0.93,0.81,0.97,2.18,0.86]},
