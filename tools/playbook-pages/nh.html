@@ -1,0 +1,893 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nighthaven Playbook D8</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: sticky tab bar of site tabs; each tab = one compact sheet (plan table + setup list + screenshot strip). Attack = orange, defense = blue, one color per player. */
+:root{
+  --bg:#eef1f4; --panel:#ffffff; --fg:#151a21; --muted:#5b6573; --line:#d6dce3;
+  --atk:#d9631c; --def:#2b6fd6; --atk-bg:#fbe9dd; --def-bg:#e1ebfb;
+  --dima:#b8860b; --renat:#0f8f86; --roman:#7a4fd1; --nikita:#c43b3b; --sanya:#2f8a3e;
+  --good:#2f8a3e; --bad:#c43b3b;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1318; --panel:#171d24; --fg:#e7ebf0; --muted:#97a2b0; --line:#2a333d;
+  --atk:#f08a45; --def:#5b95f0; --atk-bg:#3a2416; --def-bg:#172a45;
+  --dima:#e0b13c; --renat:#2ec4b8; --roman:#a585ef; --nikita:#ee6b6b; --sanya:#5cc46c;
+  --good:#5cc46c; --bad:#ee6b6b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1318; --panel:#171d24; --fg:#e7ebf0; --muted:#97a2b0; --line:#2a333d;
+  --atk:#f08a45; --def:#5b95f0; --atk-bg:#3a2416; --def-bg:#172a45;
+  --dima:#e0b13c; --renat:#2ec4b8; --roman:#a585ef; --nikita:#ee6b6b; --sanya:#5cc46c;
+  --good:#5cc46c; --bad:#ee6b6b; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 32px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1080px;margin:0 auto}
+header{padding-block:18px 10px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+h1{font:700 2rem/1 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0}
+h1 b{color:var(--def)}
+.sub{color:var(--muted);font-size:.9rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:6px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:4px}
+nav a{font:600 1rem/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-decoration:none;padding:8px 11px;border-radius:6px;white-space:nowrap}
+nav a.on{color:#fff;background:var(--fg)}
+:root[data-theme="dark"] nav a.on{color:var(--bg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) nav a.on{color:var(--bg)}}
+nav a.atk.on{background:var(--atk)} nav a.def.on{background:var(--def)}
+nav a:focus-visible,button:focus-visible,.shot:focus-visible{outline:2px solid var(--def);outline-offset:2px}
+section{display:grid;gap:14px;padding-top:16px}
+.head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+h2{font:700 1.6rem/1.05 var(--display);text-transform:uppercase;letter-spacing:.03em;margin:0;text-wrap:balance}
+h3{font:700 1.05rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 6px}
+.tag{font:600 .75rem/1 var(--mono);padding:5px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em}
+.tag.d{background:var(--def-bg);color:var(--def)} .tag.a{background:var(--atk-bg);color:var(--atk)}
+.lead{margin:0;max-width:72ch}
+.grid2{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:14px}
+@media (max-width:760px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.box.d{border-top:3px solid var(--def)} .box.a{border-top:3px solid var(--atk)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th{font:600 .72rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:left;padding:4px 8px 6px;border-bottom:1px solid var(--line)}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n{font:600 .8rem var(--mono);color:var(--muted);width:1.5em}
+.num{font-variant-numeric:tabular-nums}
+.p{display:inline-block;font:700 .8rem/1 var(--body);padding:4px 8px;border-radius:999px;color:#fff;white-space:nowrap}
+.p.dima{background:var(--dima)} .p.renat{background:var(--renat)} .p.roman{background:var(--roman)} .p.nikita{background:var(--nikita)} .p.sanya{background:var(--sanya)}
+:root[data-theme="dark"] .p{color:#0f1318}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .p{color:#0f1318}}
+.op{font-weight:600} .op i{font-style:normal;color:var(--muted);font-weight:400}
+ul.tight{margin:0;padding-left:18px;display:grid;gap:3px;font-size:.9rem}
+ol.steps{margin:0;padding-left:22px;display:grid;gap:4px;font-size:.92rem}
+.note{font-size:.85rem;color:var(--muted);margin:0}
+.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.strip.s3{grid-template-columns:repeat(3,minmax(0,1fr))} .strip.s4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:700px){.strip,.strip.s4{grid-template-columns:repeat(2,minmax(0,1fr))}.strip.s3{grid-template-columns:minmax(0,1fr)}}
+.shot{all:unset;cursor:zoom-in;display:grid;gap:4px;min-width:0}
+.shot img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;border:1px solid var(--line);display:block}
+.shot span{font:600 .75rem/1.2 var(--mono);color:var(--muted)}
+.callouts{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px 14px;font-size:.88rem}
+.callouts div{display:flex;gap:8px;align-items:baseline;border-bottom:1px dashed var(--line);padding-block:3px}
+.callouts code{font:600 .82rem var(--mono);color:var(--def);min-width:6.5em}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.86rem}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.kpi b{display:block;font:700 1.7rem/1 var(--display)}
+.kpi span{font-size:.8rem;color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--atk);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--def);margin-left:auto}
+.good{color:var(--good);font-weight:600} .bad{color:var(--bad);font-weight:600}
+.chk{list-style:none;padding:0;margin:0;display:grid;gap:5px;font-size:.92rem}
+.chk li::before{content:"☐ ";color:var(--muted)}
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1280px)}
+dialog::backdrop{background:rgba(5,8,12,.86)}
+dialog img{display:block;max-width:100%;max-height:86vh;border-radius:6px}
+dialog p{color:#e7ebf0;font:600 .9rem var(--mono);margin:8px 0 0;text-align:center}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font:600 .95rem/1 var(--display);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:8px 12px;border-radius:6px;cursor:pointer}
+.seg button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.seg button.on.a{background:var(--atk);border-color:var(--atk);color:#fff}
+.seg button.on.d{background:var(--def);border-color:var(--def);color:#fff}
+.seg button.miss{border-style:dashed;background:transparent;opacity:.6;cursor:not-allowed}
+.boardwrap{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:14px;align-items:start}
+@media (max-width:820px){.boardwrap{grid-template-columns:minmax(0,1fr)}}
+.board{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;touch-action:none}
+.board svg{display:block;width:100%;height:auto;user-select:none}
+.tok{cursor:grab}.tok:active{cursor:grabbing}
+.legendg{display:grid;gap:6px;font-size:.84rem}
+.legendg div{display:flex;gap:8px;align-items:center}
+.gl{display:inline-grid;place-items:center;min-width:30px;height:22px;border-radius:5px;font:700 .7rem var(--mono);color:#fff;padding:0 4px}
+.phaselist{margin:0;padding-left:18px;display:grid;gap:4px;font-size:.88rem}
+.phaselist li.cur{font-weight:700}
+@media (prefers-reduced-motion:no-preference){section{animation:in .18s ease-out}@keyframes in{from{opacity:.4;transform:translateY(4px)}}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Nighthaven Labs <b>Playbook</b></h1>
+  <span class="sub">D8 · updated 30 Oct 2026 · sources: Mint setup video, basement attack video, Nighthaven attack video, W7M pro review, r6tv pro data</span>
+</header>
+<nav id="tabs">
+  <a href="#overview">Overview</a>
+  <a href="#map">Map</a>
+  <a href="#cc" class="def">CC / Servers</a>
+  <a href="#basement" class="def">Basement</a>
+  <a href="#storage" class="def">Storage</a>
+  <a href="#kitchen" class="def">Kitchen</a>
+  <a href="#pro">Pro notes</a>
+  <a href="#bans">Bans</a>
+  <a href="#practice">Practice</a>
+</nav>
+
+<!-- OVERVIEW -->
+<section id="v-overview">
+  <p class="lead">Nighthaven is a weak map for us (44.6% squad aggregate, 0-2 and 3-8 rounds on Oct 23–26), so we play one fixed plan per site. Core idea: <b>battle for IT</b>. Keep the outer IT walls shut, buy time in the top-floor rooms for about 1:30, then fall back into site and play for trades.</p>
+  <div class="kpis">
+    <div class="kpi"><b class="num">62%</b><span>pro attack round wins after taking the first kill</span></div>
+    <div class="kpi"><b class="num">22%</b><span>pro attack round wins after dying first</span></div>
+    <div class="kpi"><b class="num">55.3%</b><span>pro defense round win on Nighthaven</span></div>
+    <div class="kpi"><b class="num">0.35</b><span>our average ESR, target 0.45</span></div>
+  </div>
+  <div class="grid2">
+    <div class="box">
+      <h3>Who does what, on every site</h3>
+      <div class="tw"><table>
+        <tr><th>Player</th><th>Role</th><th>Defense job</th><th>Attack B</th></tr>
+        <tr><td><span class="p dima">Dima</span></td><td>Flex / IGL</td><td>Wall denial, bridge, calls the fall-back</td><td class="op">Grim</td></tr>
+        <tr><td><span class="p renat">Renat</span></td><td>Entry / roamer</td><td>Power spot, time waste</td><td class="op">Capitão</td></tr>
+        <tr><td><span class="p roman">Roman</span></td><td>Trader</td><td>Close fights, vertical holes</td><td class="op">Solid Snake</td></tr>
+        <tr><td><span class="p nikita">Nikita</span></td><td>Hard breach / anchor</td><td>Door anchor</td><td class="op">Sledge / Buck</td></tr>
+        <tr><td><span class="p sanya">Sanya</span></td><td>Support / planter</td><td>Site anchor or traps</td><td class="op">Nomad</td></tr>
+      </table></div>
+    </div>
+    <div class="box d">
+      <h3>Which site to defend</h3>
+      <div class="tw"><table class="num">
+        <tr><th>#</th><th>Site</th><th>Pro def win</th></tr>
+        <tr><td class="n">1</td><td>2F CC / Servers</td><td>56.6% <div class="bar"><i style="width:56.6%"></i></div></td></tr>
+        <tr><td class="n">2</td><td>1F Storage / Control</td><td>57.2% <div class="bar"><i style="width:57.2%"></i></div></td></tr>
+        <tr><td class="n">3</td><td>B Tank / Assembly</td><td>53.2% <div class="bar"><i style="width:53.2%"></i></div></td></tr>
+        <tr><td class="n">4</td><td>1F Kitchen <span class="note">(3% of pro rounds)</span></td><td>46.8% <div class="bar"><i style="width:46.8%"></i></div></td></tr>
+      </table></div>
+      <p class="note" style="margin-top:6px">Blue = defense share, orange = attack. r6tv, 1,730 pro rounds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="v-map" hidden>
+  <div class="head"><h2>Map & callouts</h2></div>
+  <div class="box">
+    <h3>Slang → official room</h3>
+    <div class="callouts">
+      <div><code>Rafters</code>2F Warehouse (spots R1, R2, R3)</div>
+      <div><code>Water</code>Blue Stairs (CC Stairs) + CC Hall</div>
+      <div><code>Ebox</code>Electrical (Tools, Buzz)</div>
+      <div><code>Garden</code>Connector side (Ivy, Horseshoe, J spot); Garden door = top of Meeting Hall</div>
+      <div><code>Mezz</code>Top of Lobby Stairs / Meeting Hall</div>
+      <div><code>CCTV</code>Command Center (Monitors, Fiji, Fern)</div>
+      <div><code>Games</code>Lounge (Foosball, Pool, TV)</div>
+      <div><code>90</code>Corner of Lounge Hall and Caf Hall</div>
+      <div><code>Fork</code>Yellow Fork = top of Control Hall; Blue Fork = Warehouse → Storage door</div>
+      <div><code>Tetris</code>Crates in 1F Warehouse</div>
+      <div><code>Harry Potter</code>Lobby, under Lobby Stairs</div>
+      <div><code>Mud</code>Warehouse Entrance (mud door)</div>
+      <div><code>Garage</code>1F Warehouse</div>
+      <div><code>Break</code>Top of Vending Stairs</div>
+      <div><code>Exo stairs</code>Vending Stairs</div>
+      <div><code>Nano</code>Nanotech (Micro, Map); Nano Hall above it</div>
+      <div><code>Proto</code>Basement room by Exo Stairs (P1–P4)</div>
+      <div><code>Exo</code>Exosuit (Pillar, Cave)</div>
+      <div><code>Halo</code>Cafeteria site corner (Halo boost)</div>
+    </div>
+    <p class="note" style="margin-top:8px">From the community callout maps linked under the video. Not on them: Freezer (probably Pantry).</p>
+  </div>
+  <div>
+    <h3>Community callouts</h3>
+    <div class="strip s3" style="margin-bottom:14px">
+      <button class="shot"><img style="aspect-ratio:1/1" src="img/cmap-b.jpg" alt="Community callouts basement"><span>Basement</span></button>
+      <button class="shot"><img style="aspect-ratio:1/1" src="img/cmap-1f.jpg" alt="Community callouts 1st floor"><span>1st floor</span></button>
+      <button class="shot"><img style="aspect-ratio:1/1" src="img/cmap-2f.jpg" alt="Community callouts 2nd floor"><span>2nd floor</span></button>
+    </div>
+    <h3>Official callouts</h3>
+    <div class="strip s3">
+      <button class="shot"><img src="img/callouts-b.jpg" alt="Basement callouts"><span>Basement</span></button>
+      <button class="shot"><img src="img/callouts-1f.jpg" alt="1st floor callouts"><span>1st floor</span></button>
+      <button class="shot"><img src="img/callouts-2f.jpg" alt="2nd floor callouts"><span>2nd floor</span></button>
+    </div>
+  </div>
+  <div>
+    <h3>Blueprints</h3>
+    <p class="note">Red hatching = destructible floor, yellow checks = hatches, yellow dashes = breakable walls. 1F Control/Cargo/Lounge/Storage and 2F CC/Servers/IT/Connector floors are soft; the roof has nothing breakable.</p>
+    <div class="strip s4" style="margin-top:8px">
+      <button class="shot"><img src="img/bp-b.jpg" alt="Blueprint basement"><span>Basement</span></button>
+      <button class="shot"><img src="img/bp-1f.jpg" alt="Blueprint 1st floor"><span>1st floor</span></button>
+      <button class="shot"><img src="img/bp-2f.jpg" alt="Blueprint 2nd floor"><span>2nd floor</span></button>
+      <button class="shot"><img src="img/bp-roof.jpg" alt="Blueprint roof"><span>Roof</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- CC -->
+<section id="v-cc" hidden>
+  <div class="head"><h2>2F Command Center / Servers</h2><span class="tag d">Defense · pick #1</span><span class="tag d">pro 56.6%</span></div>
+  <p class="lead">Keep IT shut, buy time in Rafters, Water, Ebox and Garden, then fall into CC/Servers by 1:30.</p>
+  <div class="grid2">
+    <div class="box d"><h3>Positions</h3><div class="tw"><table>
+      <tr><th>#</th><th>Spot</th><th>Ops</th><th>Player</th></tr>
+      <tr><td class="n">1</td><td>Water (CC Stairs)</td><td class="op">Warden / Smoke <i>(Clash last)</i></td><td><span class="p nikita">Nikita</span></td></tr>
+      <tr><td class="n">2</td><td>Rafters — power spot</td><td class="op">Azami / Ela / Fenrir</td><td><span class="p renat">Renat</span></td></tr>
+      <tr><td class="n">3</td><td>Ebox (Electrical)</td><td class="op">Mute / Warden / Smoke</td><td><span class="p roman">Roman</span></td></tr>
+      <tr><td class="n">4</td><td>IT → flex inside</td><td class="op">Bandit / Kaid <i>/ Mira</i></td><td><span class="p dima">Dima</span></td></tr>
+      <tr><td class="n">5</td><td>Garden (Connector)</td><td class="op">Tubarão / Wamai / Lesion / Mozzie</td><td><span class="p sanya">Sanya</span></td></tr>
+    </table></div><p class="note" style="margin-top:6px">Dima on Kaid → Sanya on Tubarão to freeze and claw the IT wall. Otherwise Wamai: pros run him in 70% of CC rounds.</p></div>
+    <div class="box"><h3>Reinforce</h3><ul class="tight">
+      <li><b>2 outer IT walls</b> — top priority</li>
+      <li>Rafters: 2 far-left walls, rotate on the right</li>
+      <li>Wall by the Rafters rotate + head holes</li>
+      <li>Wall facing Ebox (safe rotate)</li>
+      <li>Water hallway wall + feet holes</li>
+      <li>Outside Connector walls; head hole on Meeting hallway</li>
+      <li>Servers right wall; rotate into Connector</li>
+      <li><b>Keep 1 in reserve</b> for the fall-back wall</li>
+    </ul></div>
+  </div>
+  <div class="strip">
+    <button class="shot"><img src="img/cc-p1.jpg" alt="CC position 1 Water"><span>1 · Water · Nikita</span></button>
+    <button class="shot"><img src="img/cc-p2.jpg" alt="CC position 2 Rafters"><span>2 · Rafters · Renat</span></button>
+    <button class="shot"><img src="img/cc-p3.jpg" alt="CC position 3 Ebox"><span>3 · Ebox · Roman</span></button>
+    <button class="shot"><img src="img/cc-p4.jpg" alt="CC position 4 IT"><span>4 · IT · Dima</span></button>
+    <button class="shot"><img src="img/cc-p5.jpg" alt="CC position 5 Garden"><span>5 · Garden · Sanya</span></button>
+  </div>
+
+  <div class="head" style="margin-top:10px"><h2>CC Setup B — Connector hold</h2><span class="tag d">Alternate</span></div>
+  <p class="lead">Anchor-heavy variant from a Reddit "Strat of the Week" (MisfitMidas). Use it when we defend CC a second time in a half, so we are not predictable. Weak spot: the CC Stairs side is thin, so Renat must not roam away early against a stairs push.</p>
+  <div class="grid2">
+    <div class="box d"><h3>Positions</h3><div class="tw"><table>
+      <tr><th>Spot</th><th>Op</th><th>Player</th><th>Job</th></tr>
+      <tr><td>Connector extension</td><td class="op">Smoke</td><td><span class="p roman">Roman</span></td><td>Hold behind a shield like Oregon elbow; canisters to stall ~45 s; fall back and reinforce the Connector wall</td></tr>
+      <tr><td>Electrical</td><td class="op">Fenrir <i>(or Melusi)</i></td><td><span class="p sanya">Sanya</span></td><td>Traps on Connector door/wall and Electrical jump-in; support Roman</td></tr>
+      <tr><td>Servers</td><td class="op">Kaid</td><td><span class="p dima">Dima</span></td><td>Claws on Connector and IT walls; cams; flex to any crossfire</td></tr>
+      <tr><td>Catwalk (Rafters side)</td><td class="op">Warden <i>(1.5×)</i></td><td><span class="p nikita">Nikita</span></td><td>Long angles into IT and Warehouse; head holes into CC and Servers late</td></tr>
+      <tr><td>CC Stairs side</td><td class="op">Wamai</td><td><span class="p renat">Renat</span></td><td>Discs on catwalk door + CC Hallway; late flanks from below</td></tr>
+    </table></div>
+    <p class="note" style="margin-top:6px">Warden banned → Tachanka (shield) and a cam op for Smoke. Losing the info game → Valkyrie. Solis works too: the plant spots sit on soft floor.</p></div>
+    <div class="box"><h3>Reinforce</h3><ul class="tight">
+      <li>Warehouse bottom walls</li>
+      <li>IT walls (Kaid)</li>
+      <li>2 walls by the head holes in CC / Servers</li>
+      <li>2 walls in Connector</li>
+      <li>Servers / Connector wall</li>
+      <li><b>Keep 1 in reserve</b> for Roman's fall-back wall</li>
+    </ul><p class="note" style="margin-top:8px">Holes: Smoke makes the rotate behind him, feet holes in CC, head holes on the catwalk wall.</p></div>
+  </div>
+  <div class="strip s3">
+    <button class="shot"><img src="img/cc-b.jpg" alt="CC Setup B map with operator positions"><span>Setup B · operator map</span></button>
+  </div>
+  <div class="box d"><h3>Pro tweaks (W7M)</h3><ul class="tight">
+    <li><b>Castle the bottom Aqua door</b> (1F end of CC Stairs) so nobody lurks up behind the Water player</li>
+    <li><b>Ebox is the key anchor</b>: close shotgun or Mute. Hold Ebox + the pillar side and the garden entry turns into a crossfire</li>
+    <li><b>Kaid / Bandit banned → Mira on the IT wall</b>: a Thermite on it breaks when the Mira pops, and C4 lineups through the Mira kill the breacher</li>
+    <li><b>Read the take</b>: IT + Rafters = garage take (hold Water); Meeting → garden breach = split take, and a Buck will make vert from 1F, so Renat drops through a hatch and flanks him</li>
+  </ul></div>
+  <div style="border-top:2px solid var(--atk);margin-top:10px"></div>
+  <div class="head"><h2>Attack: 2F CC / Servers</h2><span class="tag a">Attack B · from video</span><span class="tag a">pro 43.4%</span></div>
+  <p class="lead">Take the north-east first (Meeting Room, top of Lobby Stairs), then Connector and Electrical. Open Servers from Connector, smoke the two doorways, and open the IT outside wall only once you have map control, to cut the rotate from Rafters.</p>
+  <div class="grid2">
+    <div class="box a"><h3>Lineup</h3><div class="tw"><table>
+      <tr><th>Role</th><th>Ops</th><th>Player</th></tr>
+      <tr><td>Hard breacher</td><td class="op">Thermite <i>/ Ace / Hibana</i></td><td><span class="p nikita">Nikita</span></td></tr>
+      <tr><td>Soft destruction + 2nd hard breach</td><td class="op">Buck</td><td><span class="p roman">Roman</span></td></tr>
+      <tr><td>Frags, opens IT from 1F if denied</td><td class="op">Zofia <i>/ Ash</i></td><td><span class="p renat">Renat</span></td></tr>
+      <tr><td>Smokes, planter</td><td class="op">op with smoke grenades</td><td><span class="p sanya">Sanya</span></td></tr>
+      <tr><td>Flex, flank drones</td><td class="op">Twitch</td><td><span class="p dima">Dima</span></td></tr>
+    </table></div></div>
+    <div class="box a"><h3>Keys</h3><ul class="tight">
+      <li>Defenders don't extend early on this map, so the north-east is usually free</li>
+      <li>Two doorways into Servers once you own Connector + Electrical: smoke both</li>
+      <li>Plant behind Stacks if the wall stays shut</li>
+      <li>Flank drones by the staircases</li>
+      <li><a href="https://www.youtube.com/watch?v=rIhwabm2tdo">Source video</a> (Attack A on the board is our earlier draft)</li>
+    </ul></div>
+  </div>
+  <div class="boardslot" data-strats="ccA,ccB,cA,cA2,cA3"></div>
+</section>
+
+<!-- BASEMENT -->
+<section id="v-basement" hidden>
+  <div class="head"><h2>Defence: B Tank / Assembly</h2><span class="tag d">Defense · pick #3</span><span class="tag d">pro 53.2%</span></div>
+  <p class="lead">Keep the outside walls shut and hold Storage above site: attackers must clear Renat before they can plant on the default and pillar spots.</p>
+  <div class="grid2">
+    <div class="box d"><h3>Positions</h3><div class="tw"><table>
+      <tr><th>#</th><th>Spot</th><th>Player</th><th>Option 1<br><span class="note">Kaid + Bandit open</span></th><th>Option 2<br><span class="note">Kaid or Bandit banned</span></th></tr>
+      <tr><td class="n">1</td><td>Assembly, by the 2 RF walls</td><td><span class="p nikita">Nikita</span></td><td class="op">Bandit</td><td class="op">Kaid / Bandit</td></tr>
+      <tr><td class="n">2</td><td>Animus, by the RF wall</td><td><span class="p sanya">Sanya</span></td><td class="op">Kaid</td><td class="op">Mute</td></tr>
+      <tr><td class="n">3</td><td>Vending Stairs</td><td><span class="p dima">Dima</span></td><td class="op">Thorn / Goyo</td><td class="op">Thorn / Goyo</td></tr>
+      <tr><td class="n">4</td><td>Storage (1F, floor holes)</td><td><span class="p renat">Renat</span></td><td class="op">Solis</td><td class="op">Warden</td></tr>
+      <tr><td class="n">5</td><td>Cargo (1F)</td><td><span class="p roman">Roman</span></td><td class="op">Fenrir</td><td class="op">Fenrir</td></tr>
+    </table></div></div>
+    <div class="box"><h3>Reinforce & holes</h3><ul class="tight">
+      <li>2 outside walls + Animus wall (feet holes)</li>
+      <li>Left wall, rotate/high holes right (Exo plant, C4)</li>
+      <li>All hatches (Cargo, Garage → Animus)</li>
+      <li>Feet holes: Cargo stairs, Nano wall</li>
+      <li>Shotgun hole for C4/smoke on Animus door plant</li>
+      <li>Storage holes over the pillar plant</li>
+      <li>Rotates: Storage ↔ Control, Control wall <b>left</b> side</li>
+    </ul></div>
+  </div>
+  <div class="strip">
+    <button class="shot"><img src="img/b-p1.jpg" alt="Basement position 1 site"><span>1 · Site · Nikita + Sanya</span></button>
+    <button class="shot"><img src="img/b-p2.jpg" alt="Basement position 2 Exo stairs"><span>2 · Exo / Vending stairs · Dima</span></button>
+    <button class="shot"><img src="img/b-p3.jpg" alt="Basement position 3 Storage"><span>3 · Storage · Renat</span></button>
+    <button class="shot"><img src="img/b-p4.jpg" alt="Basement position 4 Control"><span>4 · Control / Cargo · Roman</span></button>
+    <button class="shot"><img src="img/b-p5.jpg" alt="Basement position 5 2F hatch"><span>5 · 2F hatch · not used</span></button>
+  </div>
+  <div class="box d"><h3>Option 3 · W7M 2-2-1 roam</h3><ul class="tight">
+    <li><b>2F:</b> <span class="p renat">Renat</span> Azami in top garage (Rafters), <span class="p roman">Roman</span> Lesion by Ebox, drops the hatch late</li>
+    <li><b>1F:</b> <span class="p nikita">Nikita</span> Warden on the Storage floor holes, <span class="p dima">Dima</span> Castle in Control: castles the <b>90 window</b> (splits the map) and both <b>Animus doors</b></li>
+    <li><b>Basement:</b> <span class="p sanya">Sanya</span> plays Exo, not site: the vert from Storage covers the plants, Exo is the weak side</li>
+    <li>Animus outside wall <b>left soft</b> and its hatch open: Animus becomes a killbox under our holes. Garage (1F Warehouse) walls double reinforced</li>
+  </ul></div>
+  <div style="border-top:2px solid var(--atk);margin-top:10px"></div>
+  <div class="head"><h2>Attack: B Tank / Animus</h2><span class="tag a">Attack</span><span class="tag a">pro 46.8% — best attack site</span></div>
+  <p class="lead">Clear Tank from above through the soft Control floor, flame the two doors, drop the hatch and tuck-plant in the corner while Roman denies Cargo stairs.</p>
+  <div class="grid2">
+    <div class="box a"><h3>Step by step</h3><ol class="steps">
+      <li>Prep: drone on an IT shelf; drone Storage + Cargo; shoot default cams.</li>
+      <li><span class="p roman">Roman</span> scans outside rooms so Sanya enters safe.</li>
+      <li><span class="p sanya">Sanya</span> in through the Rafters window; Airjab 1 high on the far IT door.</li>
+      <li>Down Warehouse Stairs: Airjab 2 far Storage door, Airjab 3 above Cargo door.</li>
+      <li><span class="p dima">Dima</span> / <span class="p renat">Renat</span> hard-breach 1F Warehouse hatch + top of Cargo stairs hatch.</li>
+      <li><span class="p nikita">Nikita</span> cuts long lines in the Control floor: window line, along the wall, middle.</li>
+      <li>Roman works down Cargo stairs; no over-extending.</li>
+      <li><b>Drone the drop zone</b> — defenders hide behind the tank and swing late.</li>
+      <li>Renat flames both door frames; Sanya drops and plants in the corner.</li>
+      <li>Hold: Renat + Nikita on holes, Roman on Cargo stairs, Dima on the hatch / flank.</li>
+    </ol></div>
+    <div class="box a"><h3>Lineup</h3><div class="tw"><table>
+      <tr><th>Op</th><th>Backup</th><th>Player</th></tr>
+      <tr><td class="op">Nomad</td><td>Gridlock</td><td><span class="p sanya">Sanya</span></td></tr>
+      <tr><td class="op">Solid Snake</td><td>Deimos</td><td><span class="p roman">Roman</span></td></tr>
+      <tr><td class="op">Sledge / Buck</td><td>Ram</td><td><span class="p nikita">Nikita</span></td></tr>
+      <tr><td class="op">Capitão</td><td>— essential</td><td><span class="p renat">Renat</span></td></tr>
+      <tr><td class="op">Grim</td><td>Ying</td><td><span class="p dima">Dima</span></td></tr>
+    </table></div>
+    <h3 style="margin-top:12px">Comms</h3>
+    <p style="margin:0;font:600 .9rem var(--mono)">Nikita "lines open" → Renat "flaming" → Sanya "dropping"</p>
+    <h3 style="margin-top:12px">If it breaks</h3>
+    <ul class="tight"><li>Renat dead → Dima pings the doors with Grim</li><li>Roman dead → Renat to hatch / Cargo after flaming</li><li>Minimum: Capitão + Sledge/Buck + Nomad</li></ul></div>
+  </div>
+  <div class="boardslot" data-strats="bD1,bD2,bD3,bA"></div>
+</section>
+
+<!-- STORAGE -->
+<section id="v-storage" hidden>
+  <div class="head"><h2>1F Storage / Control</h2><span class="tag d">Defense · pick #2</span><span class="tag d">pro 57.2%</span></div>
+  <p class="lead">Top floor is set up exactly like CC. Hold it for about 1:30, then drop to site and make attackers open the floor themselves.</p>
+  <div class="grid2">
+    <div class="box d"><h3>Positions <span class="note">(by CC pattern, no screenshots yet)</span></h3><div class="tw"><table>
+      <tr><th>#</th><th>Spot</th><th>Ops</th><th>Player</th></tr>
+      <tr><td class="n">1</td><td>Storage (site)</td><td class="op">Mute / Smoke</td><td><span class="p sanya">Sanya</span></td></tr>
+      <tr><td class="n">2</td><td>Control bridge, Tetris angle</td><td class="op">Lesion / Fenrir / Mozzie</td><td><span class="p roman">Roman</span></td></tr>
+      <tr><td class="n">3</td><td>Water (CC Stairs)</td><td class="op">Warden / Smoke <i>(Clash last)</i></td><td><span class="p nikita">Nikita</span></td></tr>
+      <tr><td class="n">4</td><td>Rafters (2F Warehouse)</td><td class="op">Azami / Ela / Fenrir</td><td><span class="p renat">Renat</span></td></tr>
+      <tr><td class="n">5</td><td>IT / Ebox</td><td class="op">Bandit <i>or</i> Mute / Warden / Smoke</td><td><span class="p dima">Dima</span></td></tr>
+    </table></div></div>
+    <div class="box"><h3>Reinforce & holes</h3><ul class="tight">
+      <li>2 outside Garage walls</li>
+      <li>Rotate Control → Cargo (right side); Control ↔ Storage</li>
+      <li>Head holes: pillar plant (C4/smoke), into Games</li>
+      <li>Board the mud door</li>
+      <li>Top floor as CC; double Servers → Connector; hatch open</li>
+      <li>Vert: Servers onto Storage; Water door onto fork door</li>
+    </ul></div>
+  </div>
+  <div style="border-top:2px solid var(--atk);margin-top:10px"></div>
+  <div class="head"><h2>Attack: 1F Storage / Control</h2><span class="tag a">Attack B · W7M</span><span class="tag a">pro 42.8%</span></div>
+  <p class="lead">Bait and switch. Open walls on 2F so defenders think it's a top-floor clear, then come up from the basement through Cargo Stairs and plant in the tuck spot by the defenders' own rotate, where there's usually no vert.</p>
+  <div class="grid2">
+    <div class="box a"><h3>Lineup</h3><div class="tw"><table>
+      <tr><th>Job</th><th>Op</th><th>Player</th></tr>
+      <tr><td>Opens IT, then shotguns Aqua</td><td class="op">Hibana</td><td><span class="p nikita">Nikita</span></td></tr>
+      <tr><td>Opens garden + bottom garage, holds the cut from a window</td><td class="op">Ace</td><td><span class="p dima">Dima</span></td></tr>
+      <tr><td>Up Cargo Stairs, opens the way</td><td class="op">Sledge</td><td><span class="p roman">Roman</span></td></tr>
+      <tr><td>Up Cargo Stairs, planter</td><td class="op">Blackbeard</td><td><span class="p sanya">Sanya</span></td></tr>
+      <tr><td>Lurk from Lobby toward 90</td><td class="op">Deimos</td><td><span class="p renat">Renat</span></td></tr>
+    </table></div></div>
+    <div class="box a"><h3>Keys</h3><ul class="tight">
+      <li>Open everything early ("soft pressure"): defenders lose mobility and can't tell where the hit is</li>
+      <li>The lurk takes free space slowly; a lurk that dies in 2 seconds wastes the strat</li>
+      <li>Blackbeard puts the shield on his back so a Clash can't knock it</li>
+      <li>Source: <a href="https://www.youtube.com/watch?v=-144cLC7pFg">W7M vs Space Station breakdown</a></li>
+    </ul></div>
+  </div>
+  <div class="boardslot" data-strats="sD,sA,sA2"></div>
+</section>
+
+<!-- KITCHEN -->
+<section id="v-kitchen" hidden>
+  <div class="head"><h2>1F Kitchen / Cafeteria</h2><span class="tag d">Defense · last resort</span><span class="tag d">pro 46.8%</span></div>
+  <p class="lead">Only when coordinated: we must keep the top floor, or attackers clear almost every spot vertically.</p>
+  <div class="grid2">
+    <div class="box d"><h3>Positions</h3><div class="tw"><table>
+      <tr><th>#</th><th>Spot</th><th>Ops</th><th>Player</th></tr>
+      <tr><td class="n">1</td><td>Kitchen + Cafeteria</td><td class="op">Mute / Wamai / Warden</td><td><span class="p sanya">Sanya</span></td></tr>
+      <tr><td class="n">2</td><td>Break</td><td class="op">Warden / Maestro / Echo</td><td><span class="p nikita">Nikita</span></td></tr>
+      <tr><td class="n">3</td><td>Games / 90, mobile</td><td class="op">Castle / Fenrir / Pulse</td><td><span class="p roman">Roman</span></td></tr>
+      <tr><td class="n">4</td><td>Mezz — power spot</td><td class="op">Azami / Ela / Frost <i>(Clash last)</i></td><td><span class="p renat">Renat</span></td></tr>
+      <tr><td class="n">5</td><td>Connector</td><td class="op">Bandit / Fenrir / Solis</td><td><span class="p dima">Dima</span></td></tr>
+    </table></div></div>
+    <div class="box"><h3>Reinforce & holes</h3><ul class="tight">
+      <li>Cafe → Lobby walls (Cafe desk = power spot)</li>
+      <li>Head holes into Games</li>
+      <li>Knee-high holes in the freezer wall (kitchen window)</li>
+      <li>2F: two Meeting walls by Mezz</li>
+      <li>Outside Connector walls; Connector → Servers</li>
+    </ul></div>
+  </div>
+  <div class="strip">
+    <button class="shot"><img src="img/k-p1.jpg" alt="Kitchen position 1"><span>1 · Kitchen · Sanya</span></button>
+    <button class="shot"><img src="img/k-p2.jpg" alt="Kitchen position 2 Break"><span>2 · Break · Nikita</span></button>
+    <button class="shot"><img src="img/k-p3.jpg" alt="Kitchen position 3 Games"><span>3 · Games · Roman</span></button>
+    <button class="shot"><img src="img/k-p4.jpg" alt="Kitchen position 4 Mezz"><span>4 · Mezz · Renat</span></button>
+    <button class="shot"><img src="img/k-p5.jpg" alt="Kitchen position 5 Connector"><span>5 · Connector · Dima</span></button>
+  </div>
+  <div style="border-top:2px solid var(--atk);margin-top:10px"></div>
+  <div class="head"><h2>Attack: 1F Kitchen</h2><span class="tag a">Attack B · from video</span><span class="tag a">pro 53.2%</span></div>
+  <p class="lead">Almost the whole Cafeteria ceiling is soft. Take the top of Lobby Stairs and Meeting Room, open the floor over Cafeteria with two soft breachers, and plant from the kitchen window while the others hold the holes.</p>
+  <div class="grid2">
+    <div class="box a"><h3>Lineup</h3><div class="tw"><table>
+      <tr><th>Role</th><th>Ops</th><th>Player</th></tr>
+      <tr><td>Soft breacher</td><td class="op">Sledge</td><td><span class="p nikita">Nikita</span></td></tr>
+      <tr><td>Soft breacher</td><td class="op">Buck</td><td><span class="p roman">Roman</span></td></tr>
+      <tr><td>Clear + hold the holes</td><td class="op">Grim</td><td><span class="p renat">Renat</span></td></tr>
+      <tr><td>Clear + hold, flank drones</td><td class="op">Twitch</td><td><span class="p dima">Dima</span></td></tr>
+      <tr><td>Planter at the kitchen window</td><td class="op">Nomad</td><td><span class="p sanya">Sanya</span></td></tr>
+    </table></div></div>
+    <div class="box a"><h3>Keys</h3><ul class="tight">
+      <li>Don't open the kitchen window early: defenders huddle there once the floor starts to go</li>
+      <li>Post-plant: vertical on both Cafeteria doors and the kitchen counter</li>
+      <li>Flank drones near Warehouse crates and Vending</li>
+      <li><a href="https://www.youtube.com/watch?v=rIhwabm2tdo">Source video</a> (Attack A on the board is our earlier draft)</li>
+    </ul></div>
+  </div>
+  <div class="boardslot" data-strats="kD,kA,kA2,kA3"></div>
+</section>
+
+
+
+<!-- BOARD (mounted into each site tab) -->
+<div id="boardHome" hidden><div id="boardBox" style="display:grid;gap:14px"><h3 style="margin:6px 0 -4px">Strat board</h3>
+<div class="box" style="display:grid;gap:10px;padding:10px 12px">
+    <div id="rowD" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"><span class="tag d" style="min-width:72px;text-align:center">Defence</span><div class="seg" id="stratSelD"></div></div>
+    <div id="rowA" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"><span class="tag a" style="min-width:72px;text-align:center">Attack</span><div class="seg" id="stratSelA"></div></div>
+    <p class="note">Drag any player token to adjust. Positions are approximate — check in a custom game.</p>
+  </div>
+  <div class="boardwrap">
+    <div class="box" style="padding:10px;display:grid;gap:10px">
+      <div class="seg" id="floorSel"></div>
+      <div class="board"><svg id="bsvg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    </div>
+    <div style="display:grid;gap:12px">
+      <div class="box" id="lineupBox"><h3 id="lineupTitle">Lineup</h3><div id="lineupList" style="display:grid;gap:6px;font-size:.9rem"></div></div>
+      <div class="box" id="phaseBox"><h3>Phases</h3><div class="seg" id="phaseSel" style="margin-bottom:8px"></div><ol class="phaselist" id="phaseText"></ol></div>
+      <div class="box"><h3>Legend</h3><div class="legendg">
+        <div><span style="display:inline-block;width:30px;height:7px;background:#dc2626;border:1px solid #7f1d1d;border-radius:2px"></span>Reinforced wall (hatch = red square)</div>
+        <div><span style="position:relative;display:inline-block;width:30px;height:7px;background:#dc2626;border:1px solid #7f1d1d;border-radius:2px"><b style="position:absolute;top:-9px;right:-9px;width:15px;height:15px;border-radius:50%;background:#facc15;color:#111;font-size:9px;line-height:15px;text-align:center">⚡</b></span>Electrified (Kaid / Bandit)</div>
+        <div><span style="display:inline-block;width:30px;text-align:center;font-size:18px">🔄</span>Rotate hole</div>
+        <div><span style="display:inline-block;width:30px;text-align:center;font-size:18px">👣</span>Feet holes</div>
+        <div><span style="display:inline-block;width:30px;text-align:center;font-size:18px">👀</span>Head holes</div>
+        <div><span class="gl" style="background:#7c3aed">AJ</span>Nomad Airjab</div>
+        <div><span class="gl" style="background:#dc2626">HB</span>Hard breach</div>
+        <div><span style="display:inline-block;width:30px;text-align:center;font-size:18px">🔥</span>Capitão flame</div>
+        <div><span class="gl" style="background:#a16207">TR</span>Traps</div>
+        <div><span style="display:inline-block;width:30px;text-align:center;font-size:18px">📷</span>Camera (BP cam)</div>
+        <div><span style="display:inline-block;width:30px;text-align:center;font-size:18px">💨</span>Smoke grenade</div>
+        <div><span class="gl" style="background:#9a3412">CA</span>Castle barricade</div>
+        <div><svg width="30" height="26" viewBox="-2 -6 52 50"><rect x="2" y="12" width="44" height="30" rx="5" fill="#1f2937" stroke="#facc15" stroke-width="3"/><line x1="36" y1="12" x2="42" y2="0" stroke="#1f2937" stroke-width="4" stroke-linecap="round"/><circle cx="42" cy="0" r="4" fill="#ef4444"/><rect x="9" y="19" width="20" height="9" rx="2" fill="#22d3ee"/><circle cx="13" cy="35" r="3" fill="#ef4444"/><circle cx="22" cy="35" r="3" fill="#facc15"/><circle cx="31" cy="35" r="3" fill="#22c55e"/></svg>Plant spot (defuser)</div>
+        <div><span class="gl" style="background:#2563eb">S</span>Bomb site</div>
+        <div><svg width="34" height="10"><line x1="0" y1="5" x2="34" y2="5" stroke="#555" stroke-width="3"/></svg>Move · <svg width="34" height="10"><line x1="0" y1="5" x2="34" y2="5" stroke="#555" stroke-width="3" stroke-dasharray="6 4"/></svg>Fall-back</div>
+        <div><svg width="34" height="10"><line x1="0" y1="5" x2="34" y2="5" stroke="#dc2626" stroke-width="4" stroke-dasharray="2 4"/></svg>Floor opened (vertical)</div>
+      </div><button id="resetPos" style="margin-top:10px;font:600 .85rem var(--body);padding:6px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer">Reset token positions</button></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- PRO NOTES -->
+<section id="v-pro" hidden>
+  <div class="head"><h2>Pro notes · W7M vs Space Station</h2><span class="tag d">from video</span></div>
+  <p class="lead">How W7M went 7-1 on Nighthaven against the best NA team. Garage = Warehouse (top garage = Rafters), Aqua = Blue/CC Stairs, Ebox = Electrical, Garden = Connector side. Source: <a href="https://www.youtube.com/watch?v=-144cLC7pFg">coach breakdown</a>.</p>
+  <div class="grid2">
+    <div class="box d"><h3>Defence, general</h3><ul class="tight">
+      <li>Ban <b>two hard breachers</b> (Ace / Thermite / Hibana): the map is decided by breaches (IT, garden, pillar, garage)</li>
+      <li>Kaid / Bandit banned → <b>Mira on the IT wall</b>: a Thermite on it breaks when the Mira pops; C4 / impacts can be lined up through it</li>
+      <li>Read the attack type ("triggers") and move bodies: garage vs garden take on 2F, site hit vs roam clear in basement</li>
+    </ul></div>
+    <div class="box d"><h3>2F CC / Servers · 5-man top extension</h3><ul class="tight">
+      <li>Smoke holds Aqua (power spot); Castle on the bottom Aqua door</li>
+      <li>Azami in top garage, Clash around Ebox / pillar (counters the Blackbeard hop), Mozzie notifications</li>
+      <li>Ebox = key anchor (close shotgun / Mute); Ebox + pillar = crossfire on the garden entry</li>
+      <li>Two takes: <b>garage</b> (IT + top garage → Aqua sandwich) or <b>garden / split</b> (Meeting → garden breach → Ebox, Buck underneath, IT late)</li>
+      <li>Vs garden take: the garage player drops the hatch and flanks the Buck on 1F</li>
+      <li>Garage hold: Castles bottom garage, lower garage walls double reinforced, 2 players in garage, rotate flipped for a long angle into site</li>
+      <li>Adjustment: garage double reinforced + 1 flex reinforcement so the player can give it up; Mira instead of Clash / Castle</li>
+    </ul></div>
+  </div>
+  <div class="grid2">
+    <div class="box d"><h3>Basement · 2-2-1 roam</h3><ul class="tight">
+      <li>2 on 2F (Azami top garage + Lesion), 2 on 1F (Warden on Storage holes, one in Control), site player in <b>Exo, not site</b></li>
+      <li>Animus wall left soft, <b>both doors castled</b> = killbox; hatch above opened to threaten</li>
+      <li><b>Castle the 90 window</b>: splits the map into kitchen half / garage half</li>
+      <li>Garage walls double reinforced; Warden on the vert so flashes / smokes can't stop him</li>
+      <li>Adjustment: lighter roam on the Aqua side (Mute top floor, Recruit C4 + barbed), garage single reinforced, Castle on the doorway that cuts the Aqua rotate</li>
+    </ul><p class="note" style="margin-top:6px">On the board: Basement → Option 3.</p></div>
+    <div class="box d"><h3>1F Kitchen · scrappy, 5 reinforcements</h3><ul class="tight">
+      <li>Warden (later Smoke) on Lobby Stairs holds top + bottom Lobby; one player at Harry Potter</li>
+      <li>Frost with shield on 90; Fenrir covers Vending / the back; Azami on site</li>
+      <li>Castles on the Storage door side; reinforce the Freezer hatch from outside early; feet holes along the Freezer wall</li>
+      <li>One aggressive one-for-one player at the garden breach</li>
+    </ul></div>
+  </div>
+  <div class="box a"><h3>Attack ideas</h3><ul class="tight">
+    <li><b>Soft pressure</b>: open IT, garden and bottom garage early so defenders lose mobility and can't read the hit</li>
+    <li><b>Basement roam clear</b>: Ace through the garage door, Blackbeard hops the Ebox window, Ram doubles up, hard breacher fast through Aqua, one player in bottom garage cuts fall-backs</li>
+    <li><b>Storage bait and switch</b>: fake top-floor clear, Sledge + Blackbeard up Cargo Stairs, lurk from Lobby to 90, Ace holds the cut from a window, Hibana shotgun takes Aqua, plant in the tuck spot (on the board: Storage → Attack B)</li>
+    <li>Keep one <b>lurk</b> who takes free space slowly</li>
+  </ul></div>
+</section>
+
+<!-- BANS -->
+<section id="v-bans" hidden>
+  <div class="head"><h2>Operator bans</h2></div>
+  <p class="lead">We ban only the opponent's side. Bans stay until sides switch, then reset. Use the slots in order: one per round in ranked, or two + one in the pro format.</p>
+  <div class="box"><div class="tw"><table>
+    <tr><th>Ban</th><th style="color:var(--atk)">We attack</th><th style="color:var(--def)">We defend CC</th><th style="color:var(--def)">We defend B / Storage</th></tr>
+    <tr><td class="n">1</td><td class="op">Kaid</td><td class="op">Ace</td><td class="op">Ace</td></tr>
+    <tr><td class="n">2</td><td class="op">Bandit</td><td class="op">Thermite <i>/ Hibana</i></td><td class="op">Thermite <i>/ Hibana</i></td></tr>
+    <tr><td class="n">3</td><td class="op">Azami <i>(B)</i> / Mira <i>(CC, Storage)</i></td><td class="op">Grim</td><td class="op">Ram</td></tr>
+  </table></div></div>
+  <div class="grid2">
+    <div class="box"><h3>Why</h3><ul class="tight">
+      <li><b>Kaid, Bandit</b>: hold hatches and walls our B execute needs open; pros' top opening bans here (33 / 25 of 40 maps).</li>
+      <li><b>Azami</b>: barriers plug Nikita's holes and Sanya's hatch.</li>
+      <li><b>Ace + Thermite / Hibana</b>: double hard-breach ban, like W7M. Nighthaven is decided by breaches (IT, garden, pillar, garage); with two hard breachers gone the attack can't open them all.</li>
+      <li><b>Ram</b>: 54% of pro B attack rounds, opens Storage/Control from above.</li>
+      <li><b>Grim</b>: most banned attacker (158), flushes Rafters and Mezz.</li>
+      <li><b>Montagne</b>: +4.6 win delta; ban him instead of Grim if shields keep taking Water/Rafters.</li>
+    </ul></div>
+    <div class="box"><h3>Adapt ban 3</h3><ul class="tight">
+      <li>Plant denied by fire → <b>Goyo</b></li>
+      <li>Floor holes blocked → <b>Azami</b></li>
+      <li>Roamer scanned out → <b>Solid Snake</b></li>
+    </ul><h3 style="margin-top:12px">Our backups if they ban us</h3><ul class="tight">
+      <li>Sledge ↔ Buck → Ram · Grim → Ying · Azami → Ela · Kaid → Bandit</li></ul></div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section id="v-practice" hidden>
+  <div class="head"><h2>Practice & tracking</h2></div>
+  <div class="grid2">
+    <div class="box"><h3>One custom session · ~1.5 h</h3><ul class="chk">
+      <li>Callout walk-through, confirm the "?" names — 15 min</li>
+      <li>CC/Servers setup + everyone's fall-back route — 30 min</li>
+      <li>Basement defense: Roman's Storage holes, left Control rotate — 15 min</li>
+      <li>Basement attack ×5–6 with the comms order — 30 min</li>
+    </ul></div>
+    <div class="box"><h3>Track every Nighthaven match</h3><div class="tw"><table>
+      <tr><th>What</th><th>Target</th></tr>
+      <tr><td>IT walls shut at 1:30</td><td>most rounds</td></tr>
+      <tr><td>Defense win %, by site</td><td>note site each round</td></tr>
+      <tr><td>Plants with the B execute</td><td>count per try</td></tr>
+      <tr><td>Attack round win %</td><td class="num">≥ 40%</td></tr>
+      <tr><td>First kill on attack</td><td>traded or with utility</td></tr>
+    </table></div></div>
+  </div>
+  <p class="note">Sources: <a href="https://www.youtube.com/watch?v=d_6q8QZ6ko0">Mint — Nighthaven setups</a> · <a href="https://www.youtube.com/watch?v=g1xo4KLFpCY">Basement attack (GC Official George)</a> · <a href="https://r6tv.online/maps/nighthaven-labs">r6tv pro data</a> · Ubisoft maps.</p>
+</section>
+</div>
+
+<dialog id="lb"><img alt=""><p></p></dialog>
+
+<script>
+const views=["overview","map","cc","basement","storage","kitchen","pro","bans","practice"];
+function show(){const h=(location.hash||"#overview").slice(1);const v=views.includes(h)?h:"overview";
+  views.forEach(x=>{document.getElementById("v-"+x).hidden=x!==v});
+  document.querySelectorAll("#tabs a").forEach(a=>{const on=a.getAttribute("href")==="#"+v;a.classList.toggle("on",on);if(on)a.scrollIntoView({block:"nearest",inline:"nearest"})});
+  if(window.__boardReady)mountBoard(v);}
+addEventListener("hashchange",()=>{show();scrollTo(0,0)});show();
+const lb=document.getElementById("lb");
+document.querySelectorAll(".shot").forEach(b=>b.addEventListener("click",()=>{const i=b.querySelector("img");lb.querySelector("img").src=i.src;lb.querySelector("img").alt=i.alt;lb.querySelector("p").textContent=b.querySelector("span").textContent;lb.showModal()}));
+lb.addEventListener("click",()=>lb.close());
+
+/* ---------- Strat board ---------- */
+const PC={dima:"#b8860b",renat:"#0f8f86",roman:"#7a4fd1",nikita:"#c43b3b",sanya:"#2f8a3e"};
+const PN={dima:"Dima",renat:"Renat",roman:"Roman",nikita:"Nikita",sanya:"Sanya"};
+const GC={CA:"#9a3412",SM:"#78716c",CAM:"#0e7490",RF:"#4b5563",RT:"#0f8f86",FH:"#64748b",HH:"#0369a1",AJ:"#7c3aed",HB:"#dc2626",FL:"#ea580c",TR:"#a16207",PL:"#be123c"};
+const FLOORS={t:{label:"2F",img:"img/fp-top.png",w:2200,h:1651,vb:[430,100,1290,1460]},
+              g:{label:"1F",img:"img/fp-ground.png",w:2200,h:1651,vb:[460,80,1370,1490]},
+              b:{label:"Basement",img:"img/fp-base.png",w:2203,h:1638,vb:[410,350,1320,1080]}};
+const YEL={"t":[[1515,518,54,6],[1576,518,55,6],[1197,743,59,6],[1265,743,58,6],[1441,772,5,67],[1055,862,45,46],[1162,862,6,54],[751,897,6,59],[1162,923,6,55],[1613,924,45,46],[751,962,6,58],[945,1122,6,46],[945,1177,6,46],[788,1228,46,6],[841,1228,45,6],[894,1228,45,6],[1242,1261,6,54],[1242,1325,6,54]],"g":[[1433,475,50,6],[1495,475,50,6],[1617,632,41,6],[1667,632,41,6],[1323,698,59,6],[752,787,45,46],[1295,795,6,24],[1295,822,6,23],[1047,839,46,46],[778,898,86,6],[869,898,85,6],[1578,908,6,41],[1610,923,45,46],[1578,958,6,42],[1308,1028,46,46],[1007,1041,59,6],[920,1062,6,41],[920,1108,6,41],[772,1254,46,46],[756,1391,77,6],[838,1391,76,6]],"b":[[557,494,55,55],[925,507,6,57],[925,573,6,56],[1242,645,6,59],[653,690,86,6],[744,690,85,6],[832,699,6,55],[1242,709,6,59],[832,762,6,54],[1332,852,54,55],[843,975,54,6],[905,975,55,6],[978,1041,58,6],[1043,1041,59,6],[601,1132,45,46],[755,1183,59,6],[645,1372,89,6],[940,1372,96,6],[1044,1372,96,6]]};
+const T=(f,ph,who,op,x,y)=>({k:"tok",f,ph,who,op,x,y});
+const G=(f,ph,t,x,y,l)=>({k:"g",f,ph,t,x,y,l});
+const A=(f,ph,who,pts,dash)=>({k:"arr",f,ph,who,pts,dash});
+const S=(f,x,y,l)=>({k:"site",f,ph:1,x,y,l});
+const L=(f,ph,pts)=>({k:"line",f,ph,pts});
+const X=(f,ph,x,y,s)=>({k:"txt",f,ph,x,y,s});
+const STRATS=[
+ {id:"ccA",name:"CC / Servers — A",side:"d",floor:"t",phases:["Setup: reinforce, wall denial on IT, everyone in their layer","~1:30: fall back into CC / Servers, pocket-reinforce, play trades"],items:[
+  S("t",800,1195,"CC"),G("g",1,"CA",805,705,"bottom Aqua door"),S("t",1090,1195,"Servers"),
+  G("t",1,"RF",1245,1285),G("t",1,"RF",1245,1350),X("t",1,1275,1325,"IT walls"),
+  G("t",1,"RF",815,1232),G("t",1,"RF",865,1232),G("t",1,"RT",915,1232),G("t",1,"RF",947,1145),G("t",1,"HH",947,1197),
+  G("t",1,"RF",754,926),G("t",1,"FH",754,991),
+  G("t",1,"RF",1225,745),G("t",1,"RF",1290,745),
+  G("t",1,"RT",1165,889),G("t",1,"RF",1165,950),
+  T("t",1,"nikita","Warden",700,890),T("t",1,"renat","Azami",700,1390),T("t",1,"roman","Mute",1335,1110),T("t",1,"dima","Bandit",1100,1345),T("t",1,"sanya","Tubarão",1300,880),
+  A("t",2,"nikita",[[700,890],[800,945]],1),A("t",2,"renat",[[700,1390],[915,1260],[845,1075]],1),A("t",2,"roman",[[1335,1110],[1250,1100],[1180,1085]],1),A("t",2,"dima",[[1100,1345],[985,1250],[1000,1090]],1),A("t",2,"sanya",[[1300,880],[1167,870],[1060,915]],1),
+  T("t",2,"nikita","Warden",800,945),T("t",2,"renat","Azami",845,1075),T("t",2,"roman","Mute",1180,1085),T("t",2,"dima","Bandit",1000,1090),T("t",2,"sanya","Tubarão",1060,915)]},
+ {id:"ccB",name:"CC / Servers — B",side:"d",floor:"t",phases:["Setup: Connector elbow hold, Warden long angles from catwalk","Roman falls back and reinforces the reserve wall; Dima flexes to crossfires"],items:[
+  S("t",800,1195,"CC"),S("t",1090,1195,"Servers"),
+  G("t",1,"RF",815,1232),G("t",1,"RF",865,1232),G("t",1,"RF",1245,1285),G("t",1,"RF",1245,1350),
+  G("t",1,"HH",947,1145),G("t",1,"HH",947,1197),G("t",1,"RF",1225,745),G("t",1,"RF",1290,745),G("t",1,"RF",1165,889),
+  G("t",1,"TR",1240,960),G("t",1,"TR",1445,1110),
+  T("t",1,"roman","Smoke",1245,870),T("t",1,"sanya","Fenrir",1345,1110),T("t",1,"dima","Kaid",1060,1050),T("t",1,"nikita","Warden",700,1275),T("t",1,"renat","Wamai",700,880),
+  A("t",2,"roman",[[1245,870],[1167,945],[1090,960]],1),G("t",2,"RF",1167,945,"reserve"),T("t",2,"roman","Smoke",1090,960),
+  A("t",2,"dima",[[1060,1050],[1160,1000]])]},
+ {id:"bD1",name:"Basement 1",side:"d",floor:"b",phases:["Option 1 — attackers left Kaid and Bandit open: Nikita Bandit + Sanya Kaid deny the outside walls; Dima holds Vending Stairs; Renat (Solis) plays the Storage floor holes; Roman (Fenrir) traps Cargo / fork"],items:[
+  S("b",594,953,"Tank"),S("b",1050,1170,"Assembly"),
+  G("b",1,"RFE",988,1375),G("b",1,"RFE",1092,1375),G("b",1,"RFE",690,1375),G("b",1,"FH",784,1186),
+  G("b",1,"RF",1007,1044),G("b",1,"RT",1072,1044),G("b",1,"HH",870,978),G("b",1,"FH",1245,675),G("b",1,"RF",1245,738),G("b",1,"RF",585,520,"hatch"),G("b",1,"RFE",620,1155,"hatch"),
+  G("b",1,"FH",696,693),G("b",1,"HH",786,693),G("b",1,"HH",835,727),G("b",1,"FH",928,535),G("b",1,"FH",928,601),G("b",1,"RFE",1359,880,"hatch"),G("b",1,"TR",1625,898,"Thorn"),G("g",1,"TR",1520,1105,"Thorn"),
+  G("g",1,"TR",540,745),G("g",1,"TR",645,1365),G("g",1,"RF",1331,1051,"hatch"),G("g",1,"RF",795,1277,"hatch"),G("g",1,"RT",821,901),G("g",1,"RT",911,901),G("g",1,"RT",923,1128),G("g",1,"CAM",1100,742,"BP cam"),
+  L("g",1,[[1126,1209],[1194,1209]]),L("g",1,[[1140,1293],[1190,1293]]),L("g",1,[[1142,1374],[1194,1374]]),L("g",1,[[1310,1086],[1310,1150]]),X("g",1,1210,1255,"floor holes"),
+  T("b",1,"nikita","Bandit",1060,1245),T("b",1,"sanya","Kaid",690,1255),T("b",1,"dima","Thorn / Goyo",1475,780),
+  T("g",1,"renat","Solis",1030,1160),T("g",1,"roman","Fenrir",900,800)]},
+ {id:"bD3",name:"Basement 3",side:"d",floor:"b",phases:["Option 3 (W7M 2-2-1 roam): two on 2F, two on 1F, the site player in Exo. Animus wall left soft and both doors castled into a killbox; Castle on the 90 window splits the map","Late: Nikita (Warden) stops plants through the Storage holes; Roman drops the hatch to help; Sanya falls from Exo into site"],items:[
+  
+  S("b",594,953,"Tank"),S("b",1050,1170,"Assembly"),
+  G("b",1,"RF",988,1375),G("b",1,"RF",1092,1375),G("b",1,"FH",784,1186),
+  G("b",1,"RF",1007,1044),G("b",1,"RT",1072,1044),G("b",1,"HH",870,978),G("b",1,"FH",1245,675),G("b",1,"RF",1245,738),G("b",1,"RF",585,520,"hatch"),X("b",1,560,1160,"hatch open"),
+  G("b",1,"FH",696,693),G("b",1,"HH",786,693),G("b",1,"HH",835,727),G("b",1,"FH",928,535),G("b",1,"FH",928,601),G("b",1,"RF",1359,880,"hatch"),G("b",1,"TR",1625,898,"Thorn"),G("g",1,"TR",1520,1105,"Thorn"),
+  G("g",1,"TR",540,745),G("g",1,"TR",645,1365),G("g",1,"RF",1331,1051,"hatch"),G("g",1,"RF",795,1277,"hatch"),G("g",1,"RF",795,1395),G("g",1,"RF",875,1395),X("g",1,700,1455,"garage walls (double)"),G("g",1,"CA",1185,770,"90 window"),G("g",1,"RT",821,901),G("g",1,"RT",911,901),G("g",1,"RT",923,1128),G("g",1,"CAM",1100,742,"BP cam"),
+  L("g",1,[[1126,1209],[1194,1209]]),L("g",1,[[1140,1293],[1190,1293]]),L("g",1,[[1142,1374],[1194,1374]]),L("g",1,[[1310,1086],[1310,1150]]),X("g",1,1210,1255,"floor holes"),
+G("b",1,"CA",760,1095,"Animus door"),G("b",1,"CA",700,1010),X("b",1,560,1420,"Animus wall left soft = killbox"),
+  T("b",1,"sanya","Smoke",1420,600),
+  T("g",1,"nikita","Warden",1030,1160),T("g",1,"dima","Castle",770,1030),
+  T("t",1,"renat","Azami",700,1390),T("t",1,"roman","Lesion",1330,1110),
+  A("b",2,"sanya",[[1420,600],[1180,980],[1050,1150]],1),T("b",2,"sanya","Smoke",1050,1150),
+  A("t",2,"roman",[[1330,1110],[1077,910]],1),X("t",2,1095,880,"drops hatch")]},
+ {id:"bD2",name:"Basement 2",side:"d",floor:"b",phases:["Option 2 — Kaid or Bandit banned: Nikita plays whichever is left; Sanya (Mute) jams the Animus wall and drones; Renat (Warden) holds the Storage floor holes"],items:[
+  S("b",594,953,"Tank"),S("b",1050,1170,"Assembly"),
+  G("b",1,"RFE",988,1375),G("b",1,"RFE",1092,1375),G("b",1,"RF",690,1375),G("b",1,"FH",784,1186),
+  G("b",1,"RF",1007,1044),G("b",1,"RT",1072,1044),G("b",1,"HH",870,978),G("b",1,"FH",1245,675),G("b",1,"RF",1245,738),G("b",1,"RF",585,520,"hatch"),G("b",1,"RF",620,1155,"hatch"),
+  G("b",1,"FH",696,693),G("b",1,"HH",786,693),G("b",1,"HH",835,727),G("b",1,"FH",928,535),G("b",1,"FH",928,601),G("b",1,"RF",1359,880,"hatch"),G("b",1,"TR",1625,898,"Thorn"),G("g",1,"TR",1520,1105,"Thorn"),
+  G("g",1,"TR",540,745),G("g",1,"TR",645,1365),G("g",1,"RF",1331,1051,"hatch"),G("g",1,"RF",795,1277,"hatch"),G("g",1,"RT",821,901),G("g",1,"RT",911,901),G("g",1,"RT",923,1128),G("g",1,"CAM",1100,742,"BP cam"),
+  L("g",1,[[1126,1209],[1194,1209]]),L("g",1,[[1140,1293],[1190,1293]]),L("g",1,[[1142,1374],[1194,1374]]),L("g",1,[[1310,1086],[1310,1150]]),X("g",1,1210,1255,"floor holes"),
+  T("b",1,"nikita","Kaid / Bandit",1060,1245),T("b",1,"sanya","Mute",690,1255),T("b",1,"dima","Thorn / Goyo",1475,780),
+  T("g",1,"renat","Warden",1030,1160),T("g",1,"roman","Fenrir",900,800)]},
+ {id:"sD",name:"Storage / Control",side:"d",floor:"g",phases:["Setup: top floor held like CC; Sanya + Roman on site; vert holes from Servers onto Storage","~1:30: top players fall to 1F; Renat takes the Tetris angle on the storage window"],items:[
+  S("g",1062,1340,"Storage"),S("g",690,1110,"Control"),
+  G("g",1,"RF",795,1395),G("g",1,"RF",875,1395),X("g",1,700,1455,"outside Garage walls"),
+  G("g",1,"RF",820,900),G("g",1,"RT",910,900),
+  G("g",1,"RT",923,1080),G("g",1,"HH",923,1130),
+  G("g",1,"HH",1036,1043),G("g",1,"TR",560,960,"fork"),
+  T("g",1,"sanya","Mute",1090,1200),T("g",1,"roman","Lesion",770,1010),
+  G("t",1,"RF",1245,1285),G("t",1,"RF",1245,1350),X("t",1,1275,1325,"IT walls"),
+  G("t",1,"RF",815,1232),G("t",1,"RF",865,1232),G("t",1,"RT",915,1232),
+  G("t",1,"RF",754,926),G("t",1,"FH",754,991),
+  G("t",1,"RF",1165,889),G("t",1,"RF",1165,950),X("t",1,1190,1010,"double"),
+  G("t",1,"RF",1225,745),G("t",1,"RF",1290,745),
+  L("t",1,[[960,1170],[1110,1170]]),X("t",1,930,1215,"vert onto Storage"),
+  T("t",1,"nikita","Warden",700,890),T("t",1,"renat","Azami",700,1390),T("t",1,"dima","Bandit",1100,1345),
+  A("t",2,"nikita",[[700,890],[790,720]],1),X("t",2,810,700,"down CC Stairs"),
+  A("t",2,"renat",[[700,1390],[560,1440]],1),X("t",2,470,1490,"down Warehouse Stairs"),
+  A("t",2,"dima",[[1100,1345],[1077,1010],[1077,910]],1),X("t",2,1100,890,"drop hatch"),
+  {k:"tok",f:"t",ph:2,who:"nikita",hide:1},{k:"tok",f:"t",ph:2,who:"renat",hide:1},{k:"tok",f:"t",ph:2,who:"dima",hide:1},
+  T("g",2,"nikita","Warden",930,800),T("g",2,"renat","Azami",660,1210),T("g",2,"dima","Bandit",1130,1080)]},
+ {id:"kD",name:"Kitchen",side:"d",floor:"g",phases:["Setup: Sanya anchors Kitchen, Nikita holds Break, Roman mobile in Games; top floor held from Mezz + Connector","Retake / late: Roman pushes the hall toward Cafeteria; Dima gives vert support from Connector"],items:[
+  S("g",1670,560,"Cafeteria"),S("g",1675,870,"Kitchen"),
+  G("g",1,"RF",1460,477),G("g",1,"RF",1520,477),X("g",1,1400,440,"Cafe → Lobby walls"),
+  G("g",1,"HH",1298,820),
+  G("g",1,"FH",1580,950),X("g",1,1600,1060,"knee holes (freezer)"),
+  T("g",1,"sanya","Mute",1690,740),T("g",1,"nikita","Warden",1420,1000),T("g",1,"roman","Castle",1110,960),
+  G("t",1,"RF",1545,520),G("t",1,"RF",1600,520),X("t",1,1500,485,"Meeting walls"),
+  G("t",1,"RF",1225,745),G("t",1,"RF",1290,745),G("t",1,"RF",1165,889),G("t",1,"RF",1165,950),
+  T("t",1,"renat","Azami",1395,580),T("t",1,"dima","Bandit",1260,880),
+  A("g",2,"roman",[[1110,960],[1050,770],[1150,745]]),T("g",2,"roman","Castle",1150,745),
+  A("t",2,"dima",[[1260,880],[1330,820]]),X("t",2,1300,1000,"vert onto site")]},
+ {id:"cA",name:"CC attack",side:"a",floor:"t",phases:["DRAFT. Map control: Renat + Roman up Warehouse Stairs into Rafters; Nikita + Dima outside the IT walls; Sanya Airjabs the Connector door and the top of Lobby Stairs","Open: Nikita (Ace) breaches both IT walls; Renat bees IT and the CC hallway; Roman (Zofia) concussions into Servers","Execute IT → Servers: Dima flames the Connector and Ebox doors against retakes; Sanya plants by the IT wall","Post-plant: Nikita + Dima hold from IT, Renat the Rafters / CC side, Roman the catwalk, Sanya the Ebox flank"],items:[
+  S("t",800,1195,"CC"),S("t",1090,1195,"Servers"),
+  A("t",1,"renat",[[510,1450],[640,1400]]),T("t",1,"renat","Grim",640,1400),T("t",1,"roman","Zofia",800,1440),
+  T("t",1,"nikita","Ace",1330,1300),T("t",1,"dima","Capitão",1330,1430),
+  T("t",1,"sanya","Nomad",1395,600),G("t",1,"AJ",1300,760),G("t",1,"AJ",1440,440),
+  G("t",2,"HB",1245,1285),G("t",2,"HB",1245,1350),
+  A("t",2,"renat",[[640,1400],[880,1330]]),T("t",2,"renat","Grim",880,1330),A("t",2,"roman",[[800,1440],[700,1290]]),T("t",2,"roman","Zofia",700,1290),
+  A("t",2,"sanya",[[1395,600],[1500,900],[1520,1330]]),T("t",2,"sanya","Nomad",1520,1330),
+  A("t",3,"nikita",[[1330,1300],[1150,1320],[1050,1150]]),T("t",3,"nikita","Ace",1050,1100),
+  A("t",3,"sanya",[[1520,1330],[1150,1350],[1150,1200]]),T("t",3,"sanya","Nomad",1170,1170),
+  A("t",3,"dima",[[1330,1430],[1060,1340]]),T("t",3,"dima","Capitão",1000,1340),
+  G("t",3,"FL",1167,905),G("t",3,"FL",1245,1100),G("t",3,"PL",1205,1200),
+  T("t",4,"nikita","Ace",1000,1300),T("t",4,"dima","Capitão",1170,1330),T("t",4,"renat","Grim",700,1300),T("t",4,"roman","Zofia",560,1300),T("t",4,"sanya","Nomad",1330,1150)]},
+ {id:"sA",name:"Storage attack",side:"a",floor:"t",phases:["DRAFT. Take 2F: Renat + Nikita in through Rafters, Roman + Dima to CC / IT; Sanya Airjabs the bottom of CC Stairs and the Cafeteria hallway on 1F","Open floors: Nikita (Ram) opens the Servers floor over Storage and the CC floor over Control; Roman (Dokkaebi) calls defenders; Renat bees through the holes","Execute: Dima flames the Lounge → Storage door and the Control rotate from above; Sanya + Renat enter 1F Warehouse and plant in Storage","Hold from above through the holes; Renat watches the Warehouse flank"],items:[
+  S("t",800,1195,"CC"),S("t",1090,1195,"Servers"),S("g",1062,1340,"Storage"),
+  T("t",1,"renat","Grim",640,1400),T("t",1,"nikita","Ram",820,1440),T("t",1,"roman","Dokkaebi",780,1000),T("t",1,"dima","Capitão",1050,1330),T("t",1,"sanya","Nomad",1100,980),
+  G("g",1,"AJ",810,690),X("g",1,830,660,"bottom CC Stairs"),G("g",1,"AJ",1180,745),
+  L("t",2,[[960,1150],[1120,1150]]),X("t",2,960,1110,"Servers floor over Storage"),L("t",2,[[780,1060],[930,1060]]),X("t",2,640,1120,"CC floor over Control"),
+  T("t",2,"nikita","Ram",1170,1000),
+  G("g",3,"FL",1036,1043),G("g",3,"FL",923,1080),
+  {k:"tok",f:"t",ph:3,who:"sanya",hide:1},{k:"tok",f:"t",ph:3,who:"renat",hide:1},
+  A("g",3,"sanya",[[600,1470],[700,1300],[980,1210]]),T("g",3,"sanya","Nomad",980,1210),A("g",3,"renat",[[560,1320],[720,1240]]),T("g",3,"renat","Grim",720,1240),
+  G("g",3,"PL",1150,1250),
+  T("t",4,"nikita","Ram",1000,1220),T("t",4,"dima","Capitão",1120,1250)]},
+ {id:"sA2",name:"Storage attack B",side:"a",floor:"t",phases:["W7M bait and switch. Soft pressure that looks like a top-floor clear: Nikita (Hibana) opens IT, Dima (Ace) opens the garden wall and bottom garage. Roman + Sanya sneak into the basement; Renat lurks in from Lobby","Defenders flow down Aqua to help site. Roman (Sledge) + Sanya (Blackbeard) come up Cargo Stairs; Renat pushes 90; Dima holds the cut from the west window","Through the defenders' Cargo → Control rotate; plant in the tuck spot (usually no vert there). Nikita takes Aqua with Hibana's shotgun","Hold: Sanya shield on her back against Clash; Dima and Renat watch the rotates; Nikita holds Aqua"],items:[
+  S("g",690,1110,"Control"),S("g",1062,1340,"Storage"),
+  G("t",1,"HB",1245,1288),G("t",1,"HB",1245,1352),T("t",1,"nikita","Hibana",1340,1320),
+  G("t",1,"HB",1225,745),G("t",1,"HB",1290,745),T("t",1,"dima","Ace",1260,640),
+  G("g",1,"HB",795,1395),G("g",1,"HB",875,1395),X("g",1,700,1455,"Ace: bottom garage"),
+  T("g",1,"renat","Deimos",1390,300),X("g",1,1300,240,"lurk from Lobby"),
+  T("b",1,"roman","Sledge",620,560),T("b",1,"sanya","Blackbeard",760,560),X("b",1,520,470,"come up through the basement"),
+  A("g",2,"renat",[[1390,300],[1250,600],[1210,745]]),T("g",2,"renat","Deimos",1210,745),
+  A("g",2,"roman",[[790,700],[740,800]]),T("g",2,"roman","Sledge",740,820),A("g",2,"sanya",[[840,700],[975,800]]),T("g",2,"sanya","Blackbeard",975,820),
+  T("g",2,"dima","Ace",520,760),X("g",2,500,700,"holds the cut"),
+  G("g",2,"RT",821,901),G("g",2,"RT",911,901),
+  A("g",3,"sanya",[[975,820],[911,901],[890,980]]),T("g",3,"sanya","Blackbeard",890,1000),G("g",3,"PL",880,940),X("g",3,910,960,"tuck spot"),
+  A("g",3,"roman",[[740,820],[821,901],[710,960]]),T("g",3,"roman","Sledge",690,975),
+  A("t",3,"nikita",[[1340,1320],[1100,1330],[880,1300],[700,950]]),T("t",3,"nikita","Hibana",700,950),X("t",3,720,1010,"takes Aqua"),
+  T("g",4,"renat","Deimos",1100,950)]},
+ {id:"kA",name:"Kitchen attack",side:"a",floor:"g",phases:["DRAFT. Map control: Renat + Nikita take Lobby and Mezz on 2F; Roman comes up Vending Stairs from the basement; Sanya Airjabs the Cafeteria hallway","Open: Nikita (Ram) opens the Meeting floor over Cafeteria; Renat bees down the holes; Roman pressures Break / Vending","Execute: Dima flames the Pantry and Cafeteria doors; Sanya plants by the kitchen window","Hold: Nikita + Renat on the holes, Roman on Vending, Dima outside the kitchen window"],items:[
+  S("g",1670,560,"Cafeteria"),S("g",1675,870,"Kitchen"),
+  A("g",1,"roman",[[1520,1170],[1420,1060]]),T("g",1,"roman","Solid Snake",1400,1050),T("g",1,"sanya","Nomad",1100,740),G("g",1,"AJ",1250,745),
+  T("g",1,"dima","Capitão",1740,1070),
+  T("t",1,"renat","Grim",1395,420),T("t",1,"nikita","Ram",1395,620),
+  L("t",2,[[1470,600],[1620,600]]),L("t",2,[[1470,760],[1620,760]]),X("t",2,1470,700,"Meeting floor over Cafeteria"),
+  T("t",2,"nikita","Ram",1540,680),T("t",2,"renat","Grim",1380,560),
+  G("g",3,"FL",1580,950),G("g",3,"FL",1420,700),
+  A("g",3,"sanya",[[1100,740],[1250,745],[1450,740],[1720,760]]),T("g",3,"sanya","Nomad",1720,760),G("g",3,"PL",1770,680),
+  T("g",4,"dima","Capitão",1740,1070)]},
+ {id:"cA2",name:"CC attack B",side:"a",floor:"t",phases:["From the video. Map control from the north-east: enter through Meeting Room and the top of Lobby Stairs, take Connector and Electrical. Dima leaves flank drones near the stairs","Open: Nikita (Thermite) opens the Servers–Connector wall, or the team plants behind Stacks; Roman (Buck) opens soft walls/floor; Sanya smokes the two doorways into Servers","Cut the rotate from Rafters: Renat opens the IT outside wall (if it is denied, open it from 1F below with nades); Sanya plants behind Stacks","Post-plant: Renat + Dima float on the IT breach and the Rafters window; Nikita + Roman hold Connector and Electrical"],items:[
+  S("t",800,1195,"CC"),S("t",1090,1195,"Servers"),
+  T("t",1,"nikita","Thermite",1400,440),T("t",1,"sanya","Smokes op",1540,620),T("t",1,"roman","Buck",1560,770),T("t",1,"renat","Zofia",1395,640),T("t",1,"dima","Twitch",1480,330),X("t",1,1360,290,"flank drone on stairs"),
+  A("t",2,"renat",[[1395,640],[1310,790]]),T("t",2,"renat","Zofia",1310,790),A("t",2,"roman",[[1560,770],[1400,1100]]),T("t",2,"roman","Buck",1380,1120),
+  A("t",2,"nikita",[[1400,440],[1395,700],[1250,960]]),T("t",2,"nikita","Thermite",1250,960),G("t",2,"HB",1165,889),G("t",2,"HB",1165,950),
+  A("t",2,"sanya",[[1540,620],[1400,950]]),T("t",2,"sanya","Smokes op",1400,950),G("t",2,"SM",1200,1040),G("t",2,"SM",1245,1150),
+  G("t",3,"HB",1245,1288),G("t",3,"HB",1245,1352),A("t",3,"renat",[[1310,790],[1520,1000],[1330,1300]]),T("t",3,"renat","Zofia",1330,1300),
+  A("t",3,"dima",[[1480,330],[1690,500],[1690,1350],[1360,1430]]),T("t",3,"dima","Twitch",1360,1430),
+  A("t",3,"sanya",[[1400,950],[1190,920],[1020,960]]),T("t",3,"sanya","Smokes op",1020,960),G("t",3,"PL",1000,890),X("t",3,1035,880,"behind Stacks"),
+  T("t",4,"renat","Zofia",1300,1330),T("t",4,"dima","Twitch",900,1450)]},
+ {id:"kA2",name:"Kitchen attack B",side:"a",floor:"t",phases:["From the video. Take the top of Lobby Stairs and Meeting Room on 2F; Sanya waits outside the kitchen window; flank drones near Warehouse crates and Vending","Two soft breachers (Nikita, Roman) open the Meeting / Meeting Hall floor over Cafeteria; Renat and Dima clear and hold through the holes","Sanya opens the kitchen window and plants by the counter while the team holds vertical","Post-plant: hold vertical on both Cafeteria doors and the kitchen counter so no one reaches the defuser"],items:[
+  S("g",1670,560,"Cafeteria"),S("g",1675,870,"Kitchen"),
+  T("t",1,"nikita","Sledge",1400,420),T("t",1,"roman","Buck",1560,640),T("t",1,"renat","Grim",1395,620),T("t",1,"dima","Twitch",1490,330),
+  T("g",1,"sanya","Nomad",1745,1075),X("g",1,1540,1160,"outside kitchen window"),
+  L("t",2,[[1360,600],[1430,600]]),L("t",2,[[1360,760],[1430,760]]),L("t",2,[[1470,600],[1620,600]]),L("t",2,[[1470,760],[1620,760]]),X("t",2,1470,570,"floor over Cafeteria"),
+  T("t",2,"nikita","Sledge",1395,520),T("t",2,"roman","Buck",1545,690),T("t",2,"renat","Grim",1390,830),
+  A("g",3,"sanya",[[1745,1075],[1780,800],[1700,730]]),T("g",3,"sanya","Nomad",1700,730),G("g",3,"PL",1630,720),
+  X("g",4,1330,650,"vert holds both Cafe doors + counter")]},
+ {id:"cA3",name:"CC attack C",side:"a",floor:"t",phases:["Garage take, as described in the W7M video. Soft pressure: Nikita (Hibana) opens the IT wall, Dima (Ace) opens the garden wall; Renat + Sanya hop into top garage (Rafters) through the window; Roman (Buck) goes under on 1F","Take top garage. Roman shoots the floor from 1F under the garage → site rotate so defenders can't fall back that way; Nikita enters IT","Take Aqua to sandwich the site: Renat + Sanya push CC Hall / Aqua, Nikita pressures from IT, Dima from Meeting. Plant in CC on the hard wall","Post-plant: Renat on Aqua, Sanya in CC, Nikita + Dima hold IT and Servers"],items:[
+  S("t",800,1195,"CC"),S("t",1090,1195,"Servers"),
+  G("t",1,"HB",1245,1288),G("t",1,"HB",1245,1352),T("t",1,"nikita","Hibana",1340,1320),
+  G("t",1,"HB",1225,745),G("t",1,"HB",1290,745),T("t",1,"dima","Ace",1260,640),
+  A("t",1,"renat",[[450,1440],[600,1420]]),T("t",1,"renat","Blackbeard",600,1420),A("t",1,"sanya",[[450,1480],[760,1460]]),T("t",1,"sanya","Montagne",760,1460),
+  T("g",1,"roman","Buck",820,1260),X("g",1,700,1210,"under top garage"),
+  L("t",2,[[900,1300],[900,1420]]),X("t",2,880,1475,"Buck vert from 1F"),
+  A("t",2,"nikita",[[1340,1320],[1100,1330]]),T("t",2,"nikita","Hibana",1100,1330),A("t",2,"renat",[[600,1420],[850,1300]]),T("t",2,"renat","Blackbeard",850,1300),
+  A("t",2,"dima",[[1260,640],[1395,700]]),T("t",2,"dima","Ace",1395,700),
+  A("t",3,"renat",[[850,1300],[700,1120],[700,900]]),T("t",3,"renat","Blackbeard",700,900),A("t",3,"sanya",[[760,1460],[880,1260],[860,1010]]),T("t",3,"sanya","Montagne",860,1000),
+  A("t",3,"nikita",[[1100,1330],[1080,1050]]),T("t",3,"nikita","Hibana",1080,1040),A("t",3,"dima",[[1395,700],[1250,900]]),T("t",3,"dima","Ace",1250,900),G("t",3,"PL",780,1110),
+  T("t",4,"dima","Ace",1180,1240)]},
+ {id:"kA3",name:"Kitchen attack C",side:"a",floor:"g",phases:["Direct Lobby take, as described in the W7M video. Dima (Ace) opens the garden wall on 2F so nobody can help the Meeting side; Renat takes top of Lobby Stairs","Sanya + Roman take lower Lobby through the windows; Renat flashes (Ying) the Lobby Stairs player; clear Harry Potter","Nikita (Thermite) opens the Cafe → Lobby wall; Sanya plants in Cafeteria while Roman makes vert from Meeting","Hold Lobby, the opened wall and the vert holes"],items:[
+  S("g",1670,560,"Cafeteria"),S("g",1675,870,"Kitchen"),
+  G("t",1,"HB",1225,745),G("t",1,"HB",1290,745),T("t",1,"dima","Ace",1260,640),T("t",1,"renat","Ying",1400,420),
+  T("g",1,"sanya","Montagne",1300,160),T("g",1,"roman","Buck",1500,160),T("g",1,"nikita","Thermite",1630,420),X("g",1,1300,100,"outside Lobby windows"),
+  A("g",2,"sanya",[[1300,160],[1300,450]]),T("g",2,"sanya","Montagne",1300,450),A("g",2,"roman",[[1500,160],[1440,240]]),T("g",2,"roman","Buck",1440,240),X("g",2,1340,580,"clear Harry Potter"),
+  G("g",3,"HB",1460,477),G("g",3,"HB",1520,477),A("g",3,"nikita",[[1630,420],[1580,370]]),T("g",3,"nikita","Thermite",1580,360),
+  A("g",3,"sanya",[[1300,450],[1490,500],[1480,620]]),T("g",3,"sanya","Montagne",1430,660),G("g",3,"PL",1500,620),
+  L("t",3,[[1470,600],[1620,600]]),T("t",3,"roman","Buck",1540,690),{k:"tok",f:"g",ph:3,who:"roman",hide:1}]},
+ {id:"bA",name:"Basement — attack",side:"a",floor:"g",phases:["Entry: Roman scans; Sanya in through the Rafters window, Airjabs on IT, Storage and Cargo doors","Dima hard-breaches both hatches; Nikita cuts 3 lines in the Control floor; Roman goes down Cargo stairs","Drone the drop. Renat flames both Tank doors; Sanya drops through the Animus hatch and tuck-plants","Hold: Renat + Nikita on the holes, Roman on Cargo stairs, Dima on the hatch / flank"],items:[
+  A("t",1,"sanya",[[380,1430],[620,1400],[975,1265]]),G("t",1,"AJ",985,1238),A("t",1,"sanya",[[975,1265],[560,1450]],1),T("t",1,"sanya","Nomad",620,1400),
+  T("g",1,"roman","Solid Snake",440,900),A("g",1,"sanya",[[560,1330],[900,1250],[1190,1130]]),G("g",1,"AJ",1203,1120),G("g",1,"AJ",985,760),T("g",1,"sanya","Nomad",900,1250),
+  T("g",2,"dima","Grim",840,1330),G("g",2,"HB",795,1285,"hatch"),G("g",2,"HB",775,820,"hatch"),
+  T("g",2,"nikita","Sledge / Buck",720,1050),L("g",2,[[650,925],[650,1160]]),L("g",2,[[770,925],[770,1160]]),L("g",2,[[885,925],[885,1160]]),
+  T("g",2,"renat","Capitão",880,1030),T("g",2,"roman","Solid Snake",440,900,),
+  A("b",2,"roman",[[700,420],[690,600]]),T("b",2,"roman","Solid Snake",690,610),S("b",520,955,"Tank"),
+  {k:"tok",f:"g",ph:3,who:"sanya",hide:1},G("b",3,"FL",525,810),G("b",3,"FL",737,1050),A("b",3,"sanya",[[620,1155],[480,1060]]),T("b",3,"sanya","Nomad",620,1185),G("b",3,"PL",470,1060),
+  {k:"tok",f:"g",ph:2,who:"roman",hide:1},
+  T("g",4,"dima","Grim",800,1250)]}
+];
+const SLOTS={d:[["CC / Servers A","ccA"],["CC / Servers B","ccB"],["Basement · opt 1","bD1"],["Basement · opt 2","bD2"],["Storage / Control","sD"],["Kitchen","kD"]],
+             a:[["CC / Servers","cA"],["Basement","bA"],["Storage / Control","sA"],["Kitchen","kA"]]};
+let cur=STRATS[0],floor=cur.floor,phase=1,pos={};
+try{pos=JSON.parse(localStorage.getItem("d8pos")||"{}")}catch(e){pos={}}
+const svg=document.getElementById("bsvg"),NS="http://www.w3.org/2000/svg";
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+function visible(){
+  const it=cur.items.filter(i=>i.f===floor&&i.ph<=phase);
+  const toks={};it.filter(i=>i.k==="tok").forEach(i=>{const prev=toks[i.who];if(!prev||i.ph>=prev.ph)toks[i.who]=i});
+  return {other:it.filter(i=>i.k!=="tok"&&!(i.k==="arr"&&i.ph<phase-1)),toks:Object.values(toks).filter(t=>!t.hide)};
+}
+function draw(){
+  const F=FLOORS[floor];svg.setAttribute("viewBox",F.vb.join(" "));svg.innerHTML="";
+  const defs=el("defs",{},svg);
+  Object.entries(PC).forEach(([k,c])=>{const m=el("marker",{id:"ah-"+k,viewBox:"0 0 10 10",refX:"7",refY:"5",markerWidth:"5",markerHeight:"5",orient:"auto-start-reverse"},defs);el("path",{d:"M0,0 L10,5 L0,10 z",fill:c},m)});
+  el("image",{href:F.img,x:0,y:0,width:F.w,height:F.h},svg);
+  el("rect",{x:0,y:0,width:900,height:250,fill:"#fff"},svg);
+  const {other,toks}=visible();
+  other.filter(i=>i.k==="line").forEach(i=>el("polyline",{points:i.pts.join(" "),fill:"none",stroke:"#dc2626","stroke-width":10,"stroke-dasharray":"4 10","stroke-linecap":"round"},svg));
+  other.filter(i=>i.k==="site").forEach(i=>{const sw=("SITE · "+i.l).length*15+30;el("rect",{x:i.x-sw/2,y:i.y-26,width:sw,height:52,rx:10,fill:"#2563eb",opacity:.9},svg);const t=el("text",{x:i.x,y:i.y+10,"text-anchor":"middle",fill:"#fff","font-size":30,"font-weight":700,"font-family":"Barlow Condensed,Arial Narrow,sans-serif"},svg);t.textContent="SITE · "+i.l});
+  other.filter(i=>i.k==="arr").forEach(i=>el("polyline",{points:i.pts.join(" "),fill:"none",stroke:PC[i.who],"stroke-width":9,"stroke-linejoin":"round","stroke-dasharray":i.dash?"22 14":"none","marker-end":`url(#ah-${i.who})`,opacity:.9},svg));
+  other.filter(i=>i.k==="g").forEach(i=>{const g=el("g",{},svg);
+    if(i.t==="RF"||i.t==="RFE"){
+      let best=null,bd=1e9;(YEL[floor]||[]).forEach(r=>{const cx=Math.max(r[0],Math.min(i.x,r[0]+r[2])),cy=Math.max(r[1],Math.min(i.y,r[1]+r[3]));const d=Math.hypot(cx-i.x,cy-i.y);if(d<bd){bd=d;best=r}});
+      if(best&&bd<45){const hatch=best[2]>30&&best[3]>30;const pad=hatch?2:4;
+        el("rect",{x:best[0]-pad,y:best[1]-pad,width:best[2]+pad*2,height:best[3]+pad*2,rx:2,fill:"#dc2626",stroke:"#7f1d1d","stroke-width":2},g);
+        var bx=best[0]+best[2],by=best[1];}
+      else{el("rect",{x:i.x-27,y:i.y-8,width:54,height:16,rx:3,fill:"#dc2626",stroke:"#7f1d1d","stroke-width":2},g);var bx=i.x+27,by=i.y-8;}
+      if(i.t==="RFE"){el("circle",{cx:bx+6,cy:by-6,r:15,fill:"#facc15",stroke:"#111","stroke-width":2},g);el("path",{d:`M${bx+9},${by-19} L${bx},${by-4} L${bx+7},${by-4} L${bx+3},${by+7} L${bx+13},${by-9} L${bx+6},${by-9} Z`,fill:"#111"},g)}
+      if(i.l){const s2=el("text",{x:i.x,y:i.y+42,"text-anchor":"middle",fill:"#111","font-size":22,"font-weight":600,"font-family":"Source Sans 3,sans-serif",stroke:"#fff","stroke-width":5,"paint-order":"stroke"},g);s2.textContent=i.l}
+      return}
+    if(i.t==="PL"){const d=el("g",{transform:`translate(${i.x-24},${i.y-26})`},g);
+      el("rect",{x:2,y:12,width:44,height:30,rx:5,fill:"#1f2937",stroke:"#facc15","stroke-width":3},d);
+      el("line",{x1:36,y1:12,x2:42,y2:0,stroke:"#1f2937","stroke-width":4,"stroke-linecap":"round"},d);
+      el("circle",{cx:42,cy:0,r:4,fill:"#ef4444"},d);
+      el("rect",{x:9,y:19,width:20,height:9,rx:2,fill:"#22d3ee"},d);
+      el("circle",{cx:13,cy:35,r:3,fill:"#ef4444"},d);el("circle",{cx:22,cy:35,r:3,fill:"#facc15"},d);el("circle",{cx:31,cy:35,r:3,fill:"#22c55e"},d);
+      if(i.l){const s2=el("text",{x:i.x,y:i.y+46,"text-anchor":"middle",fill:"#111","font-size":22,"font-weight":600,"font-family":"Source Sans 3,sans-serif",stroke:"#fff","stroke-width":5,"paint-order":"stroke"},g);s2.textContent=i.l}
+      return}
+    const EMO={HH:"👀",FH:"👣",FL:"🔥",RT:"🔄",CAM:"📷",SM:"💨"};
+    if(EMO[i.t]){const e=el("text",{x:i.x,y:i.y+12,"text-anchor":"middle","font-size":34},g);e.textContent=EMO[i.t];
+      if(i.l){const s2=el("text",{x:i.x,y:i.y+46,"text-anchor":"middle",fill:"#111","font-size":22,"font-weight":600,"font-family":"Source Sans 3,sans-serif",stroke:"#fff","stroke-width":5,"paint-order":"stroke"},g);s2.textContent=i.l}
+      return}
+    const tt=i.t;el("rect",{x:i.x-27,y:i.y-19,width:54,height:38,rx:8,fill:GC[tt],stroke:"#fff","stroke-width":3},g);const t=el("text",{x:i.x,y:i.y+9,"text-anchor":"middle",fill:"#fff","font-size":24,"font-weight":700,"font-family":"JetBrains Mono,monospace"},g);t.textContent=tt;
+    if(i.l){const s2=el("text",{x:i.x,y:i.y+46,"text-anchor":"middle",fill:"#111","font-size":22,"font-weight":600,"font-family":"Source Sans 3,sans-serif",stroke:"#fff","stroke-width":5,"paint-order":"stroke"},g);s2.textContent=i.l}});
+  other.filter(i=>i.k==="txt").forEach(i=>{const t=el("text",{x:i.x,y:i.y,fill:"#111","font-size":24,"font-style":"italic","font-family":"Source Sans 3,sans-serif",stroke:"#fff","stroke-width":5,"paint-order":"stroke"},svg);t.textContent=i.s});
+  toks.forEach(i=>{const key=cur.id+"|"+floor+"|"+i.who+"|"+i.ph;const p=pos[key]||[i.x,i.y];
+    const g=el("g",{class:"tok",transform:`translate(${p[0]},${p[1]})`,tabindex:0,"aria-label":PN[i.who]+" "+i.op},svg);
+    el("circle",{r:34,fill:PC[i.who],stroke:"#fff","stroke-width":5},g);
+    const t=el("text",{y:12,"text-anchor":"middle",fill:"#fff","font-size":34,"font-weight":700,"font-family":"Barlow Condensed,sans-serif"},g);t.textContent=PN[i.who][0];
+    const w=Math.max(70,(PN[i.who]+" · "+i.op).length*12.5);
+    el("rect",{x:-w/2,y:40,width:w,height:30,rx:15,fill:"#111",opacity:.85},g);
+    const l=el("text",{y:62,"text-anchor":"middle",fill:"#fff","font-size":20,"font-weight":600,"font-family":"Source Sans 3,sans-serif"},g);l.textContent=PN[i.who]+" · "+i.op;
+    g.addEventListener("pointerdown",ev=>{ev.preventDefault();g.setPointerCapture(ev.pointerId);
+      const mv=e=>{const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const q=pt.matrixTransform(svg.getScreenCTM().inverse());pos[key]=[Math.round(q.x),Math.round(q.y)];g.setAttribute("transform",`translate(${q.x},${q.y})`)};
+      const up=()=>{g.removeEventListener("pointermove",mv);g.removeEventListener("pointerup",up);try{localStorage.setItem("d8pos",JSON.stringify(pos))}catch(e){}};
+      g.addEventListener("pointermove",mv);g.addEventListener("pointerup",up)});
+  });
+}
+function ui(){
+  [["d","stratSelD","rowD"],["a","stratSelA","rowA"]].forEach(([side,id,row])=>{const ss=document.getElementById(id);ss.innerHTML="";
+    const list=STRATS.filter(x=>allowed.includes(x.id)&&x.side===side);document.getElementById(row).hidden=!list.length;
+    list.forEach(s=>{const b=document.createElement("button");b.textContent=SHORT[s.id]||s.name;b.className=(s===cur?"on ":"")+side;b.onclick=()=>{cur=s;floor=s.floor;phase=1;ui()};ss.appendChild(b)})});
+  const fs=document.getElementById("floorSel");fs.innerHTML="";
+  ["t","g","b"].forEach(f=>{const n=cur.items.filter(i=>i.f===f).length;if(!n)return;const b=document.createElement("button");b.textContent=FLOORS[f].label;b.className=f===floor?"on":"";b.onclick=()=>{floor=f;ui()};fs.appendChild(b)});
+  const ps=document.getElementById("phaseSel");ps.innerHTML="";
+  cur.phases.forEach((p,i)=>{const b=document.createElement("button");b.textContent=i+1;b.className=(i+1===phase?"on ":"")+cur.side;b.onclick=()=>{phase=i+1;ui()};ps.appendChild(b)});
+  const lu=document.getElementById("lineupList");lu.innerHTML="";
+  document.getElementById("lineupTitle").textContent=(cur.side==="a"?"Attack":"Defence")+" lineup";
+  ["dima","renat","roman","nikita","sanya"].forEach(w=>{const ops=[];cur.items.filter(i=>i.k==="tok"&&i.who===w&&!i.hide&&i.op).sort((x,y)=>x.ph-y.ph).forEach(i=>{if(!ops.includes(i.op))ops.push(i.op)});
+    const row=document.createElement("div");row.style.cssText="display:flex;gap:8px;align-items:center";
+    const pill=document.createElement("span");pill.className="p "+w;pill.textContent=PN[w];pill.style.minWidth="62px";pill.style.textAlign="center";
+    const op=document.createElement("b");op.textContent=ops.length?ops.join(" / "):"—";if(!ops.length)op.style.color="var(--muted)";
+    row.append(pill,op);lu.appendChild(row)});
+  const pt=document.getElementById("phaseText");pt.innerHTML="";
+  cur.phases.forEach((p,i)=>{const li=document.createElement("li");li.textContent=p;if(i+1===phase)li.className="cur";pt.appendChild(li)});
+  draw();
+}
+const SHORT={ccA:"Setup A",ccB:"Setup B",cA:"Attack A (draft)",cA2:"Attack B (video)",cA3:"Attack C (W7M)",bD1:"Option 1 · Kaid + Bandit",bD2:"Option 2 · one banned",bD3:"Option 3 · W7M roam",bA:"Basement attack",sD:"Storage defence",sA:"Attack A (draft)",sA2:"Attack B (W7M)",kD:"Kitchen defence",kA:"Attack A (draft)",kA2:"Attack B (video)",kA3:"Attack C (W7M)"};
+let allowed=STRATS.map(x=>x.id);
+function mountBoard(v){const sec=document.getElementById("v-"+v);const slot=sec&&sec.querySelector(".boardslot");const box=document.getElementById("boardBox");
+  if(!slot){document.getElementById("boardHome").appendChild(box);return}
+  slot.appendChild(box);allowed=slot.dataset.strats.split(",");
+  if(!allowed.includes(cur.id)){cur=STRATS.find(x=>x.id===allowed[0]);floor=cur.floor;phase=1}
+  ui();}
+window.__boardReady=true;
+document.getElementById("resetPos").onclick=()=>{Object.keys(pos).filter(k=>k.startsWith(cur.id+"|")).forEach(k=>delete pos[k]);try{localStorage.setItem("d8pos",JSON.stringify(pos))}catch(e){}draw()};
+mountBoard((location.hash||"#overview").slice(1));
+</script>
+
+</body></html>
