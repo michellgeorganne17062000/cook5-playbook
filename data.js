@@ -7,7 +7,7 @@ const UI={
   open:["Open sections","Открыть разделы"],
   sections:["Sections","Разделы"], fav:["Favourites","Избранное"], news:["New","Новое"], lineups:["Lineups","Составы"],
   toc:["Contents","Оглавление"], top:["Top","Наверх"], back:["Back","Назад"],
-  strats:["strats","страт"], blocks:["blocks","блоков"],
+  strats:["strats","страт"], blocks:["topics","тем"],
   board:["Strat board","Страт-борд"], defence:["Defence","Защита"], attack:["Attack","Атака"],
   phases:["Phases","Фазы"], legend:["Legend","Легенда"], lineup_d:["Defence lineup","Состав в защите"], lineup_a:["Attack lineup","Состав в атаке"],
   reset:["Reset token positions","Сбросить фишки"], drag:["Drag a player token to adjust. Positions are approximate — check in a custom game.","Фишки игроков можно двигать. Позиции примерные — проверьте в кастомке."],

@@ -1,4 +1,4 @@
-D8 · Nighthaven playbook — Telegram Mini App
+[COOK5] Playbook — Telegram Mini App
 ============================================
 1) HOST THE FOLDER (pick one)
    Netlify Drop: open https://app.netlify.com/drop, drag this whole folder in.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>D8 Nighthaven</title>
+<title>[COOK5] Playbook</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--bg:#f2f3f7;--bg2:#e9ebf1;--card:#fff;--fg:#14171c;--muted:#7a8290;--acc:#2a7de1;--line:#e3e6ec;--def:#2563eb;--att:#dc2626;
@@ -88,6 +88,28 @@ body:has(.bar) #langBtn{top:17px;right:64px}.bar{padding-right:52px}body:has(.ba
 #topBtn.show{opacity:1;pointer-events:auto}
 #lb[hidden]{display:none}#lb{position:fixed;inset:0;z-index:20;background:#000d;display:grid;place-items:center;padding:10px}#lb img{max-width:100%;max-height:100%;border-radius:8px}
 @media(min-width:620px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.logo{font-size:15px!important;letter-spacing:.5px!important}
+h2.grp{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:22px 2px 2px}
+.maps{display:grid;gap:10px;margin-top:10px}
+.mapc{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;position:relative;overflow:hidden}
+.mapc.nh{background:linear-gradient(135deg,#1e293b,#334155);color:#fff;border:0}.mapc.kafe{background:linear-gradient(135deg,#7c2d12,#b45309);color:#fff;border:0}
+.mapc .ic{font-size:30px}.mapc div{flex:1;display:flex;flex-direction:column;gap:2px}.mapc small{opacity:.8;font-size:12.5px}.mapc .rec{font-weight:600;opacity:.95}
+.mapc .go{font-size:26px;opacity:.7}.mapc.soon{border-style:dashed;color:var(--muted);background:none}
+.profs{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin-top:10px}
+.prof{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.prof small{color:var(--muted);font-size:11.5px;line-height:1.25}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 20px/1 system-ui}
+.av.big{width:64px;height:64px;font-size:28px;flex:none}
+.av.dima{background:var(--dima)}.av.renat{background:var(--renat)}.av.roman{background:var(--roman)}.av.nikita{background:var(--nikita)}.av.sanya{background:var(--sanya)}
+.phead{display:flex;gap:14px;align-items:center;margin:6px 0 4px}.phead div{display:flex;flex-direction:column;gap:3px;align-items:flex-start}.phead b{font-size:18px}.phead small{color:var(--muted)}
+.kpis b.sm{font-size:15px}
+.tw th[scope],.tw tbody th{background:var(--bg2);width:38%;font-size:12px}
+.habit{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:10px 12px}
+.lnk{color:var(--acc)}
+.sparkw{padding:8px}.spark{width:100%;height:auto;display:block}.spark polyline{fill:none;stroke:var(--acc);stroke-width:2.5}
+.spark circle{fill:var(--acc)}.spark text{font:600 9px system-ui;fill:var(--fg);text-anchor:middle}.spark text.d{fill:var(--muted);font-weight:400}
+.spark .one{stroke:var(--muted);stroke-dasharray:3 4;stroke-width:1}
 </style>
 </head>
 <body>
@@ -113,6 +135,7 @@ body:has(.bar) #langBtn{top:17px;right:64px}.bar{padding-right:52px}body:has(.ba
  <button id="resetPos">Reset</button>
 </div></div>
 <script src="data.js"></script>
+<script src="data2.js"></script>
 <script src="board.js"></script>
 <script src="app.js"></script>
 </body>
