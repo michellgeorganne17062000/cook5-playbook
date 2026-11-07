@@ -27,6 +27,9 @@ const DOCS={
  rules:{order:SECTIONS.filter(s=>s.group==="rules").map(s=>s.id),
   h1:["D8 Team <b>Rulebook</b>","Свод правил <b>D8</b>"],
   sub:["v1 · updated 7 Nov 2026 · team games 19.10–06.11 · sources: baseline 29.10, reviews 30.10 / 02.11 / 06.11, Nighthaven & Kafe playbooks","v1 · обновлено 7 ноября 2026 · командные игры 19.10–06.11 · источники: базовый срез 29.10, разборы 30.10 / 02.11 / 06.11, плейбуки Nighthaven и Kafe"]},
+ calls:{order:["cl-lang","cl-ours","cl-other"],
+  h1:["Attack <b>Calls</b>","Коллы <b>атаки</b>"],
+  sub:["[COOK5] · added 7 Nov 2026 · six call words + 16 named attack plays · source: R6 Basic Calls (generic playbook) · not tested by us yet","[COOK5] · добавлено 7 ноября 2026 · шесть слов-коллов + 16 именных розыгрышей атаки · источник: R6 Basic Calls (общий плейбук) · нами ещё не проверено"]},
  nh:{order:["plan","map","cc","basement","storage","kitchen","pro","bans","practice"],
   h1:["Nighthaven Labs <b>Playbook</b>","Nighthaven Labs <b>Плейбук</b>"],
   sub:["D8 · updated 30 Oct 2026 · sources: Mint setup video, basement attack video, Nighthaven attack video, W7M pro review, r6tv pro data","D8 · обновлено 30 октября 2026 · источники: видео с сетапами Mint, видео атаки подвала, видео атаки Nighthaven, разбор W7M, про-статистика r6tv"]},
@@ -37,13 +40,13 @@ const DOCS={
   h1:["Kafe Dostoyevsky <b>Playbook</b>","Kafe Dostoyevsky <b>Плейбук</b>"],
   sub:["D8 · game plan and defence setups for all 4 sites · attack plan and strat boards to come","D8 · игровой план и сетапы защиты на все 4 точки · план атаки и страт-борды — позже"]}
 };
-const TABL={plan:["Overview","Обзор"],map:["Map","Карта"],cc:["CC / Servers","CC / Servers"],basement:["Basement","Подвал"],storage:["Storage","Storage"],kitchen:["Kitchen","Kitchen"],pro:["Pro notes","Про-заметки"],bans:["Bans","Баны"],practice:["Practice","Тренировка"],
+const TABL={"cl-lang":["Call words","Слова-коллы"],"cl-ours":["Our maps","Наши карты"],"cl-other":["Other maps","Другие карты"],plan:["Overview","Обзор"],map:["Map","Карта"],cc:["CC / Servers","CC / Servers"],basement:["Basement","Подвал"],storage:["Storage","Storage"],kitchen:["Kitchen","Kitchen"],pro:["Pro notes","Про-заметки"],bans:["Bans","Баны"],practice:["Practice","Тренировка"],
  "r-check":["Checklist","Чек-лист"],"r-round":["In-round","В раунде"],"r-pool":["Maps","Карты"],"r-ops":["Operators","Оперативники"],"r-sites":["Line-ups","Расстановки"],"r-bans":["Bans","Баны"],"r-goals":["Targets","Цели"],
  "c-plan":["Overview","Обзор"],"c-base":["Basement","Подвал"],"c-bj":["Blackjack","Blackjack"],"c-bet":["Betting","Betting"],"c-2f":["2F","2F"],
  "k-plan":["Overview","Обзор"],"k-read":["Reading","Reading"],"k-mine":["Mining","Mining"],"k-kit":["Kitchen","Kitchen"],"k-bar":["Bar","Bar"]};
-const docOf=s=>s.group==="rules"?"rules":s.map;
-const docHref=d=>d==="rules"?"#/r":"#/m/"+d;
-const docName=d=>d==="rules"?t(UI.g_rules):MAPS.find(m=>m.id===d).name;
+const docOf=s=>s.group==="rules"?"rules":s.group==="calls"?"calls":s.map;
+const docHref=d=>d==="rules"?"#/r":d==="calls"?"#/c":"#/m/"+d;
+const docName=d=>d==="rules"?t(UI.g_rules):d==="calls"?t(UI.g_calls):MAPS.find(m=>m.id===d).name;
 
 /* ---------- shared page chrome ---------- */
 function page({crumb,h1,sub,tabs,body}){
@@ -107,6 +110,7 @@ function homeOv(){
   <div class="box acc"><h3>${t(["Latest review","Последний разбор"])}</h3><div class="rows">${revRow(last)}</div></div>
   <div class="box"><h3>${t(["Playbooks","Плейбуки"])}</h3><div class="rows">
    ${row("#/r",'<span class="ic">📘</span>',t(UI.g_rules),`${SECTIONS.filter(s=>s.group==="rules").length} ${t(UI.blocks)}`)}
+   ${row("#/c",'<span class="ic">📣</span>',t(UI.g_calls),t(["6 call words · 16 attack plays","6 слов-коллов · 16 розыгрышей атаки"]))}
    ${MAPS.map(m=>row("#/m/"+m.id,`<span class="ic">${m.icon}</span>`,m.name,`${t(m.sub)} · ${t(m.rec)}`)).join("")}
    ${row("#/h/rev",'<span class="ic">📊</span>',t(UI.g_rev),REVIEWS.map(r=>r.date).join(" · "))}
   </div></div></div>`}
@@ -309,7 +313,7 @@ function route(keepY){
   $("#boardHome").appendChild($("#boardBox"));
   let doc,html;
   if(k==="s"){const s=SECTIONS.find(x=>x.id===h[1]);doc="d:"+(s?docOf(s):"");html=section(h[1])}
-  else if(k==="m"||k==="r"){const d=k==="r"?"rules":h[1];const id=DOCS[d]?DOCS[d].order[0]:null;if(id){location.replace("#/s/"+id);return}html=home("maps");doc="home"}
+  else if(k==="m"||k==="r"||k==="c"){const d=k==="r"?"rules":k==="c"?"calls":h[1];const id=DOCS[d]?DOCS[d].order[0]:null;if(id){location.replace("#/s/"+id);return}html=home("maps");doc="home"}
   else if(k==="v"){doc="v:"+h[1];html=review(h[1],h[2])}
   else if(k==="p"){doc="p:"+h[1];html=profile(h[1],h[2])}
   else if(k==="h"){doc="home";html=home(h[1])}
