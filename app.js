@@ -30,12 +30,16 @@ const DOCS={
  nh:{order:["plan","map","cc","basement","storage","kitchen","pro","bans","practice"],
   h1:["Nighthaven Labs <b>Playbook</b>","Nighthaven Labs <b>Плейбук</b>"],
   sub:["D8 · updated 30 Oct 2026 · sources: Mint setup video, basement attack video, Nighthaven attack video, W7M pro review, r6tv pro data","D8 · обновлено 30 октября 2026 · источники: видео с сетапами Mint, видео атаки подвала, видео атаки Nighthaven, разбор W7M, про-статистика r6tv"]},
+ cal:{order:["c-plan","c-base","c-bj","c-bet","c-2f"],
+  h1:["Calypso Casino <b>Playbook</b>","Calypso Casino <b>Плейбук</b>"],
+  sub:["[COOK5] · updated 7 Nov 2026 · defence setups for all 4 sites · source: Mint's Calypso defence guide + his top-down screenshots","[COOK5] · обновлено 7 ноября 2026 · сетапы защиты на все 4 точки · источник: гайд Mint по защите Calypso + его скриншоты сверху"]},
  kafe:{order:["k-plan","k-read","k-mine","k-kit","k-bar"],
   h1:["Kafe Dostoyevsky <b>Playbook</b>","Kafe Dostoyevsky <b>Плейбук</b>"],
   sub:["D8 · game plan and defence setups for all 4 sites · attack plan and strat boards to come","D8 · игровой план и сетапы защиты на все 4 точки · план атаки и страт-борды — позже"]}
 };
 const TABL={plan:["Overview","Обзор"],map:["Map","Карта"],cc:["CC / Servers","CC / Servers"],basement:["Basement","Подвал"],storage:["Storage","Storage"],kitchen:["Kitchen","Kitchen"],pro:["Pro notes","Про-заметки"],bans:["Bans","Баны"],practice:["Practice","Тренировка"],
  "r-check":["Checklist","Чек-лист"],"r-round":["In-round","В раунде"],"r-pool":["Maps","Карты"],"r-ops":["Operators","Оперативники"],"r-sites":["Line-ups","Расстановки"],"r-bans":["Bans","Баны"],"r-goals":["Targets","Цели"],
+ "c-plan":["Overview","Обзор"],"c-base":["Basement","Подвал"],"c-bj":["Blackjack","Blackjack"],"c-bet":["Betting","Betting"],"c-2f":["2F","2F"],
  "k-plan":["Overview","Обзор"],"k-read":["Reading","Reading"],"k-mine":["Mining","Mining"],"k-kit":["Kitchen","Kitchen"],"k-bar":["Bar","Bar"]};
 const docOf=s=>s.group==="rules"?"rules":s.map;
 const docHref=d=>d==="rules"?"#/r":"#/m/"+d;
@@ -125,9 +129,12 @@ function lineupOf(s){return WHO.map(w=>{const ops=[];s.items.filter(i=>i.k==="to
 function lineupCard(s){const sec=secOf(s.id);const k="t:"+s.id;
   return `<div class="box ${s.side}"><div class="luh"><a href="#/s/${sec.id}/${s.id}" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="tag ${s.side}">${sideL(s.side)}</span><b>${t(sec.title)} · ${sname(s.id)}</b></a>${favBtn(k)}</div>
   <div class="lu">${lineupOf(s).map(([w,o])=>`<span class="p ${w}">${PN[w]}</span><span class="${o==="—"?"muted":""}">${esc(o)}</span>`).join("")}</div></div>`}
+/* maps whose defence line-ups live in KPOS tables: [doc id, icon, short name, profile label] */
+const KPOS_MAPS=[["cal","🎰","Calypso","p_cal"],["kafe","☕","Kafe","p_kafe"]];
+const kposSecs=d=>DOCS[d].order.map(id=>SECTIONS.find(s=>s.id===id)).filter(s=>s&&s.blocks.some(b=>b.kpos));
 function lineups(){
   return `<h2>🌃 Nighthaven</h2>${DOCS.nh.order.map(id=>SECTIONS.find(s=>s.id===id)).filter(s=>s.strats).map(sec=>sec.strats.split(",").map(id=>lineupCard(STRATS.find(x=>x.id===id))).join("")).join("")}
-  <h2>☕ Kafe · ${t(UI.defence)}</h2>${KAFE.filter(k=>k.blocks.some(b=>b.kpos)).map(k=>{const key=k.blocks.find(b=>b.kpos).kpos;return `<div class="box d"><div class="luh"><a href="#/s/${k.id}"><b>${t(k.title)}</b></a></div><div class="lu">${KPOS[key].map(r=>`<span class="p ${r[0]}">${PN[r[0]]}</span><span>${esc(r[2])}</span>`).join("")}</div></div>`}).join("")}`;
+  ${KPOS_MAPS.map(([d,ic,nm])=>`<h2>${ic} ${nm} · ${t(UI.defence)}</h2>${kposSecs(d).map(k=>{const key=k.blocks.find(b=>b.kpos).kpos;return `<div class="box d"><div class="luh"><a href="#/s/${k.id}"><b>${t(k.title)}</b></a></div><div class="lu">${KPOS[key].map(r=>`<span class="p ${r[0]}">${PN[r[0]]}</span><span>${esc(r[2])}</span>`).join("")}</div></div>`}).join("")}`).join("")}`;
 }
 function favourites(){
   const items=favs.map(f=>{const [k,id]=f.split(":");
@@ -231,9 +238,9 @@ function profile(w,tab){const P=PROFILES[w];if(!P)return home("players");
   if(tab==="strats"){
     const ord=DOCS.nh.order.map(id=>SECTIONS.find(x=>x.id===id)).filter(x=>x.strats).flatMap(x=>x.strats.split(","));
     const nh=ord.map(id=>STRATS.find(x=>x.id===id)).map(s=>[s,lineupOf(s).find(x=>x[0]===w)[1]]).filter(x=>x[1]!=="—");
-    const kf=Object.entries(KPOS).map(([k,rows])=>[KAFE.find(x=>x.blocks.some(b=>b.kpos===k)),rows.find(x=>x[0]===w)]);
+    const kp=d=>kposSecs(d).map(sec=>[sec,KPOS[sec.blocks.find(b=>b.kpos).kpos].find(x=>x[0]===w)]).filter(x=>x[1]);
     body=`<div class="box"><h3>🌃 ${t(UI.p_nh)}</h3><div class="tw"><table><tbody>${nh.map(([s,op])=>`<tr><td><span class="tag ${s.side}">${sideL(s.side)}</span></td><td><a class="btn" style="text-transform:none;font:inherit;color:var(--def)" href="#/s/${secOf(s.id).id}/${s.id}">${t(secOf(s.id).title)} · ${sname(s.id)}</a></td><td><b>${esc(op)}</b></td></tr>`).join("")}</tbody></table></div></div>
-    <div class="box d"><h3>☕ ${t(UI.p_kafe)}</h3><div class="tw"><table><tbody>${kf.map(([sec,r])=>`<tr><td><a href="#/s/${sec.id}" style="color:var(--def)">${t(sec.title)}</a></td><td>${fmt(r[1])}</td><td><b>${esc(r[2])}</b></td></tr>`).join("")}</tbody></table></div></div>`}
+    ${KPOS_MAPS.map(([d,ic,,lab])=>`<div class="box d"><h3>${ic} ${t(UI[lab])}</h3><div class="tw"><table><tbody>${kp(d).map(([sec,r])=>`<tr><td><a href="#/s/${sec.id}" style="color:var(--def)">${t(sec.title)}</a></td><td>${fmt(r[1])}</td><td><b>${esc(r[2])}</b></td></tr>`).join("")}</tbody></table></div></div>`).join("")}`}
   if(tab==="rev")body=personal(w);
   return page({crumb:["#/h/players","[COOK5]",t(UI.players)],h1:`${PN[w]} <b>${esc(P.nick)}</b>`,sub:`${fmt(P.role)} · ${esc(t(P.rank))}`,tabs,body});
 }
