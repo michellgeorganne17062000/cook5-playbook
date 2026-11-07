@@ -36,6 +36,9 @@ const DOCS={
  cal:{order:["c-plan","c-base","c-bj","c-bet","c-2f"],
   h1:["Calypso Casino <b>Playbook</b>","Calypso Casino <b>Плейбук</b>"],
   sub:["[COOK5] · updated 7 Nov 2026 · defence setups for all 4 sites · source: Mint's Calypso defence guide + his top-down screenshots","[COOK5] · обновлено 7 ноября 2026 · сетапы защиты на все 4 точки · источник: гайд Mint по защите Calypso + его скриншоты сверху"]},
+ villa:{order:["v-plan","v-ag"],
+  h1:["Villa <b>Playbook</b>","Villa <b>Плейбук</b>"],
+  sub:["[COOK5] · added 7 Nov 2026 · 2F Aviator / Games defence + strat board · source: setup drawing from a Discord channel · untested","[COOK5] · добавлено 7 ноября 2026 · защита 2F Aviator / Games + страт-борд · источник: схема из Discord-канала · не проверено"]},
  kafe:{order:["k-plan","k-read","k-mine","k-kit","k-bar"],
   h1:["Kafe Dostoyevsky <b>Playbook</b>","Kafe Dostoyevsky <b>Плейбук</b>"],
   sub:["D8 · game plan and defence setups for all 4 sites · attack plan and strat boards to come","D8 · игровой план и сетапы защиты на все 4 точки · план атаки и страт-борды — позже"]}
@@ -43,6 +46,7 @@ const DOCS={
 const TABL={"cl-lang":["Call words","Слова-коллы"],"cl-ours":["Our maps","Наши карты"],"cl-other":["Other maps","Другие карты"],plan:["Overview","Обзор"],map:["Map","Карта"],cc:["CC / Servers","CC / Servers"],basement:["Basement","Подвал"],storage:["Storage","Storage"],kitchen:["Kitchen","Kitchen"],pro:["Pro notes","Про-заметки"],bans:["Bans","Баны"],practice:["Practice","Тренировка"],
  "r-check":["Checklist","Чек-лист"],"r-round":["In-round","В раунде"],"r-pool":["Maps","Карты"],"r-ops":["Operators","Оперативники"],"r-sites":["Line-ups","Расстановки"],"r-bans":["Bans","Баны"],"r-goals":["Targets","Цели"],
  "c-plan":["Overview","Обзор"],"c-base":["Basement","Подвал"],"c-bj":["Blackjack","Blackjack"],"c-bet":["Betting","Betting"],"c-2f":["2F","2F"],
+ "v-plan":["Overview","Обзор"],"v-ag":["Aviator / Games","Aviator / Games"],
  "k-plan":["Overview","Обзор"],"k-read":["Reading","Reading"],"k-mine":["Mining","Mining"],"k-kit":["Kitchen","Kitchen"],"k-bar":["Bar","Bar"]};
 const docOf=s=>s.group==="rules"?"rules":s.group==="calls"?"calls":s.map;
 const docHref=d=>d==="rules"?"#/r":d==="calls"?"#/c":"#/m/"+d;
@@ -134,7 +138,7 @@ function lineupCard(s){const sec=secOf(s.id);const k="t:"+s.id;
   return `<div class="box ${s.side}"><div class="luh"><a href="#/s/${sec.id}/${s.id}" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="tag ${s.side}">${sideL(s.side)}</span><b>${t(sec.title)} · ${sname(s.id)}</b></a>${favBtn(k)}</div>
   <div class="lu">${lineupOf(s).map(([w,o])=>`<span class="p ${w}">${PN[w]}</span><span class="${o==="—"?"muted":""}">${esc(o)}</span>`).join("")}</div></div>`}
 /* maps whose defence line-ups live in KPOS tables: [doc id, icon, short name, profile label] */
-const KPOS_MAPS=[["cal","🎰","Calypso","p_cal"],["kafe","☕","Kafe","p_kafe"]];
+const KPOS_MAPS=[["cal","🎰","Calypso","p_cal"],["villa","🏛️","Villa","p_villa"],["kafe","☕","Kafe","p_kafe"]];
 const kposSecs=d=>DOCS[d].order.map(id=>SECTIONS.find(s=>s.id===id)).filter(s=>s&&s.blocks.some(b=>b.kpos));
 function lineups(){
   return `<h2>🌃 Nighthaven</h2>${DOCS.nh.order.map(id=>SECTIONS.find(s=>s.id===id)).filter(s=>s.strats).map(sec=>sec.strats.split(",").map(id=>lineupCard(STRATS.find(x=>x.id===id))).join("")).join("")}
@@ -275,6 +279,8 @@ function legendHTML(){return LEGEND.map(([k,txt,c])=>{let sw;
   else if(k==="defuser")sw=`<svg width="22" height="22" viewBox="0 -4 48 48"><rect x="2" y="12" width="44" height="30" rx="5" fill="#1f2937" stroke="#facc15" stroke-width="3"/><rect x="9" y="19" width="20" height="9" rx="2" fill="#22d3ee"/><circle cx="42" cy="0" r="4" fill="#ef4444"/></svg>`;
   else if(k==="site")sw=`<i class="sw" style="background:#2563eb;color:#fff;font:700 9px/16px sans-serif;padding:0 4px;border-radius:4px">${t(UI.site)}</i>`;
   else if(k==="move")sw=`<i class="sw" style="border-top:3px dashed #7a4fd1;width:24px"></i>`;
+  else if(k==="rfi")sw=`<svg width="14" height="22" viewBox="0 0 30 52"><rect width="30" height="52" rx="2" fill="#111"/><path d="M7 6v40M15 6v40M23 6v40" stroke="#fff" stroke-width="3"/><rect x="11" y="14" width="8" height="24" fill="#fff"/></svg>`;
+  else if(k==="hole")sw=`<svg width="26" height="14" viewBox="0 0 70 30"><ellipse cx="35" cy="15" rx="31" ry="11" fill="none" stroke="#16a34a" stroke-width="5"/></svg>`;
   else if(k==="floor")sw=`<i class="sw" style="border-top:3px dotted #dc2626;width:24px"></i>`;
   else if(LGI[k])sw=`<img class="sw" src="img/r6/icons/${LGI[k]}" alt="" style="width:22px;height:22px;object-fit:contain;background:#fff;border:2px solid ${c||"#555"};border-radius:5px;padding:1px;box-sizing:border-box">`;
   else if(c)sw=`<i class="sw" style="background:${c};color:#fff;font:700 9px/16px monospace;padding:0 3px;border-radius:4px">${k}</i>`;
@@ -287,7 +293,7 @@ function ui(){
     list.forEach(s=>{const b=document.createElement("button");b.textContent=sname(s.id);b.className=(s===cur?"on ":"")+side;b.onclick=()=>{cur=s;floor=s.floor;phase=1;ui();haptic()};ss.appendChild(b)})});
   $("#rowD .lab").textContent=t(UI.defence);$("#rowA .lab").textContent=t(UI.attack);
   const fs=$("#floorSel");fs.innerHTML="";
-  ["t","g","b"].forEach(f=>{if(!cur.items.some(i=>i.f===f))return;const b=document.createElement("button");b.textContent=t(UI.floors[f]);b.className=f===floor?"on":"";b.onclick=()=>{floor=f;ui();haptic()};fs.appendChild(b)});
+  Object.keys(FLOORS).forEach(f=>{if(!cur.items.some(i=>i.f===f))return;const b=document.createElement("button");b.textContent=t(UI.floors[f]);b.className=f===floor?"on":"";b.onclick=()=>{floor=f;ui();haptic()};fs.appendChild(b)});
   const ps=$("#phaseSel");ps.innerHTML="";
   cur.phases.forEach((p,i)=>{const b=document.createElement("button");b.textContent=i+1;b.className=(i+1===phase?"on ":"")+cur.side;b.onclick=()=>{phase=i+1;ui();haptic()};ps.appendChild(b)});
   $("#lineupTitle").textContent=cur.side==="a"?t(UI.lineup_a):t(UI.lineup_d);
