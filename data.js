@@ -17,9 +17,9 @@ const UI={
   floors:{t:["2F","2Э"],g:["1F","1Э"],b:["Basement","Подвал"]}
 };
 const LEGEND=[
-  ["redwall",["Reinforced wall (hatch = red square)","Укреплённая стена (люк — красный квадрат)"]],
+  ["redwall",["Reinforced wall / hatch","Укреплённая стена / люк"]],
   ["elec",["Electrified (Kaid / Bandit)","Под током (Kaid / Bandit)"]],
-  ["🔄",["Rotate hole","Ротейт"]],["👣",["Feet holes","Дыры под ноги"]],["👀",["Head holes","Дыры на уровне головы"]],
+  ["🔄",["Rotate / hole in a soft wall","Ротейт / дыра в мягкой стене"]],["👣",["Feet holes","Дыры под ноги"]],["drop",["Drop / vault (arrow)","Прыжок / проход (стрелка)"]],["👀",["Head holes","Дыры на уровне головы"]],
   ["AJ",["Nomad Airjab","Эйрджеб Nomad"],"#7c3aed"],["HB",["Hard breach","Хард-брич"],"#dc2626"],["🔥",["Capitão flame","Огонь Capitão"]],
   ["TR",["Traps (owner's gadget: Thorn, Fenrir, Kapkan…)","Ловушки (гаджет владельца: Thorn, Fenrir, Kapkan…)"],"#a16207"],["📷",["Camera (BP cam)","Камера (BP)"]],["💨",["Smoke grenade","Дымовая граната"]],["CA",["Castle barricade","Баррикада Castle"],"#9a3412"],
   ["defuser",["Plant spot (defuser)","Точка планта (дефузер)"]],["site",["Bomb site","Бомб-точка"]],

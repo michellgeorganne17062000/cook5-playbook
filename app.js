@@ -272,15 +272,15 @@ function search(q){const r=$("#results"),c=$("#cards");q=q.trim().toLowerCase();
     return `<a class="hit" href="${h.href}"><small>${esc(h.where)}</small><b>${esc(h.head)}</b><span>${a?"…":""}${snip}…</span></a>`}).join(""):`<p class="empty">${t(UI.noresults)}</p>`)+"</div>"}
 
 /* ---------- board ---------- */
-const LGI={AJ:"gadgets/airjab-launcher.png",HB:"utility/hard-breach-charge.png","🔥":"gadgets/tactical-crossbow.png",TR:"gadgets/entry-denial-device.png","📷":"utility/bulletproof-camera.png","💨":"utility/smoke-grenade.png",CA:"gadgets/armor-panel.png"};
+const LGI={"👣":"markers/feet-hole.png","👀":"markers/head-hole.png",AJ:"gadgets/airjab-launcher.png",HB:"utility/hard-breach-charge.png","🔥":"gadgets/tactical-crossbow.png",TR:"gadgets/entry-denial-device.png","📷":"utility/bulletproof-camera.png","💨":"utility/smoke-grenade.png",CA:"gadgets/armor-panel.png"};
 function legendHTML(){return LEGEND.map(([k,txt,c])=>{let sw;
-  if(k==="redwall")sw=`<i class="sw" style="background:#dc2626;height:8px;width:24px;border-radius:2px"></i>`;
+  if(k==="redwall"||k==="rfi")sw=`<img class="sw" src="img/r6/icons/utility/reinforcement.png" alt="" style="width:22px;height:22px;object-fit:contain;background:#fff;border:1px solid #9ca3af;border-radius:4px">`;
   else if(k==="elec")sw=`<i class="sw" style="background:#facc15;border-radius:50%;width:20px;height:20px;display:grid;place-items:center"><img src="img/r6/icons/gadgets/shock-wire.png" alt="" style="width:14px;height:14px"></i>`;
-  else if(k==="defuser")sw=`<svg width="22" height="22" viewBox="0 -4 48 48"><rect x="2" y="12" width="44" height="30" rx="5" fill="#1f2937" stroke="#facc15" stroke-width="3"/><rect x="9" y="19" width="20" height="9" rx="2" fill="#22d3ee"/><circle cx="42" cy="0" r="4" fill="#ef4444"/></svg>`;
+  else if(k==="defuser")sw=`<img class="sw" src="img/r6/icons/utility/defuser.png" alt="" style="width:22px;height:22px;object-fit:contain;border:2px solid #facc15;border-radius:4px;background:#b45309">`;
   else if(k==="site")sw=`<i class="sw" style="background:#2563eb;color:#fff;font:700 9px/16px sans-serif;padding:0 4px;border-radius:4px">${t(UI.site)}</i>`;
   else if(k==="move")sw=`<i class="sw" style="border-top:3px dashed #7a4fd1;width:24px"></i>`;
-  else if(k==="rfi")sw=`<svg width="14" height="22" viewBox="0 0 30 52"><rect width="30" height="52" rx="2" fill="#111"/><path d="M7 6v40M15 6v40M23 6v40" stroke="#fff" stroke-width="3"/><rect x="11" y="14" width="8" height="24" fill="#fff"/></svg>`;
-  else if(k==="hole")sw=`<svg width="26" height="14" viewBox="0 0 70 30"><ellipse cx="35" cy="15" rx="31" ry="11" fill="none" stroke="#16a34a" stroke-width="5"/></svg>`;
+  else if(k==="drop")sw=`<img class="sw" src="img/r6/icons/markers/drop.png" alt="" style="width:20px;height:20px;object-fit:contain;background:#fff;border-radius:4px">`;
+  else if(k==="hole"||k==="🔄")sw=`<img class="sw" src="img/r6/icons/markers/hole.png" alt="" style="width:26px;height:18px;object-fit:contain;">`;
   else if(k==="floor")sw=`<i class="sw" style="border-top:3px dotted #dc2626;width:24px"></i>`;
   else if(LGI[k])sw=`<img class="sw" src="img/r6/icons/${LGI[k]}" alt="" style="width:22px;height:22px;object-fit:contain;background:#fff;border:2px solid ${c||"#555"};border-radius:5px;padding:1px;box-sizing:border-box">`;
   else if(c)sw=`<i class="sw" style="background:${c};color:#fff;font:700 9px/16px monospace;padding:0 3px;border-radius:4px">${k}</i>`;

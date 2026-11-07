@@ -4,12 +4,12 @@ Extracted from *Stream Strats 4 Fun* (template page + map slides), 07.11.2026.
 
 ## icons/operators/
 75 operator icons named by operator (`capitao.png`, `tubarao.png`, `solid-snake.png`, …; accents dropped, spaces → dashes).
-Identified by matching against the `r6operators` icon set. `unknown-attacker.png` is one attacker icon that set doesn't have.
+Identified by matching against the `r6operators` icon set. 
 
 ## icons/gadgets/ and icons/utility/
 `gadget-01`–`gadget-75` (the two template gadget blocks, mixed sides) and `utility-01`–`utility-18` (general gadgets).
 Named copies were made by matching every deck icon against the named ability/gadget icons in github.com/danielwerg/r6data (same game art), then checked by eye. Unmatched and left numbered: gadget-17, 22, 37 (used on the Villa board for Denari tethers, unconfirmed), 38, 40, 42, 43, 45, 47, 52, 56, 61, 66, 67, 72, 74; utility-08, 10, 17.
-No defuser and no reinforced-wall icon in the deck: plant (PL) and reinforcements keep their drawings.
+Walls, holes, plant (from the orange block and the unframed markers): `utility/reinforcement.png` (the red-framed box with bars, first sorted as an attacker icon) · `utility/defuser.png` (utility-10, orange) · `markers/head-hole.png` (marker-03) · `markers/feet-hole.png` (marker-04) · `markers/drop.png` (marker-05) · `markers/hole.png` (the orange ⊕ shape, re-drawn from the deck's FF9900 shape) · `markers/breach.png` (the orange 8-point star, re-drawn).
 
 | Deck file | Named copy |
 |---|---|
@@ -100,4 +100,4 @@ One PNG per map (2015×864), all floors side by side as on the slides.
 - TR → the trap owner's gadget (`TRAPG`): Thorn razorbloom-shell · Fenrir f-natt-dread-mine · Kapkan entry-denial-device · Frost welcome-mat · Lesion gu-mines · Ela grzmot-mine · Melusi banshee-sonic-defense (owner from the label, else from the strat's tokens).
 - Any other named gadget: glyph type `"@<name>"`, e.g. `G("g",1,"@kiba-barrier",x,y)`.
 - RFE (electrified) badge: shock-wire, or rtila-electroclaw if the strat has Kaid and no Bandit.
-- RF/RFE wall highlights, holes (HH/FH/RT) and PL keep their drawings (no deck icon).
+- Walls / holes / plant: RF, RFE, RV, RH → reinforcement icon on the wall (turned for vertical walls; RFE adds the shock-wire badge) · RT, HV, HH2, HS → hole ⊕ · HH head-hole · FH feet-hole · DR drop arrow · SB breach star · PL defuser.

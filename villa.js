@@ -6,7 +6,7 @@ FLOORS.v2={label:"2F",img:"img/villa-2f.png",w:1125,h:1521,vb:[0,40,1125,1470],m
 UI.floors.v2=["2F","2Э"];
 Object.assign(UI,{p_villa:["Villa defence","Защита Villa"]});
 MAPS.push({id:"villa",icon:"🏛️",name:"Villa",sub:["2F Aviator / Games · defence setup","2F Aviator / Games · сетап защиты"],rec:["def 2/7 · att 3/7","защ 2/7 · ат 3/7"]});
-LEGEND.push(["rfi",["Reinforced wall (as in the drawing)","Укреплённая стена (как на схеме)"]],["hole",["Hole / rotate in a soft wall","Дыра / ротейт в мягкой стене"]]);
+/* walls, holes and plant use the shared legend (deck icons) */
 
 /* deck icon glyph: IC(phase, icon path under img/r6/icons, x, y, label, border colour) */
 const IC=(ph,src,x,y,lab,c)=>({k:"g",f:"v2",ph,t:"IC",x,y,l:src+(lab?"|"+lab:""),c});
