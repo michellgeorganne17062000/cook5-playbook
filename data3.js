@@ -1,5 +1,5 @@
 /* [COOK5] Playbook — Calypso Casino defence. Every text is [English, Russian].
-   Source: Mint's Calypso Casino defence guide (youtube V7GoMe-ZUQ8) + his top-down screenshots (2F, basement, Blackjack/Poker). */
+   Source: Mint's Calypso Casino defence guide (youtube V7GoMe-ZUQ8) + his top-down screenshots for all 4 sites. */
 Object.assign(UI,{p_cal:["Calypso defence","Защита Calypso"]});
 MAPS.push({id:"cal",icon:"🎰",name:"Calypso Casino",sub:["4 sites · defence setups","4 точки · сетапы защиты"],rec:["def 11/14 · att 7/14","защ 11/14 · ат 7/14"]});
 
@@ -16,10 +16,10 @@ Object.assign(KPOS,{
      ["sanya",["4 · Roulette / Poker (eyes on Lobby)","4 · Roulette / Poker (смотрит Lobby)"],"Maestro* / Echo / Valkyrie"],
      ["dima",["5 · Betting side, behind the bar rotate","5 · Сторона Betting, ротейт за баром"],"Thorn / Castle / Ela / Denari / Pulse"]],
  ct:[["roman",["1 · Wine closet / windows","1 · Wine / окна"],"Wamai / Azami / Jäger"],
-     ["nikita",["2 · Janitor stairs","2 · Janitor stairs"],"Warden / Smoke / Bandit*"],
+     ["sanya",["2 · Roulette (Castles, holds Lobby + hatch drop)","2 · Roulette (Castle, держит Lobby и спуск через люк)"],"Castle / Ela / Thorn"],
      ["dima",["3 · Registration hall / Tequila window","3 · Registration hall / окно Tequila"],"Valkyrie / Mira / Pulse"],
-     ["sanya",["4 · Roulette","4 · Roulette"],"Castle / Ela / Thorn"],
-     ["renat",["5 · Site centre (bridge)","5 · Центр точки (связка)"],"Denari* / Kaid / Pulse"]],
+     ["nikita",["4 · Janitor stairs","4 · Janitor stairs"],"Warden / Smoke / Mute"],
+     ["renat",["5 · Site centre (bridge)","5 · Центр точки (связка)"],"Denari* / Pulse / Kaid"]],
  c2:[["roman",["1 · Aqua side (time waste)","1 · Сторона Aqua (тянет время)"],"Smoke / Tachanka (not Goyo)"],
      ["nikita",["2 · Kitchen (wall denial)","2 · Kitchen (денай стен)"],"Bandit / Kaid / Warden"],
      ["renat",["3 · Barista / Coffee","3 · Barista / Coffee"],"Azami / Clash / Denari"],
@@ -95,6 +95,8 @@ const CAL=[
  {h:["Defence: 1F Bar / Betting","Защита: 1F Bar / Betting"],tag:["pick #3 · Castle","выбор №3 · Castle"],side:"d"},
  {p:["Horizontal hold built on Castle: we push into Roulette and Bathroom instead of walling them off, and stop every plant from two sides.","Горизонтальная оборона на Castle: заходим в Roulette и Bathroom вместо того, чтобы отгородиться стенами, и срываем каждый плант с двух сторон."]},
  {kpos:"ct"},
+ {shots:[["cal-t.jpg",["Mint's top-down: all 5 spots","Схема Mint: все 5 позиций"]],["cal-t-p1.jpg",["1 · Wine · Roman","1 · Wine · Roman"]],["cal-t-p2.jpg",["2 · Roulette · Sanya","2 · Roulette · Sanya"]],["cal-t-p3.jpg",["3 · Registration · Dima","3 · Registration · Dima"]],["cal-t-p4.jpg",["4 · Janitor stairs · Nikita","4 · Janitor stairs · Nikita"]],["cal-t-p5.jpg",["5 · Site centre · Renat","5 · Центр точки · Renat"]]]},
+ {note:["Layout: 1 Wine top (windows, north spawn outside) · 4 Janitor stairs top-right · 5 site centre left of the bar · 3 Registration hall left · 2 Roulette bottom-middle. Arrows from 5: drop the hatch and flank. Numbers follow Mint's drawing (his voice-over counts Roulette as 4 and the stairs as 2).","Расположение: 1 Wine сверху (окна, снаружи северный респ) · 4 Janitor stairs справа сверху · 5 центр точки слева от бара · 3 Registration hall слева · 2 Roulette снизу в центре. Стрелки от 5: спуск через люк и фланг. Номера как на схеме Mint (в голосе он называет Roulette четвёртой, а лестницу второй)."]},
  {h:["Reinforce & holes","Укрепления и дыры"]},
  {list:[["**Two Janitor walls**: the most important","**Две стены Janitor**: самые важные"],
   ["**Wine wall** + rotate: hug the windows (north spawn outside), no wallbangs from Janitor","**Стена Wine** + ротейт: стоим у окон (северный респ снаружи), без прострелов из Janitor"],
@@ -121,5 +123,5 @@ const CAL=[
  {note:["* Maestro for @sanya is our idea. Roman: not Goyo (0/3).","* Maestro для @sanya — наша идея. Роману: не Goyo (0/3)."]}
 ]}
 ];
-NEWS.unshift(["07 Nov","07 ноя",["Calypso Casino playbook: defence setups for all 4 sites, Mint's position screenshots for the basement, Blackjack / Poker and 2F","Плейбук Calypso Casino: сетапы защиты на все 4 точки, скриншоты позиций Mint для подвала, Blackjack / Poker и 2F"]]);
+NEWS.unshift(["07 Nov","07 ноя",["Calypso Casino playbook: defence setups for all 4 sites, Mint's position screenshots for every site","Плейбук Calypso Casino: сетапы защиты на все 4 точки, скриншоты позиций Mint по каждой точке"]]);
 SECTIONS.push(...CAL);
