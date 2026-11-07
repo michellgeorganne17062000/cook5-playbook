@@ -1,5 +1,5 @@
 /* [COOK5] Playbook — Calypso Casino defence. Every text is [English, Russian].
-   Source: Mint's Calypso Casino defence guide (youtube V7GoMe-ZUQ8) + his top-down screenshots (2F, basement). */
+   Source: Mint's Calypso Casino defence guide (youtube V7GoMe-ZUQ8) + his top-down screenshots (2F, basement, Blackjack/Poker). */
 Object.assign(UI,{p_cal:["Calypso defence","Защита Calypso"]});
 MAPS.push({id:"cal",icon:"🎰",name:"Calypso Casino",sub:["4 sites · defence setups","4 точки · сетапы защиты"],rec:["def 11/14 · att 7/14","защ 11/14 · ат 7/14"]});
 
@@ -14,7 +14,7 @@ Object.assign(KPOS,{
      ["renat",["2 · Secret / Supply → lower Aqua","2 · Secret / Supply → низ Aqua"],"Azami / Ela / Clash"],
      ["roman",["3 · Bathroom","3 · Bathroom"],"Mira / Smoke / Tachanka"],
      ["sanya",["4 · Roulette / Poker (eyes on Lobby)","4 · Roulette / Poker (смотрит Lobby)"],"Maestro* / Echo / Valkyrie"],
-     ["dima",["5 · Betting side, behind the bar rotate","5 · Сторона Betting, ротейт за баром"],"Thorn / Castle / Pulse"]],
+     ["dima",["5 · Betting side, behind the bar rotate","5 · Сторона Betting, ротейт за баром"],"Thorn / Castle / Ela / Denari / Pulse"]],
  ct:[["roman",["1 · Wine closet / windows","1 · Wine / окна"],"Wamai / Azami / Jäger"],
      ["nikita",["2 · Janitor stairs","2 · Janitor stairs"],"Warden / Smoke / Bandit*"],
      ["dima",["3 · Registration hall / Tequila window","3 · Registration hall / окно Tequila"],"Valkyrie / Mira / Pulse"],
@@ -76,6 +76,8 @@ const CAL=[
  {h:["Defence: 1F Blackjack / Poker","Защита: 1F Blackjack / Poker"],tag:["pick #2 · horizontal","выбор №2 · горизонталь"],side:"d"},
  {p:["Hard floor, so no C4s from below. Two easy plants once they open up: the default wall and the Lobby bar. Hold horizontally and don't give Secret or the Betting side for free.","Пол твёрдый, C4 снизу нет. Два простых планта, если атака вскроет стены: дефолтная стена и бар в Lobby. Держим горизонтально, не отдаём даром Secret и сторону Betting."]},
  {kpos:"cj"},
+ {shots:[["cal-j.jpg",["Mint's top-down: all 5 spots","Схема Mint: все 5 позиций"]],["cal-j-p1.jpg",["1 · Default wall · Nikita","1 · Дефолтная стена · Nikita"]],["cal-j-p2.jpg",["2 · Secret · Renat","2 · Secret · Renat"]],["cal-j-p3.jpg",["3 · Bathroom · Roman","3 · Bathroom · Roman"]],["cal-j-p4.jpg",["4 · Roulette / Poker · Sanya","4 · Roulette / Poker · Sanya"]],["cal-j-p5.jpg",["5 · Betting side · Dima","5 · Сторона Betting · Dima"]]]},
+ {note:["Layout: 1 default wall bottom-centre (blackjack room) · 2 Secret left · 3 Bathroom top-middle · 5 Betting side top · 4 Roulette / Poker right (purple table). Spot 5: Mint writes Thorn / Ela / Denari / Pulse, his icons show Castle instead of Pulse.","Расположение: 1 дефолтная стена снизу в центре (комната с блэкджеком) · 2 Secret слева · 3 Bathroom сверху в центре · 5 сторона Betting сверху · 4 Roulette / Poker справа (фиолетовый стол). Позиция 5: Mint пишет Thorn / Ela / Denari / Pulse, а на иконках вместо Pulse — Castle."]},
  {h:["Reinforce & holes","Укрепления и дыры"]},
  {list:[["**Both outside walls** (default wall)","**Обе внешние стены** (дефолтная стена)"],
   ["**Secret / Supply**: rotate + reinforce the other side. Like Ebox on Nighthaven: Grim or nade over the top → step out, step back in","**Secret / Supply**: ротейт + укрепить другую сторону. Как Ebox на Nighthaven: Grim или граната сверху → вышли через ротейт, вернулись"],
@@ -87,7 +89,7 @@ const CAL=[
  {list:[["Castle the outside window (contests Cigar), the Kitchen wall and the Lobby door; open the hatch","Castle на внешнее окно (контроль Cigar), стену Kitchen и дверь Lobby; люк открываем"],
   ["One in Aqua, one on the vert by the Kitchen wall, one on the vert by the Lobby door; other two in site","Один в Aqua, один на вертикали у стены Kitchen, один на вертикали у двери Lobby; двое на точке"],
   ["Shotgun the floor along the bridge and by the Lobby door to see the bar plant","Прострелить пол вдоль моста и у двери Lobby, чтобы видеть плант у бара"]]},
- {note:["* Maestro for @sanya is our idea (his best defender, 7/8), not the video's. No position screenshots for this site yet.","* Maestro для @sanya — наша идея (его лучший защитник, 7/8), не из видео. Скриншотов позиций по этой точке пока нет."]}
+ {note:["* Maestro for @sanya is our idea (his best defender, 7/8), not the video's.","* Maestro для @sanya — наша идея (его лучший защитник, 7/8), не из видео."]}
 ]},
 {id:"c-bet",map:"cal",icon:"🍷",num:"03",title:["Bar / Betting","Bar / Betting"],kind:"1F",blocks:[
  {h:["Defence: 1F Bar / Betting","Защита: 1F Bar / Betting"],tag:["pick #3 · Castle","выбор №3 · Castle"],side:"d"},
@@ -119,5 +121,5 @@ const CAL=[
  {note:["* Maestro for @sanya is our idea. Roman: not Goyo (0/3).","* Maestro для @sanya — наша идея. Роману: не Goyo (0/3)."]}
 ]}
 ];
-NEWS.unshift(["07 Nov","07 ноя",["Calypso Casino playbook: defence setups for all 4 sites, Mint's position screenshots for the basement and 2F","Плейбук Calypso Casino: сетапы защиты на все 4 точки, скриншоты позиций Mint для подвала и 2F"]]);
+NEWS.unshift(["07 Nov","07 ноя",["Calypso Casino playbook: defence setups for all 4 sites, Mint's position screenshots for the basement, Blackjack / Poker and 2F","Плейбук Calypso Casino: сетапы защиты на все 4 точки, скриншоты позиций Mint для подвала, Blackjack / Poker и 2F"]]);
 SECTIONS.push(...CAL);
