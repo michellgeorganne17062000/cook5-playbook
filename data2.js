@@ -6,7 +6,7 @@ Object.assign(UI,{
   soon:["More maps soon","Скоро новые карты"], soon2:["will be added later","добавим позже"],
   sections_n:["sections","разделов"], points:["points","пунктов"], open_map:["Open map","Открыть карту"],
   p_role:["Role","Роль"], p_rank:["Rank","Ранг"], p_ops:["Operators (rulebook)","Оперативники (свод правил)"],
-  p_habit:["Habit to fix","Над чем работать"], p_last:["Last evening · 06.11","Последний вечер · 06.11"],
+  p_habit:["Habit to fix","Над чем работать"], p_last:["Last team evening","Последний командный вечер"],
   p_trend:["K/D by evening","K/D по вечерам"], p_nh:["Nighthaven strats","Страты Nighthaven"], p_kafe:["Kafe defence","Защита Kafe"],
   att_main:["Attack main","Атака: основной"], att_back:["Attack backup","Атака: запасной"], def_main:["Defence main","Защита: основной"], def_back:["Defence backup","Защита: запасной"], stop:["Stop playing","Перестать играть"],
   spot:["Spot","Позиция"], ops:["Ops","Оперативники"], player:["Player","Игрок"], strat:["Strat","Страт"], op:["Op","Опер"]
@@ -174,24 +174,24 @@ const PROFILES={
  dima:{nick:"peacedim",alt:"",role:["Flex / IGL","Флекс / IGL"],rank:["Gold IV (was Gold II before 06.11)","Gold IV (до 06.11 — Gold II)"],
   ops:[["Rauora 9/18 (50%)",["Grim 14/35 (backup only) · Blitz 6/9 prov.","Grim 14/35 (только запасной) · Blitz 6/9 предв."],"Kaid / Bandit 9/13 (69%)","Thorn 5/12",["Grim as default · Wamai 1/4","Grim по умолчанию · Wamai 1/4"]]],
   habit:["No first contact before your utility is out. Target: first of the team to die ≤20% (14% on 02.11, 22% on 06.11).","Никакого первого контакта, пока не потрачена утилита. Цель: умирать первым ≤20% (14% 02.11, 22% 06.11)."],
-  last:[["8","28–49","0.57","5–5","22%"]],trend:[1.21,0.93,1.18,0.76,1.41,0.57]},
+  last:[["6","27–22","1.23","4–4","17%"]],lastDate:"10.11",trend:[1.21,0.93,1.18,0.76,1.41,0.57,1.23]},
  renat:{nick:"rena1ss4nce_",alt:"",role:["Entry / roamer","Энтри / роумер"],rank:["Gold IV (was Gold II before 06.11)","Gold IV (до 06.11 — Gold II)"],
   ops:[["Blackbeard 30/61 (49%)",["Solid Snake 16/32 (situational) · Lion 3/3","Solid Snake 16/32 (ситуативно) · Lion 3/3"],"Azami 14/30 (47%)","Denari 4/7",["Dokkaebi · Sens 0/2 · Ying 0/3","Dokkaebi · Sens 0/2 · Ying 0/3"]]],
   habit:["Snake only 1–2 rounds per match, called in the lobby so Roman takes Blackbeard. You were the bright spot on 06.11 — if you lead openings again, you join the entry pair.","Snake — только 1–2 раунда за матч и объявлять в лобби, чтобы Роман взял Blackbeard. 06.11 ты был лучшим — если снова выиграешь больше всех первых дуэлей, встаёшь в пару открывающих."],
-  last:[["8","55–42","1.31","5–2","10%"]],trend:[1.54,1.13,1.24,1.63,0.79,1.31]},
+  last:[["6","24–20","1.20","5–2","14%"]],lastDate:"10.11",trend:[1.54,1.13,1.24,1.63,0.79,1.31,1.20]},
  roman:{nick:"D8_gRom",alt:"",role:["Trader / shallow roam","Трейдер / ближний роум"],rank:["Gold III (was Gold I before 06.11)","Gold III (до 06.11 — Gold I)"],
   ops:[[["Glaz 21/43 (49%) — 6/17 since 30.10, watch it","Glaz 21/43 (49%) — с 30.10 6/17, следить"],["Ace 4/5 · Blackbeard in Snake rounds","Ace 4/5 · Blackbeard в раундах Snake"],"Wamai 6/12 (50%)","Mira 3/3",["**Sledge 5/20 (25%)** · Osa as default · Goyo 0/3","**Sledge 5/20 (25%)** · Osa по умолчанию · Goyo 0/3"]]],
   habit:["On defence, no first-angle peek before info: 6 of your 8 first deaths on 06.11 were on defence. On attack you open with Dima.","В защите не выглядывать на первый угол без информации: 6 из 8 первых смертей 06.11 — в защите. В атаке ты открываешь вместе с Димой."],
-  last:[["8","32–37","0.86","3–8","22%"]],trend:[1.71,0.93,0.81,0.97,2.18,0.86]},
+  last:[["6","25–16","1.56","2–3","8%"]],lastDate:"10.11",trend:[1.71,0.93,0.81,0.97,2.18,0.86,1.56]},
  nikita:{nick:"D8_Mr.White",alt:"",role:["Hard breach / anchor","Хард-брич / анкер"],rank:["Silver III (was Silver II before 06.11)","Silver III (до 06.11 — Silver II)"],
   ops:[[["Ace / Thermite 6/18 — kept for the role","Ace / Thermite 6/18 — ради роли"],"Kali 4/7 · Ying 3/3","**Bandit 7/8 (88%)**","Fenrir 3/5",["Thatcher 5/14 · Montagne · Hibana + Twitch 0/7 · Kapkan 1/5","Thatcher 5/14 · Montagne · Hibana + Twitch 0/7 · Kapkan 1/5"]]],
   habit:["Your Bandit is our best defender stat — play it every Nighthaven / Lair defence. Call your utility (Villa R1 team-kill).","Твой Bandit — лучшая цифра команды в защите, бери его на каждой защите Nighthaven / Lair. Объявляй утилиту (тимкилл на Villa R1)."],
-  last:[["6","32–34","0.94","3–4","11%"]],trend:[1.06,0.97,0.70,1.10,1.00,0.94]},
+  last:null,lastNote:["Didn't play on 10.11. Last team evening 06.11.","10.11 не играл. Последний командный вечер — 06.11."],trend:[1.06,0.97,0.70,1.10,1.00,0.94]},
  sanya:{nick:"D8_StereoSanya",alt:"",role:["Support / anchor / planter","Саппорт / анкер / плантер"],rank:["Copper IV (29.10 baseline)","Copper IV (срез 29.10)"],
   ops:[["Fuze 6/9 prov.",["Gridlock 3/6 · Nomad on the Nighthaven plans","Gridlock 3/6 · Nomad в планах Nighthaven"],"**Maestro 7/8**","Castle 1/1 · Kapkan 1/1",["Mute 1/6 · Smoke as default 5/12","Mute 1/6 · Smoke по умолчанию 5/12"]]],
   habit:["Anchor, not first contact (first to die in 37% of rounds on 02.11). Call your utility (team-killed Renat on Coastline R3).","Анкер, а не первый контакт (умирал первым в 37% раундов 02.11). Объявляй утилиту (тимкилл Рената на Coastline R3)."],
-  last:null,lastNote:["Didn't play on 06.11. Baseline 29.10: ranked K/D 0.41, ESR 0.22 — target K/D 0.60, ≤4 deaths per match.","06.11 не играл. Срез 29.10: K/D в рейтинге 0.41, ESR 0.22 — цель K/D 0.60, ≤4 смертей за матч."],trend:null}
+  last:[["5","14–19","0.74","4–3","13%"]],lastDate:"10.11",trend:[0.65,0.55,0.76,0.42,0.63,0.74],trendDates:["19.10","23.10","26.10","30.10","02.11","10.11"]}
 };
-const EVENINGS=["19.10","23.10","26.10","30.10","02.11","06.11"];
+const EVENINGS=["19.10","23.10","26.10","30.10","02.11","06.11","10.11"];
 NEWS.unshift(["07 Nov","07 ноя",["[COOK5] Playbook: rulebook (7 sections), Kafe defence for all 4 sites, player profiles","[COOK5] Плейбук: свод правил (7 разделов), защита Kafe на все 4 точки, профили игроков"]]);
 SECTIONS.push(...RULES,...KAFE);

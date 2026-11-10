@@ -108,7 +108,7 @@ function homeOv(){
   return `<label class="search"><span>🔍</span><input id="q" type="search" placeholder="${esc(t(UI.search))}" autocomplete="off"></label>
   <div id="results" hidden></div>
   <div id="cards" style="display:grid;gap:14px">
-  ${kpiTiles([["21–28",UI.k_games],["42%",UI.k_att,42,"a"],["55%",UI.k_def,55,"d"],["0–8",UI.k_last,0,"bad"]])}
+  ${kpiTiles([["24–31",UI.k_games],["41%",UI.k_att,41,"a"],["56%",UI.k_def,56,"d"],["3–3",UI.k_last]])}
   ${goalsBox()}
   ${playersBox()}
   <div class="box acc"><h3>${t(["Latest review","Последний разбор"])}</h3><div class="rows">${revRow(last)}</div></div>
@@ -130,7 +130,7 @@ function goalsBox(){return `<div class="box acc"><h3>🎯 ${t(UI.goals)}</h3>${G
 function miniSpark(v,w){if(!v)return "";const W=120,H=30,mx=Math.max(...v,1.2),mn=Math.min(...v,0.8),y=x=>H-3-(x-mn)/(mx-mn)*(H-6),pts=v.map((x,i)=>[3+i*(W-6)/(EVENINGS.length-1),y(x)]);
   return `<svg class="ms" viewBox="0 0 ${W} ${H}" aria-hidden="true"><line x1="0" x2="${W}" y1="${y(1)}" y2="${y(1)}"/><polyline style="stroke:var(--${w})" points="${pts.map(p=>p.map(n=>n.toFixed(1)).join(",")).join(" ")}"/><circle style="fill:var(--${w})" cx="${pts[pts.length-1][0].toFixed(1)}" cy="${pts[pts.length-1][1].toFixed(1)}" r="3"/></svg>`}
 function playersBox(){
-  return `<div class="box"><h3>${t(UI.pl_t)}</h3><div class="pcs">${WHO.map(w=>{const P=PROFILES[w],L=P.last?{date:"06.11",row:P.last[0],trend:P.trend}:LAST_SEEN[w];
+  return `<div class="box"><h3>${t(UI.pl_t)}</h3><div class="pcs">${WHO.map(w=>{const P=PROFILES[w],L=P.last?{date:P.lastDate||"06.11",row:P.last[0],trend:P.trend}:LAST_SEEN[w];
     const r=L?L.row:null,kd=r?+r[2]:null;
     return `<a class="pc ${w}" href="#/p/${w}"><span class="av ${w}">${PN[w][0]}</span><span class="pn"><b>${PN[w]}</b><small>${fmt(P.role)} · ${esc(t(P.rank)).replace(/ \(.*/,"")}</small></span>
      ${r?`<span class="ps"><span><b class="${kd>=1?"good":"bad"}">${esc(r[2])}</b><i>${t(UI.pl_kd)} ${L.date}</i></span><span><b>${esc(r[3])}</b><i>${t(UI.pl_open)}</i></span><span><b>${esc(r[4])}</b><i>${t(UI.pl_first)}</i></span></span>${miniSpark(L.trend,w)}`:`<span class="note">—</span>`}
@@ -247,18 +247,18 @@ function personal(w){
 }
 
 /* ---------- profile ---------- */
-function spark(v){const w=260,h=60,mx=Math.max(2,...v),pts=v.map((x,i)=>[14+i*(w-28)/(v.length-1),h-8-(x/mx)*(h-24)]);
-  return `<svg viewBox="0 0 ${w} ${h+16}" class="spark"><line x1="10" x2="${w-10}" y1="${h-8-(1/mx)*(h-24)}" y2="${h-8-(1/mx)*(h-24)}" class="one"/><polyline points="${pts.map(p=>p.join(",")).join(" ")}"/>${pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="3.5"/><text x="${p[0]}" y="${p[1]-8}">${v[i].toFixed(2)}</text><text class="d" x="${p[0]}" y="${h+12}">${EVENINGS[i]}</text>`).join("")}</svg>`}
+function spark(v,dates){dates=dates||EVENINGS;const w=260,h=60,mx=Math.max(2,...v),pts=v.map((x,i)=>[14+i*(w-28)/(v.length-1),h-8-(x/mx)*(h-24)]);
+  return `<svg viewBox="0 0 ${w} ${h+16}" class="spark"><line x1="10" x2="${w-10}" y1="${h-8-(1/mx)*(h-24)}" y2="${h-8-(1/mx)*(h-24)}" class="one"/><polyline points="${pts.map(p=>p.join(",")).join(" ")}"/>${pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="3.5"/><text x="${p[0]}" y="${p[1]-8}">${v[i].toFixed(2)}</text><text class="d" x="${p[0]}" y="${h+12}">${dates[i]||""}</text>`).join("")}</svg>`}
 const PTABS=[["ov",UI.overview],["ops",UI.p_ops],["strats",UI.strats_t],["rev",UI.rev_my]];
 function profile(w,tab){const P=PROFILES[w];if(!P)return home("players");
   tab=PTABS.some(x=>x[0]===tab)?tab:"ov";const o=P.ops[0];
   const tabs=PTABS.map(([k,l])=>["#/p/"+w+(k==="ov"?"":"/"+k),k==="ops"?t(["Operators","Оперативники"]):t(l),k===tab]);
-  let body="";
+  let body="";const LS=P.last?{date:P.lastDate||"06.11",rows:P.last}:LAST_SEEN[w]?{date:LAST_SEEN[w].date,rows:[LAST_SEEN[w].row]}:null;
   if(tab==="ov")body=`<div class="phead"><span class="av big ${w}">${PN[w][0]}</span><div><b>${PN[w]}</b><small>${esc(P.nick)}</small><span class="p ${w}">${t(P.role)}</span></div></div>
-    ${kpiTiles([[t(P.rank).replace(/ \(.*/,""),UI.p_rank],P.last?[P.last[0][2],"K/D · 06.11",0,+P.last[0][2]>=1?"good":"bad"]:["0.41","K/D · 29.10",0,"bad"]])}
+    ${kpiTiles([[t(P.rank).replace(/ \(.*/,""),UI.p_rank],LS?[LS.rows[0][2],"K/D · "+LS.date,0,+LS.rows[0][2]>=1?"good":"bad"]:["0.41","K/D · 29.10",0,"bad"]])}
     <div class="box acc"><h3>${t(UI.p_habit)}</h3><p class="habit">${fmt(P.habit)}</p></div>
-    <div class="box"><h3>${t(UI.p_last)}</h3>${P.last?`<div class="tw"><table><thead><tr><th>${RU()?"Игр":"Games"}</th><th>K–D</th><th>K/D</th><th>${RU()?"Первые дуэли":"Openings"}</th><th>${RU()?"Умер первым":"First to die"}</th></tr></thead><tbody>${P.last.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`:`<p class="note">${fmt(P.lastNote)}</p>`}</div>
-    ${P.trend?`<div class="box d"><h3>${t(UI.p_trend)}</h3>${spark(P.trend)}</div>`:""}`;
+    <div class="box"><h3>${t(UI.p_last)}${LS?" · "+LS.date:""}</h3>${P.lastNote&&!P.last?`<p class="note">${fmt(P.lastNote)}</p>`:""}${LS?`<div class="tw"><table><thead><tr><th>${RU()?"Игр":"Games"}</th><th>K–D</th><th>K/D</th><th>${RU()?"Первые дуэли":"Openings"}</th><th>${RU()?"Умер первым":"First to die"}</th></tr></thead><tbody>${LS.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`:""}</div>
+    ${P.trend?`<div class="box d"><h3>${t(UI.p_trend)}</h3>${spark(P.trend,P.trendDates)}</div>`:""}`;
   if(tab==="ops")body=`<div class="box"><h3>${t(UI.p_ops)}</h3><div class="tw"><table><tbody>${[[UI.att_main,o[0],"a"],[UI.att_back,o[1],"a"],[UI.def_main,o[2],"d"],[UI.def_back,o[3],"d"],[UI.stop,o[4],"bad"]].map(r=>`<tr><th><span class="tag ${r[2]}">${t(r[0])}</span></th><td>${fmt(r[1])}</td></tr>`).join("")}</tbody></table></div></div>`;
   if(tab==="strats"){
     const ord=DOCS.nh.order.map(id=>SECTIONS.find(x=>x.id===id)).filter(x=>x.strats).flatMap(x=>x.strats.split(","));
