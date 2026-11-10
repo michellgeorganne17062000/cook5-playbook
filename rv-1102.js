@@ -1,4 +1,4 @@
-/* Session review 02.11.2026 — text from project docs session-2026-11-02(.md / -ru.md). Opponent line-up tables are kept in the project docs only. */
+/* Session review 02.11.2026 — text from project docs session-2026-11-02(.md / -ru.md). */
 REV_MD["2026-11-02"]={en:String.raw`# Session review: 02.11.2026, compared with earlier evenings
 
 Data: Tracker Network, read 04.11.2026. Sources: per-match stats for every player, per-round side, operator and result, and the full kill feed of every round in the 7 team games of 02.11. Opponent ranks are in section 10.
@@ -196,6 +196,78 @@ Our ranks as of 04.11: Roman Gold I, Dima Gold II, Renat Gold II, Nikita Silver 
 - **Kafe's 3/3 attack needs a caveat:** it was the weakest lobby of the night (average Silver II, with a Copper II who went 0–4).
 - **Kanal was an even ranked lobby** (both sides average Gold IV), and we lost it on attack (0/3). Lcd_ABRASIVE went 9–3, including 4 kills in R3.
 - **Oregon:** apart from Az_official (unranked, 9–4), their players went 1–6 to 2–6, and they team-killed in R6.
+
+### Opponent line-ups by match
+
+**1. Kanal 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Lcd_ABRASIVE | Gold III | 9–3 | 3.00 | 55.6% | 1–0 |
+| macbarna3 | Gold II | 8–4 | 2.00 | 62.5% | 2–0 |
+| Kiskek12 | Silver II | 4–4 | 1.00 | 100.0% | 1–2 |
+| Kyroniee | Gold III | 3–4 | 0.75 | 66.7% | 0–0 |
+| DINGLqw | Gold III | 2–3 | 0.67 | 50.0% | 0–0 |
+
+**2. Kafe 4:1**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| nitelightin | Gold III | 7–4 | 1.75 | 14.3% | 1–0 |
+| Mushrooms_DK | Silver II | 5–4 | 1.25 | 80.0% | 2–0 |
+| TriangleHead. | Gold II | 5–5 | 1.00 | 60.0% | 1–0 |
+| zVenomm | Gold IV | 1–3 | 0.33 | 0.0% | 0–0 |
+| dercrazymacho04 | Copper II | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**3. Nighthaven 4:2**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| IvanPuskin | Gold II | 5–4 | 1.25 | 40.0% | 0–1 |
+| SEZ.G2 | Gold II | 5–5 | 1.00 | 40.0% | 2–1 |
+| B.I.D. | Gold III | 2–5 | 0.40 | 0.0% | 0–0 |
+| Ganondorftotk | Gold II | 2–6 | 0.33 | 0.0% | 0–0 |
+| Prussakas | Gold IV | 2–6 | 0.33 | 100.0% | 2–0 |
+
+**4. Coastline 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Trystanrulzz | Gold II | 8–3 | 2.67 | 50.0% | 0–0 |
+| DontSwingSilly | Platinum IV | 8–4 | 2.00 | 75.0% | 1–1 |
+| Xx.GIA.xX | Unranked | 4–5 | 0.80 | 0.0% | 1–2 |
+| Czaku1234 | Unranked | 3–5 | 0.60 | 66.7% | 1–0 |
+| ITZJasLen | Gold IV | 2–4 | 0.50 | 0.0% | 0–0 |
+
+**5. Lair 4:2**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| shushmate.SYM | Platinum V | 9–5 | 1.80 | 33.3% | 2–1 |
+| M1zzyyy. | Platinum V | 4–5 | 0.80 | 75.0% | 0–2 |
+| Umpyre1282 | Silver I | 3–4 | 0.75 | 100.0% | 0–1 |
+| QuallBotta | Platinum V | 1–4 | 0.25 | 100.0% | 0–0 |
+| bayazit_kayra | Unranked | 1–6 | 0.17 | 100.0% | 0–0 |
+
+**6. Oregon 4:2**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Az_official | Unranked | 9–4 | 2.25 | 66.7% | 1–2 |
+| IIArvinII | Platinum IV | 2–5 | 0.40 | 50.0% | 2–0 |
+| HerrHackmann | Gold IV | 2–6 | 0.33 | 50.0% | 0–1 |
+| HerrNigl | Platinum IV | 2–6 | 0.33 | 0.0% | 0–1 |
+| Zain_U345 | Silver III | 1–6 | 0.17 | 0.0% | 0–0 |
+
+**7. Bank 4:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Weeg. | Gold III | 10–7 | 1.43 | 40.0% | 3–1 |
+| dalobalo | Platinum V | 7–5 | 1.40 | 42.9% | 0–0 |
+| J_Guistantes | Platinum V | 6–7 | 0.86 | 100.0% | 2–0 |
+| Krzyyum | Emerald IV | 6–8 | 0.75 | 66.7% | 1–2 |
+| Dirs696969 | Unranked | 1–9 | 0.11 | 100.0% | 0–0 |
 `,ru:String.raw`# Разбор вечера 02.11.2026 в сравнении с прошлыми вечерами
 
 Данные: Tracker Network, сняты 04.11.2026 (ранги соперников — раздел 10). По каждому игроку: статистика матчей, а также сторона, оперативник и результат каждого раунда. По 7 командным играм 02.11 — полная лента убийств каждого раунда.
@@ -393,4 +465,76 @@ K/D по вечерам (19.10 › 23.10 › 26.10 › 30.10 › 02.11):
 - **3/3 в атаке на Kafe — с оговоркой:** это было самое слабое лобби вечера (в среднем Silver II, Copper II сыграл 0–4).
 - **Kanal — равное рейтинговое лобби** (обе стороны в среднем Gold IV), проиграно в атаке (0/3). Lcd_ABRASIVE сыграл 9–3, из них 4 убийства в Р3.
 - **Oregon:** кроме Az_official (без ранга, 9–4), их игроки сыграли от 1–6 до 2–6, а в Р6 убили своего.
+
+### Составы соперников по матчам
+
+**1. Kanal 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Lcd_ABRASIVE | Gold III | 9–3 | 3.00 | 55.6% | 1–0 |
+| macbarna3 | Gold II | 8–4 | 2.00 | 62.5% | 2–0 |
+| Kiskek12 | Silver II | 4–4 | 1.00 | 100.0% | 1–2 |
+| Kyroniee | Gold III | 3–4 | 0.75 | 66.7% | 0–0 |
+| DINGLqw | Gold III | 2–3 | 0.67 | 50.0% | 0–0 |
+
+**2. Kafe 4:1**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| nitelightin | Gold III | 7–4 | 1.75 | 14.3% | 1–0 |
+| Mushrooms_DK | Silver II | 5–4 | 1.25 | 80.0% | 2–0 |
+| TriangleHead. | Gold II | 5–5 | 1.00 | 60.0% | 1–0 |
+| zVenomm | Gold IV | 1–3 | 0.33 | 0.0% | 0–0 |
+| dercrazymacho04 | Copper II | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**3. Nighthaven 4:2**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| IvanPuskin | Gold II | 5–4 | 1.25 | 40.0% | 0–1 |
+| SEZ.G2 | Gold II | 5–5 | 1.00 | 40.0% | 2–1 |
+| B.I.D. | Gold III | 2–5 | 0.40 | 0.0% | 0–0 |
+| Ganondorftotk | Gold II | 2–6 | 0.33 | 0.0% | 0–0 |
+| Prussakas | Gold IV | 2–6 | 0.33 | 100.0% | 2–0 |
+
+**4. Coastline 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Trystanrulzz | Gold II | 8–3 | 2.67 | 50.0% | 0–0 |
+| DontSwingSilly | Platinum IV | 8–4 | 2.00 | 75.0% | 1–1 |
+| Xx.GIA.xX | без ранга | 4–5 | 0.80 | 0.0% | 1–2 |
+| Czaku1234 | без ранга | 3–5 | 0.60 | 66.7% | 1–0 |
+| ITZJasLen | Gold IV | 2–4 | 0.50 | 0.0% | 0–0 |
+
+**5. Lair 4:2**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| shushmate.SYM | Platinum V | 9–5 | 1.80 | 33.3% | 2–1 |
+| M1zzyyy. | Platinum V | 4–5 | 0.80 | 75.0% | 0–2 |
+| Umpyre1282 | Silver I | 3–4 | 0.75 | 100.0% | 0–1 |
+| QuallBotta | Platinum V | 1–4 | 0.25 | 100.0% | 0–0 |
+| bayazit_kayra | без ранга | 1–6 | 0.17 | 100.0% | 0–0 |
+
+**6. Oregon 4:2**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Az_official | без ранга | 9–4 | 2.25 | 66.7% | 1–2 |
+| IIArvinII | Platinum IV | 2–5 | 0.40 | 50.0% | 2–0 |
+| HerrHackmann | Gold IV | 2–6 | 0.33 | 50.0% | 0–1 |
+| HerrNigl | Platinum IV | 2–6 | 0.33 | 0.0% | 0–1 |
+| Zain_U345 | Silver III | 1–6 | 0.17 | 0.0% | 0–0 |
+
+**7. Bank 4:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Weeg. | Gold III | 10–7 | 1.43 | 40.0% | 3–1 |
+| dalobalo | Platinum V | 7–5 | 1.40 | 42.9% | 0–0 |
+| J_Guistantes | Platinum V | 6–7 | 0.86 | 100.0% | 2–0 |
+| Krzyyum | Emerald IV | 6–8 | 0.75 | 66.7% | 1–2 |
+| Dirs696969 | без ранга | 1–9 | 0.11 | 100.0% | 0–0 |
 `};

@@ -1,4 +1,4 @@
-/* Duo review 04.11.2026 (Dima + Renat) — text from project docs session-2026-11-04(.md / -ru.md). Opponent line-up tables are kept in the project docs only. */
+/* Duo review 04.11.2026 (Dima + Renat) — text from project docs session-2026-11-04(.md / -ru.md). */
 REV_MD["2026-11-04"]={en:String.raw`# Session review: 04.11.2026, Dima and Renat as a duo
 
 Data: Tracker Network, read 07.11.2026. Sources: per-match stats for Dima and Renat, per-round side, operator and result, and the full kill feed of every round in their 10 ranked games of 04.11 (10:51–14:17 Moscow time). Opponent ranks are in section 10.
@@ -174,6 +174,108 @@ Source: Tracker match scoreboards, with rank at the time of the match. In the fi
 - **Fortress 4:1 was the best result:** the opponents averaged Gold I, and Dima went 6–1.
 - **Nighthaven (2) 5:3 came against an average of Gold II** with three Gold I players, and was won in overtime.
 - **The first three losses can't be judged on lobby strength.** Ranks are not shown. ric0.0 (8–1) and OpaHatGepeekt (7–1) on Kafe played well above a normal Gold lobby, but there is no rank to confirm it.
+
+### Opponent line-ups by match
+
+**1. Oregon 1:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Daborabo | not shown | 6–2 | 3.00 | 33.3% | 1–0 |
+| Mr.MoMA | not shown | 5–3 | 1.67 | 0.0% | 0–1 |
+| Icldntfindanick | not shown | 5–3 | 1.67 | 40.0% | 1–2 |
+| SieKi27 | not shown | 5–4 | 1.25 | 80.0% | 0–0 |
+| IsraelMD | not shown | 2–3 | 0.67 | 50.0% | 0–0 |
+
+**2. Kafe 0:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| ric0.0 | not shown | 8–1 | 8.00 | 62.5% | 0–0 |
+| OpaHatGepeekt | not shown | 7–1 | 7.00 | 57.1% | 1–0 |
+| MissingoChibi | Silver V | 2–2 | 1.00 | 100.0% | 0–0 |
+| blizeria.VP | Gold I | 1–4 | 0.25 | 0.0% | 0–1 |
+| BotCheck | Silver IV | 1–4 | 0.25 | 100.0% | 0–2 |
+
+**3. Oregon (2) 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| TBOi_DED | not shown | 8–3 | 2.67 | 62.5% | 1–0 |
+| LutfiPasha | not shown | 6–4 | 1.50 | 50.0% | 0–0 |
+| OneMagZeroKill | not shown | 4–3 | 1.33 | 75.0% | 0–1 |
+| davkuo | not shown | 4–4 | 1.00 | 75.0% | 0–1 |
+| Edvin_92squad | not shown | 3–5 | 0.60 | 66.7% | 1–2 |
+
+**4. Bank 4:2**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| LID0LF | Gold II | 9–5 | 1.80 | 44.4% | 1–1 |
+| ShakaDabaDoo | Gold III | 4–4 | 1.00 | 75.0% | 0–1 |
+| RawmelRichard69 | Gold III | 4–6 | 0.67 | 50.0% | 0–1 |
+| hxrdd | Gold V | 2–4 | 0.50 | 50.0% | 0–1 |
+| Lisa_Marie08 | Gold IV | 2–4 | 0.50 | 50.0% | 1–0 |
+
+**5. Nighthaven 4:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| NoTHeXiS | Gold V | 11–7 | 1.57 | 45.5% | 1–1 |
+| YOU...ez | Gold III | 8–7 | 1.14 | 37.5% | 2–0 |
+| echter_minion | Gold IV | 6–6 | 1.00 | 33.3% | 1–0 |
+| Inka160399 | Gold IV | 5–8 | 0.62 | 100.0% | 1–1 |
+| Junkyy dVz | Gold III | 4–6 | 0.67 | 100.0% | 1–1 |
+
+**6. Bank (2) 4:0**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| cor3y666 | Gold I | 2–4 | 0.50 | 0.0% | 0–0 |
+| Soma.ST | Gold V | 2–4 | 0.50 | 50.0% | 0–1 |
+| Noe_l8 | Gold III | 2–4 | 0.50 | 0.0% | 1–0 |
+| BarDerg232 | Silver I | 2–4 | 0.50 | 50.0% | 0–1 |
+| Okiro_Buddha | Gold IV | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**7. Coastline 3:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Grombus92 | Gold III | 8–5 | 1.60 | 62.5% | 1–1 |
+| naibius54188 | Gold III | 7–4 | 1.75 | 28.6% | 1–1 |
+| MS_bernieballer | Gold IV | 6–4 | 1.50 | 50.0% | 1–1 |
+| the_quad | Silver I | 6–6 | 1.00 | 16.7% | 1–0 |
+| Rexctionz_ | Gold III | 5–5 | 1.00 | 60.0% | 2–0 |
+
+**8. Nighthaven (2) 5:3**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Mineigaa | Gold II | 7–6 | 1.17 | 100.0% | 0–2 |
+| Vaykah | Gold I | 7–7 | 1.00 | 71.4% | 1–2 |
+| nmesqbhx | Gold I | 6–8 | 0.75 | 66.7% | 1–0 |
+| A.D.O.N.I.SZ | Gold I | 3–7 | 0.43 | 100.0% | 0–0 |
+| Sprengt_Timmy | Silver I | 3–7 | 0.43 | 33.3% | 0–2 |
+
+**9. Lair 4:1**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Temu.spoit12 | Gold II | 6–4 | 1.50 | 50.0% | 1–0 |
+| Knocking-Master | Silver II | 3–4 | 0.75 | 100.0% | 0–1 |
+| X-Bushy-X | Gold IV | 3–5 | 0.60 | 66.7% | 0–2 |
+| WarOniD | Gold III | 2–5 | 0.40 | 50.0% | 0–1 |
+| SaarMatze | Silver I | 2–5 | 0.40 | 0.0% | 0–0 |
+
+**10. Fortress 4:1**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| K1lya_MKS | Gold I | 7–4 | 1.75 | 42.9% | 0–0 |
+| V01D Xx | Gold I | 4–4 | 1.00 | 50.0% | 0–0 |
+| shayan_f2400 | Gold I | 1–5 | 0.20 | 100.0% | 0–1 |
+| rook34.ru | Gold II | 1–5 | 0.20 | 100.0% | 0–1 |
+| DKH_xolotl | Gold II | 1–5 | 0.20 | 100.0% | 0–3 |
 `,ru:String.raw`# Разбор дня 04.11.2026: Дима и Ренат вдвоём
 
 Данные: Tracker Network, сняты 07.11.2026. По Диме и Ренату: статистика матчей, сторона, оперативник и результат каждого раунда, плюс полная лента убийств каждого раунда их 10 рейтинговых игр 04.11 (10:51–14:17 по Москве). Ранги соперников — раздел 10.
@@ -349,4 +451,106 @@ Source: Tracker match scoreboards, with rank at the time of the match. In the fi
 - **Лучший результат — Fortress 4:1:** соперники в среднем Gold I, Дима 6–1.
 - **Nighthaven (2) 5:3 — против среднего Gold II** с тремя игроками Gold I, выигран в овертайме.
 - **Первые три поражения по силе лобби оценить нельзя.** Рангов нет. ric0.0 (8–1) и OpaHatGepeekt (7–1) на Kafe сыграли заметно выше обычного Gold-лобби, но подтвердить это рангом нельзя.
+
+### Составы соперников по матчам
+
+**1. Oregon 1:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Daborabo | не показан | 6–2 | 3.00 | 33.3% | 1–0 |
+| Mr.MoMA | не показан | 5–3 | 1.67 | 0.0% | 0–1 |
+| Icldntfindanick | не показан | 5–3 | 1.67 | 40.0% | 1–2 |
+| SieKi27 | не показан | 5–4 | 1.25 | 80.0% | 0–0 |
+| IsraelMD | не показан | 2–3 | 0.67 | 50.0% | 0–0 |
+
+**2. Kafe 0:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| ric0.0 | не показан | 8–1 | 8.00 | 62.5% | 0–0 |
+| OpaHatGepeekt | не показан | 7–1 | 7.00 | 57.1% | 1–0 |
+| MissingoChibi | Silver V | 2–2 | 1.00 | 100.0% | 0–0 |
+| blizeria.VP | Gold I | 1–4 | 0.25 | 0.0% | 0–1 |
+| BotCheck | Silver IV | 1–4 | 0.25 | 100.0% | 0–2 |
+
+**3. Oregon (2) 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| TBOi_DED | не показан | 8–3 | 2.67 | 62.5% | 1–0 |
+| LutfiPasha | не показан | 6–4 | 1.50 | 50.0% | 0–0 |
+| OneMagZeroKill | не показан | 4–3 | 1.33 | 75.0% | 0–1 |
+| davkuo | не показан | 4–4 | 1.00 | 75.0% | 0–1 |
+| Edvin_92squad | не показан | 3–5 | 0.60 | 66.7% | 1–2 |
+
+**4. Bank 4:2**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| LID0LF | Gold II | 9–5 | 1.80 | 44.4% | 1–1 |
+| ShakaDabaDoo | Gold III | 4–4 | 1.00 | 75.0% | 0–1 |
+| RawmelRichard69 | Gold III | 4–6 | 0.67 | 50.0% | 0–1 |
+| hxrdd | Gold V | 2–4 | 0.50 | 50.0% | 0–1 |
+| Lisa_Marie08 | Gold IV | 2–4 | 0.50 | 50.0% | 1–0 |
+
+**5. Nighthaven 4:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| NoTHeXiS | Gold V | 11–7 | 1.57 | 45.5% | 1–1 |
+| YOU...ez | Gold III | 8–7 | 1.14 | 37.5% | 2–0 |
+| echter_minion | Gold IV | 6–6 | 1.00 | 33.3% | 1–0 |
+| Inka160399 | Gold IV | 5–8 | 0.62 | 100.0% | 1–1 |
+| Junkyy dVz | Gold III | 4–6 | 0.67 | 100.0% | 1–1 |
+
+**6. Bank (2) 4:0**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| cor3y666 | Gold I | 2–4 | 0.50 | 0.0% | 0–0 |
+| Soma.ST | Gold V | 2–4 | 0.50 | 50.0% | 0–1 |
+| Noe_l8 | Gold III | 2–4 | 0.50 | 0.0% | 1–0 |
+| BarDerg232 | Silver I | 2–4 | 0.50 | 50.0% | 0–1 |
+| Okiro_Buddha | Gold IV | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**7. Coastline 3:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Grombus92 | Gold III | 8–5 | 1.60 | 62.5% | 1–1 |
+| naibius54188 | Gold III | 7–4 | 1.75 | 28.6% | 1–1 |
+| MS_bernieballer | Gold IV | 6–4 | 1.50 | 50.0% | 1–1 |
+| the_quad | Silver I | 6–6 | 1.00 | 16.7% | 1–0 |
+| Rexctionz_ | Gold III | 5–5 | 1.00 | 60.0% | 2–0 |
+
+**8. Nighthaven (2) 5:3**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Mineigaa | Gold II | 7–6 | 1.17 | 100.0% | 0–2 |
+| Vaykah | Gold I | 7–7 | 1.00 | 71.4% | 1–2 |
+| nmesqbhx | Gold I | 6–8 | 0.75 | 66.7% | 1–0 |
+| A.D.O.N.I.SZ | Gold I | 3–7 | 0.43 | 100.0% | 0–0 |
+| Sprengt_Timmy | Silver I | 3–7 | 0.43 | 33.3% | 0–2 |
+
+**9. Lair 4:1**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Temu.spoit12 | Gold II | 6–4 | 1.50 | 50.0% | 1–0 |
+| Knocking-Master | Silver II | 3–4 | 0.75 | 100.0% | 0–1 |
+| X-Bushy-X | Gold IV | 3–5 | 0.60 | 66.7% | 0–2 |
+| WarOniD | Gold III | 2–5 | 0.40 | 50.0% | 0–1 |
+| SaarMatze | Silver I | 2–5 | 0.40 | 0.0% | 0–0 |
+
+**10. Fortress 4:1**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| K1lya_MKS | Gold I | 7–4 | 1.75 | 42.9% | 0–0 |
+| V01D Xx | Gold I | 4–4 | 1.00 | 50.0% | 0–0 |
+| shayan_f2400 | Gold I | 1–5 | 0.20 | 100.0% | 0–1 |
+| rook34.ru | Gold II | 1–5 | 0.20 | 100.0% | 0–1 |
+| DKH_xolotl | Gold II | 1–5 | 0.20 | 100.0% | 0–3 |
 `};

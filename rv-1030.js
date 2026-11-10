@@ -1,4 +1,4 @@
-/* Session review 30.10.2026 — text from project docs session-2026-10-30(.md / -ru.md). Opponent line-up tables are kept in the project docs only. */
+/* Session review 30.10.2026 — text from project docs session-2026-10-30(.md / -ru.md). */
 REV_MD["2026-10-30"]={en:String.raw`# Session review: 30.10.2026, compared with the previous two weeks
 
 Data: Tracker Network, read 31.10.2026 (opponent ranks: section 10). For every player: per-match stats (K/D, first kills/deaths, clutches) and per-round side, operator and result for all team games since 17.10. For the 9 matches of 30.10: the full kill feed of every round.
@@ -171,6 +171,100 @@ Our ranks: Dima Gold III, Renat Gold III, Roman Gold II, Nikita Silver III, Sany
 - **Bank 3:5 was a strong opponent** (Diamond V, Platinum V, Gold II; ranked average Platinum II) and we still forced overtime; the last OT round was played 4v5.
 - **The second-block wins came against weak lobbies:** Lair (average Silver I) and Nighthaven 4:0 (average Gold V: one Platinum I, one Bronze V, three unranked). Calypso was against three Platinum IIs, but they handed us two rounds.
 - **Their best fraggers of the night:** zSwinXback 9–2 (Oregon), Kramptos 9–4 (Bank), Ic3C0ld11 8–1 (Nighthaven), PaypalMeSheyde 8–5 (Stadium Alpha).
+
+### Opponent line-ups by match
+
+**1. Stadium Alpha 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| PaypalMeSheyde | Unranked | 8–5 | 1.60 | 25.0% | 0–1 |
+| JesusHimSelf__ | Gold V | 6–3 | 2.00 | 66.7% | 0–1 |
+| goyimaximus | Unranked | 6–4 | 1.50 | 66.7% | 1–0 |
+| StanislavMedved | Silver I | 5–6 | 0.83 | 60.0% | 1–1 |
+| nagazbi | Unranked | 2–5 | 0.40 | 50.0% | 0–1 |
+
+**2. Outback 4:2**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| BenniBoi | Silver III | 6–5 | 1.20 | 33.3% | 0–2 |
+| Alzamtz1 | Gold IV | 5–6 | 0.83 | 80.0% | 1–1 |
+| Kaareza | Unranked | 3–4 | 0.75 | 100.0% | 0–0 |
+| derb. | Gold V | 3–6 | 0.50 | 66.7% | 0–2 |
+| Gunnerrunner999 | Unranked | 0–5 | 0.00 | 0.0% | 0–0 |
+
+**3. Nighthaven 0:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Ic3C0ld11 | Emerald III | 8–1 | 8.00 | 37.5% | 3–0 |
+| PawelKing8890 | Gold I | 4–0 | 4.00 | 0.0% | 1–0 |
+| eSport_DeStroy3D | Unranked | 2–1 | 2.00 | 0.0% | 0–0 |
+| NamelessUser. | Unranked | 2–2 | 1.00 | 100.0% | 0–0 |
+| WINE_bandy | Silver I | 0–0 | 0.00 | 0.0% | 0–0 |
+
+**4. Kafe 0:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Igusiowo2137 | Platinum III | 5–1 | 5.00 | 60.0% | 0–0 |
+| Haijaguar | Gold I | 4–0 | 4.00 | 25.0% | 1–0 |
+| Stanuelle | Platinum IV | 4–2 | 2.00 | 25.0% | 1–1 |
+| P1an9M1strz | Gold III | 3–2 | 1.50 | 33.3% | 0–0 |
+| TheTinman-_- | Gold I | 0–2 | 0.00 | 0.0% | 0–1 |
+
+**5. Oregon 1:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| zSwinXback | Unranked | 9–2 | 4.50 | 22.2% | 0–0 |
+| mui22222 | Silver III | 6–3 | 2.00 | 66.7% | 1–0 |
+| Elmo.OnMorphine | Gold II | 2–3 | 0.67 | 50.0% | 1–1 |
+| lowpoly_lizard | Unranked | 1–3 | 0.33 | 0.0% | 0–1 |
+| Abv.Supr | Unranked | 1–4 | 0.25 | 0.0% | 0–1 |
+
+**6. Lair 4:1**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Lord_J_1405 | Silver II | 6–4 | 1.50 | 50.0% | 0–1 |
+| ShredderCow99 | Gold V | 3–4 | 0.75 | 66.7% | 1–0 |
+| harrypelzhs | Unranked | 2–4 | 0.50 | 50.0% | 1–0 |
+| raymorex | Unranked | 1–5 | 0.20 | 100.0% | 0–1 |
+| Sny__scks | Silver II | 1–5 | 0.20 | 0.0% | 1–1 |
+
+**7. Nighthaven 4:0**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| SiIIytart | Platinum I | 4–4 | 1.00 | 75.0% | 1–2 |
+| lowpoly_lizard | Unranked | 2–4 | 0.50 | 50.0% | 0–0 |
+| BlackDrake69940 | Bronze V | 1–4 | 0.25 | 100.0% | 0–0 |
+| Purple27R | Unranked | 1–4 | 0.25 | 100.0% | 0–0 |
+| Abv.Supr | Unranked | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**8. Calypso 4:2**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| TrumpPresident. | Platinum II | 6–4 | 1.50 | 50.0% | 2–0 |
+| ReclutaDonRamon | Gold II | 4–6 | 0.67 | 25.0% | 0–2 |
+| Arius-_-King165 | Unranked | 3–4 | 0.75 | 33.3% | 2–1 |
+| satoshi...... | Platinum II | 2–4 | 0.50 | 100.0% | 1–0 |
+| Mr.Xi.JinPing | Platinum II | 1–4 | 0.25 | 100.0% | 0–0 |
+
+**9. Bank 3:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Kramptos | Gold II | 9–4 | 2.25 | 44.4% | 1–1 |
+| cuntus.amogus | Unranked | 7–5 | 1.40 | 71.4% | 0–0 |
+| coaptvvv | Unranked | 7–6 | 1.17 | 57.1% | 1–1 |
+| Kyuubi.NE | Diamond V | 7–6 | 1.17 | 28.6% | 1–0 |
+| Stupidix | Platinum V | 4–6 | 0.67 | 50.0% | 1–2 |
+
+*Calypso: some opponent kills are team-kills (see section 3).*
 `,ru:String.raw`# Разбор вечера 30.10.2026 в сравнении с двумя предыдущими неделями
 
 Данные: Tracker Network, сняты 31.10.2026 (ранги соперников — раздел 10). По каждому игроку: статистика матчей (K/D, первые убийства и смерти, клатчи), а также сторона, оперативник и результат каждого раунда во всех командных играх с 17.10. По 9 матчам 30.10 — полная лента убийств каждого раунда.
@@ -343,4 +437,98 @@ K/D по вечерам (19.10 › 23.10 › 26.10 › 30.10): Дима 1.21 ›
 - **Bank 3:5 — сильный соперник** (Diamond V, Platinum V, Gold II; средний ранг Platinum II), и всё равно дошли до овертайма; последний раунд ОТ сыгран 4 на 5.
 - **Победы второго блока — против слабых лобби:** Lair (средний Silver I) и Nighthaven 4:0 (средний Gold V: один Platinum I, один Bronze V, трое без ранга). Calypso — против трёх Platinum II, но два раунда отдали сами соперники.
 - **Лучшие стрелки соперников за вечер:** zSwinXback 9–2 (Oregon), Kramptos 9–4 (Bank), Ic3C0ld11 8–1 (Nighthaven), PaypalMeSheyde 8–5 (Stadium Alpha).
+
+### Составы соперников по матчам
+
+**1. Stadium Alpha 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| PaypalMeSheyde | без ранга | 8–5 | 1.60 | 25.0% | 0–1 |
+| JesusHimSelf__ | Gold V | 6–3 | 2.00 | 66.7% | 0–1 |
+| goyimaximus | без ранга | 6–4 | 1.50 | 66.7% | 1–0 |
+| StanislavMedved | Silver I | 5–6 | 0.83 | 60.0% | 1–1 |
+| nagazbi | без ранга | 2–5 | 0.40 | 50.0% | 0–1 |
+
+**2. Outback 4:2**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| BenniBoi | Silver III | 6–5 | 1.20 | 33.3% | 0–2 |
+| Alzamtz1 | Gold IV | 5–6 | 0.83 | 80.0% | 1–1 |
+| Kaareza | без ранга | 3–4 | 0.75 | 100.0% | 0–0 |
+| derb. | Gold V | 3–6 | 0.50 | 66.7% | 0–2 |
+| Gunnerrunner999 | без ранга | 0–5 | 0.00 | 0.0% | 0–0 |
+
+**3. Nighthaven 0:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Ic3C0ld11 | Emerald III | 8–1 | 8.00 | 37.5% | 3–0 |
+| PawelKing8890 | Gold I | 4–0 | 4.00 | 0.0% | 1–0 |
+| eSport_DeStroy3D | без ранга | 2–1 | 2.00 | 0.0% | 0–0 |
+| NamelessUser. | без ранга | 2–2 | 1.00 | 100.0% | 0–0 |
+| WINE_bandy | Silver I | 0–0 | 0.00 | 0.0% | 0–0 |
+
+**4. Kafe 0:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Igusiowo2137 | Platinum III | 5–1 | 5.00 | 60.0% | 0–0 |
+| Haijaguar | Gold I | 4–0 | 4.00 | 25.0% | 1–0 |
+| Stanuelle | Platinum IV | 4–2 | 2.00 | 25.0% | 1–1 |
+| P1an9M1strz | Gold III | 3–2 | 1.50 | 33.3% | 0–0 |
+| TheTinman-_- | Gold I | 0–2 | 0.00 | 0.0% | 0–1 |
+
+**5. Oregon 1:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| zSwinXback | без ранга | 9–2 | 4.50 | 22.2% | 0–0 |
+| mui22222 | Silver III | 6–3 | 2.00 | 66.7% | 1–0 |
+| Elmo.OnMorphine | Gold II | 2–3 | 0.67 | 50.0% | 1–1 |
+| lowpoly_lizard | без ранга | 1–3 | 0.33 | 0.0% | 0–1 |
+| Abv.Supr | без ранга | 1–4 | 0.25 | 0.0% | 0–1 |
+
+**6. Lair 4:1**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Lord_J_1405 | Silver II | 6–4 | 1.50 | 50.0% | 0–1 |
+| ShredderCow99 | Gold V | 3–4 | 0.75 | 66.7% | 1–0 |
+| harrypelzhs | без ранга | 2–4 | 0.50 | 50.0% | 1–0 |
+| raymorex | без ранга | 1–5 | 0.20 | 100.0% | 0–1 |
+| Sny__scks | Silver II | 1–5 | 0.20 | 0.0% | 1–1 |
+
+**7. Nighthaven 4:0**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| SiIIytart | Platinum I | 4–4 | 1.00 | 75.0% | 1–2 |
+| lowpoly_lizard | без ранга | 2–4 | 0.50 | 50.0% | 0–0 |
+| BlackDrake69940 | Bronze V | 1–4 | 0.25 | 100.0% | 0–0 |
+| Purple27R | без ранга | 1–4 | 0.25 | 100.0% | 0–0 |
+| Abv.Supr | без ранга | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**8. Calypso 4:2**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| TrumpPresident. | Platinum II | 6–4 | 1.50 | 50.0% | 2–0 |
+| ReclutaDonRamon | Gold II | 4–6 | 0.67 | 25.0% | 0–2 |
+| Arius-_-King165 | без ранга | 3–4 | 0.75 | 33.3% | 2–1 |
+| satoshi...... | Platinum II | 2–4 | 0.50 | 100.0% | 1–0 |
+| Mr.Xi.JinPing | Platinum II | 1–4 | 0.25 | 100.0% | 0–0 |
+
+**9. Bank 3:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Kramptos | Gold II | 9–4 | 2.25 | 44.4% | 1–1 |
+| cuntus.amogus | без ранга | 7–5 | 1.40 | 71.4% | 0–0 |
+| coaptvvv | без ранга | 7–6 | 1.17 | 57.1% | 1–1 |
+| Kyuubi.NE | Diamond V | 7–6 | 1.17 | 28.6% | 1–0 |
+| Stupidix | Platinum V | 4–6 | 0.67 | 50.0% | 1–2 |
+
+*Calypso: часть убийств соперников — убийства своих (см. раздел 3).*
 `};

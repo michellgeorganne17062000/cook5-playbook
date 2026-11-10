@@ -1,4 +1,4 @@
-/* Session review 06.11.2026 — text from project docs session-2026-11-06(.md / -ru.md). Opponent line-up tables are kept in the project docs only. */
+/* Session review 06.11.2026 — text from project docs session-2026-11-06(.md / -ru.md). */
 REV_MD["2026-11-06"]={en:String.raw`# Session review: 06.11.2026, compared with earlier evenings
 
 Data: Tracker Network, read 07.11.2026. Sources: per-match stats for every player, per-round side, operator and result, and the full kill feed of every round in the 8 team games of 06.11. Opponent ranks are in section 10.
@@ -200,6 +200,86 @@ Our ranks as of 07.11: Roman Gold III (was Gold I), Dima and Renat Gold IV (were
 - **Consulate 1:4 was the clearest defeat:** Raminzed 7–1 and Smggg. 5–1. Two of our five (Renat 1–4, ButterAesthet1c 0–5) had no impact.
 - **Oregon was lost to a Silver V:** sindripro went 11–6, including 3 kills in the last overtime round.
 - **Chalet, Clubhouse and Nighthaven were lost to Gold-level teams** whose best player went 6–4 to 10–7. No single enemy dominated those games; the rounds were lost on trades and late-round play.
+
+### Opponent line-ups by match
+
+**1. Lair 4:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Drakon.SE | Diamond III | 12–6 | 2.00 | 66.7% | 3–1 |
+| LazyCrazy_ | Unranked | 7–4 | 1.75 | 85.7% | 0–0 |
+| moonnnya | Unranked | 6–8 | 0.75 | 50.0% | 2–0 |
+| GenkuThorn | Gold II | 4–6 | 0.67 | 25.0% | 1–2 |
+| lass5254 | Gold III | 3–6 | 0.50 | 33.3% | 0–0 |
+
+**2. Consulate 1:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Raminzed | Gold I | 7–1 | 7.00 | 57.1% | 1–1 |
+| Smggg. | Gold I | 5–1 | 5.00 | 80.0% | 2–0 |
+| ocean.wtf | Gold I | 3–2 | 1.50 | 33.3% | 0–0 |
+| lIlIIllllIlI | Platinum IV | 3–4 | 0.75 | 66.7% | 0–1 |
+
+**3. Villa 3:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| nezamdb | Gold I | 9–6 | 1.50 | 44.4% | 3–0 |
+| ATOM_Foxx | Gold I | 8–6 | 1.33 | 62.5% | 1–1 |
+| fourth_bullet | Gold II | 6–5 | 1.20 | 100.0% | 0–1 |
+| S_minad | Bronze III | 4–5 | 0.80 | 100.0% | 1–0 |
+| PR.Hosein | Platinum V | 3–5 | 0.60 | 66.7% | 0–0 |
+
+**4. Fortress 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Killerghost_52 | Gold I | 7–3 | 2.33 | 85.7% | 1–1 |
+| G7 Sqoof | Gold I | 7–4 | 1.75 | 100.0% | 0–0 |
+| kentatocarson | Gold III | 4–5 | 0.80 | 25.0% | 0–0 |
+| azer_whats | Silver III | 4–6 | 0.67 | 75.0% | 2–3 |
+| bargli | Silver II | 2–3 | 0.67 | 0.0% | 0–0 |
+
+**5. Oregon 4:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| sindripro | Silver V | 11–6 | 1.83 | 45.5% | 0–0 |
+| Prime14_1 | Gold III | 8–5 | 1.60 | 37.5% | 2–2 |
+| DerSanitoeter112 | Gold II | 5–8 | 0.62 | 80.0% | 0–0 |
+| flugis541 | Gold I | 3–9 | 0.33 | 66.7% | 1–2 |
+
+**6. Chalet 4:5**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| PAYL0R. | Gold II | 10–7 | 1.43 | 60.0% | 3–1 |
+| NTLkieran10 | Gold III | 8–6 | 1.33 | 50.0% | 1–0 |
+| Korvinator | Silver II | 6–5 | 1.20 | 16.7% | 1–0 |
+| DUMSEDUM | Gold II | 4–4 | 1.00 | 0.0% | 0–0 |
+| A3trorecon | Gold II | 2–7 | 0.29 | 50.0% | 1–1 |
+
+**7. Clubhouse 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| kingshoko.ADM | Gold IV | 7–3 | 2.33 | 42.9% | 1–1 |
+| Snow.ADM | Gold II | 6–4 | 1.50 | 50.0% | 0–0 |
+| NotZxm | Gold II | 5–4 | 1.25 | 20.0% | 1–0 |
+| ZARP.ADM | Silver II | 2–5 | 0.40 | 50.0% | 1–1 |
+| HEagle_ | Gold III | 1–5 | 0.20 | 100.0% | 0–1 |
+
+**8. Nighthaven 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Coolperson56 | Gold I | 6–4 | 1.50 | 33.3% | 0–2 |
+| BRS-Jac | Gold V | 6–4 | 1.50 | 50.0% | 2–0 |
+| BRS-kyrii | Silver IV | 5–5 | 1.00 | 60.0% | 1–0 |
+| JuengerPetrus | Gold I | 4–2 | 2.00 | 100.0% | 0–0 |
+| Pro.pella | Gold V | 3–3 | 1.00 | 66.7% | 1–0 |
 `,ru:String.raw`# Разбор вечера 06.11.2026 в сравнении с прошлыми вечерами
 
 Данные: Tracker Network, сняты 07.11.2026 (ранги соперников — раздел 10). По каждому игроку: статистика матчей, сторона, оперативник и результат каждого раунда. По 8 командным играм 06.11 — полная лента убийств каждого раунда.
@@ -401,4 +481,84 @@ K/D по вечерам (19.10 › 23.10 › 26.10 › 30.10 › 02.11 › 06.11
 - **Consulate 1:4 — самое явное поражение:** Raminzed 7–1 и Smggg. 5–1. Двое из наших пятерых (Ренат 1–4, ButterAesthet1c 0–5) почти ничего не сделали.
 - **Oregon проигран игроку Silver V:** sindripro сыграл 11–6, включая 3 убийства в последнем раунде овертайма.
 - **Chalet, Clubhouse и Nighthaven проиграны командам уровня Gold**, лучший игрок которых сыграл от 6–4 до 10–7. В этих играх никто из соперников не доминировал; раунды проиграны на разменах и в концовках.
+
+### Составы соперников по матчам
+
+**1. Lair 4:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Drakon.SE | Diamond III | 12–6 | 2.00 | 66.7% | 3–1 |
+| LazyCrazy_ | без ранга | 7–4 | 1.75 | 85.7% | 0–0 |
+| moonnnya | без ранга | 6–8 | 0.75 | 50.0% | 2–0 |
+| GenkuThorn | Gold II | 4–6 | 0.67 | 25.0% | 1–2 |
+| lass5254 | Gold III | 3–6 | 0.50 | 33.3% | 0–0 |
+
+**2. Consulate 1:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Raminzed | Gold I | 7–1 | 7.00 | 57.1% | 1–1 |
+| Smggg. | Gold I | 5–1 | 5.00 | 80.0% | 2–0 |
+| ocean.wtf | Gold I | 3–2 | 1.50 | 33.3% | 0–0 |
+| lIlIIllllIlI | Platinum IV | 3–4 | 0.75 | 66.7% | 0–1 |
+
+**3. Villa 3:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| nezamdb | Gold I | 9–6 | 1.50 | 44.4% | 3–0 |
+| ATOM_Foxx | Gold I | 8–6 | 1.33 | 62.5% | 1–1 |
+| fourth_bullet | Gold II | 6–5 | 1.20 | 100.0% | 0–1 |
+| S_minad | Bronze III | 4–5 | 0.80 | 100.0% | 1–0 |
+| PR.Hosein | Platinum V | 3–5 | 0.60 | 66.7% | 0–0 |
+
+**4. Fortress 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Killerghost_52 | Gold I | 7–3 | 2.33 | 85.7% | 1–1 |
+| G7 Sqoof | Gold I | 7–4 | 1.75 | 100.0% | 0–0 |
+| kentatocarson | Gold III | 4–5 | 0.80 | 25.0% | 0–0 |
+| azer_whats | Silver III | 4–6 | 0.67 | 75.0% | 2–3 |
+| bargli | Silver II | 2–3 | 0.67 | 0.0% | 0–0 |
+
+**5. Oregon 4:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| sindripro | Silver V | 11–6 | 1.83 | 45.5% | 0–0 |
+| Prime14_1 | Gold III | 8–5 | 1.60 | 37.5% | 2–2 |
+| DerSanitoeter112 | Gold II | 5–8 | 0.62 | 80.0% | 0–0 |
+| flugis541 | Gold I | 3–9 | 0.33 | 66.7% | 1–2 |
+
+**6. Chalet 4:5**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| PAYL0R. | Gold II | 10–7 | 1.43 | 60.0% | 3–1 |
+| NTLkieran10 | Gold III | 8–6 | 1.33 | 50.0% | 1–0 |
+| Korvinator | Silver II | 6–5 | 1.20 | 16.7% | 1–0 |
+| DUMSEDUM | Gold II | 4–4 | 1.00 | 0.0% | 0–0 |
+| A3trorecon | Gold II | 2–7 | 0.29 | 50.0% | 1–1 |
+
+**7. Clubhouse 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| kingshoko.ADM | Gold IV | 7–3 | 2.33 | 42.9% | 1–1 |
+| Snow.ADM | Gold II | 6–4 | 1.50 | 50.0% | 0–0 |
+| NotZxm | Gold II | 5–4 | 1.25 | 20.0% | 1–0 |
+| ZARP.ADM | Silver II | 2–5 | 0.40 | 50.0% | 1–1 |
+| HEagle_ | Gold III | 1–5 | 0.20 | 100.0% | 0–1 |
+
+**8. Nighthaven 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Coolperson56 | Gold I | 6–4 | 1.50 | 33.3% | 0–2 |
+| BRS-Jac | Gold V | 6–4 | 1.50 | 50.0% | 2–0 |
+| BRS-kyrii | Silver IV | 5–5 | 1.00 | 60.0% | 1–0 |
+| JuengerPetrus | Gold I | 4–2 | 2.00 | 100.0% | 0–0 |
+| Pro.pella | Gold V | 3–3 | 1.00 | 66.7% | 1–0 |
 `};

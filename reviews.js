@@ -44,7 +44,7 @@ const REV_TABS=[
 ];
 Object.assign(UI,{
   g_rev:["Reviews","Разборы"], rev_team:["Team evening","Командный вечер"], rev_duo:["Duo","Дуо"],
-  rev_src:["Source: project session reviews (Tracker Network data). Opponent line-up tables stay in the project docs.","Источник: разборы сессий из проекта (данные Tracker Network). Таблицы составов соперников — в документах проекта."],
+  rev_src:["Source: project session reviews (Tracker Network data). Opponent ranks and line-ups are in each review's Opponents tab.","Источник: разборы сессий из проекта (данные Tracker Network). Ранги и составы соперников — во вкладке «Соперники» каждого разбора."],
   rev_my:["Personal review","Личный разбор"],
   rev_my_note:["Every line below is taken word for word from the team reviews where you are named. Open the full review for context.","Каждая строка ниже взята дословно из командных разборов, где ты упомянут. Полный разбор — по ссылке."],
   rev_none:["Not named in this review.","В этом разборе не упоминается."],
@@ -88,3 +88,4 @@ Object.assign(UI,{
 });
 
 NEWS.unshift(["10 Nov","10 ноя",["Review 10.11: 3–3, defence 63%, trades 35% (goal met) · attack still 35% · player cards and goals updated","Разбор 10.11: 3–3, защита 63%, размены 35% (цель выполнена) · атака всё ещё 35% · карточки игроков и цели обновлены"]]);
+NEWS.unshift(["10 Nov","10 ноя",["Opponents tab in every review: ranks, K/D, HS% and first kills of every enemy player, match by match (10.11: Kafe lobby averaged Platinum II)","Вкладка «Соперники» в каждом разборе: ранг, K/D, HS% и первые убийства каждого игрока соперника по матчам (10.11: лобби Kafe — в среднем Platinum II)"]]);

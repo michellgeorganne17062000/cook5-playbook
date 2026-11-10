@@ -3,7 +3,7 @@ REV_MD["2026-11-10"]={en:String.raw`# Session review: 10.11.2026, compared with 
 
 Data: Tracker Network, read 10.11.2026 from Dima's match history. Sources: per-round side, operator, K/D/A and result, and the full kill feed of every round in the 6 team games of 10.11.
 Team games = unranked or ranked with at least 3 of the 5 core players. The Quick Match warm-up (House 0:3) is excluded, as on 06.11. **All six games were unranked; no ranked game was played, so RP didn't change.**
-Nikita did not play. Sanya missed Chalet. Sites and bans are not in Tracker (section 9). Opponent ranks were not collected (unranked games).
+Nikita did not play. Sanya missed Chalet. Sites and bans are not in Tracker (section 9). Opponent ranks and line-ups are in section 10.
 
 | Block | Games | Roster |
 |---|---|---|
@@ -171,9 +171,94 @@ Samples are 1–12 rounds per operator: signals, not verdicts.
 - **Why only unranked tonight**, and was it a decision (stop rule after 06.11)? It changes how to read the result.
 - **Nikita's absence** and the randoms: one in every game, two in Chalet.
 - Bank 4:2: two enemies left after R3, so R4–R6 were played against 3 players.
-- Opponent ranks weren't collected (unranked lobbies). Top enemy players: Bank 5:3 DEEPDO 11–6; Coastline groobshy_ 8–4; Chalet hypce 6–4 and Oddball_77 6–2; Kafe Elmo.OnMorphine 6–3 and Xx OG FaZ xX 4–1.
+- Top enemy players (ranks and full line-ups in section 10): Bank 5:3 DEEPDO 11–6; Coastline groobshy_ 8–4; Chalet hypce 6–4 and Oddball_77 6–2; Kafe Elmo.OnMorphine 6–3 and Xx OG FaZ xX 4–1.
 
-## 10. Proposed rulebook updates (not applied)
+## 10. Opponents on 10.11: ranks and K/D
+Source: Tracker match scoreboards. All six games were unranked, so the rank is each player's current-season badge as of 10.11, not a rank at match time. "Unranked" means no ranked games this season, which does not mean weak. K/D is for that match.
+
+Our ranks as of 10.11: Roman Gold III, Dima and Renat Gold IV, Sanya Copper IV.
+
+| # | Map | Score | Ranked | Avg rank of ranked opponents | Highest | Our side avg | Their top fragger |
+|---|---|---|---|---|---|---|---|
+| 1 | Chalet | 2:4 | 3/5 | Gold IV | Gold I | Gold II | Oddball_77 (Gold IV) 6–2 |
+| 2 | Coastline | 2:4 | 3/5 | Gold II | Emerald IV | Silver II | groobshy_ (Platinum II) 8–4 |
+| 3 | House | 4:1 | 3/5 | Silver II | Gold I | Silver II | Googlyz (Unranked) 5–5 |
+| 4 | Bank | 5:3 | 5/5 | Silver II | Gold I | Silver II | DEEPDO (Gold II) 11–6 |
+| 5 | Bank (2) | 4:2 | 2/5 | Gold V | Gold II | Silver III | zFy62i (Gold II) 5–5 |
+| 6 | Kafe | 1:4 | 4/5 | **Platinum II** | Emerald IV | Silver III | Elmo.OnMorphine (Gold II) 6–3 |
+
+"Our side avg" covers the ranked players on our side, randoms included; Sanya's Copper IV pulls the average down in games 2–6.
+
+30 opponents on the scoreboards: 20 ranked (average Gold IV), 10 unranked. Ranks: Gold 7, Silver 5, Emerald 3, Platinum 2, Bronze 2, Copper 1. Highest: F0lkrum.k0min (Emerald IV, Coastline) and speedhm07 (Emerald IV, Kafe). The average is a bit lower than on 06.11 (Gold III), but the spread is wider: three Emeralds, against none on 06.11.
+
+- **Kafe 1:4 was by far the strongest lobby of the night:** four ranked, average Platinum II (two Emeralds and a Platinum II). Xx OG FaZ xX (unranked, 4–1) opened both of our attack rounds. That loss is mostly about the lobby.
+- **Coastline 2:4 was a strong lobby too:** groobshy_ (Platinum II) 8–4 and F0lkrum.k0min (Emerald IV) 4–3. But two attack rounds were lost after we won the opening duel, so it was winnable.
+- **Chalet 2:4 was an even lobby** (ranked opponents average Gold IV, our side Gold II), and we lost it on attack (0/3). That one is on us.
+- **The three wins came against weaker lobbies:** House and Bank averaged Silver II, and Bank (2) had only two ranked players, with the enemy down to three from R4. DEEPDO (Gold II) went 11–6 on Bank and almost carried his team alone.
+
+### Opponent line-ups by match
+
+**1. Chalet 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Oddball_77 | Gold IV | 6–2 | 3.00 | 83.3% | 1–0 |
+| hypce | Unranked | 6–4 | 1.50 | 50.0% | 0–2 |
+| Frontkill_1996 | Unranked | 5–6 | 0.83 | 40.0% | 1–1 |
+| BatFlames | Gold I | 3–3 | 1.00 | 33.3% | 1–0 |
+| Dreamstate02 | Silver II | 3–3 | 1.00 | 66.7% | 0–0 |
+
+**2. Coastline 2:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| groobshy_ | Platinum II | 8–4 | 2.00 | 87.5% | 2–2 |
+| BagpipeSlayer | Unranked | 6–4 | 1.50 | 50.0% | 0–1 |
+| Barry_The_Carry | Bronze V | 5–2 | 2.50 | 40.0% | 0–0 |
+| F0lkrum.k0min | Emerald IV | 4–3 | 1.33 | 75.0% | 1–0 |
+| Miss__Marple | Unranked | 1–3 | 0.33 | 0.0% | 0–1 |
+
+**3. House 4:1**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Googlyz | Unranked | 5–5 | 1.00 | 60.0% | 3–1 |
+| AssultFishy | Bronze III | 3–5 | 0.60 | 33.3% | 0–0 |
+| rs.harry_ | Unranked | 3–4 | 0.75 | 33.3% | 0–0 |
+| fonzie445 | Gold I | 2–4 | 0.50 | 0.0% | 0–0 |
+| R1-fatty-55 | Silver III | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**4. Bank 5:3**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| DEEPDO | Gold II | 11–6 | 1.83 | 36.4% | 2–1 |
+| TheQobad | Gold I | 4–6 | 0.67 | 50.0% | 1–0 |
+| Wild_Bafqi | Silver II | 3–6 | 0.50 | 100.0% | 0–0 |
+| HaSun1378 | Copper V | 1–6 | 0.17 | 100.0% | 0–2 |
+| Nezam_DooBarara | Silver II | 0–6 | 0.00 | 0.0% | 0–2 |
+
+**5. Bank (2) 4:2**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| zFy62i | Gold II | 5–5 | 1.00 | 60.0% | 1–1 |
+| Gucci7BrA | Unranked | 3–5 | 0.60 | 66.7% | 1–1 |
+| LJKS | Unranked | 2–2 | 1.00 | 50.0% | 0–0 |
+| C0reX. | Silver III | 2–3 | 0.67 | 0.0% | 0–0 |
+| MimonElGundi | Unranked | 1–5 | 0.20 | 100.0% | 1–1 |
+
+**6. Kafe 1:4**
+
+| Player | Rank | K–D | K/D | HS% | First kills–deaths |
+|---|---|---|---|---|---|
+| Elmo.OnMorphine | Gold II | 6–3 | 2.00 | 50.0% | 0–0 |
+| speedhm07 | Emerald IV | 4–4 | 1.00 | 75.0% | 0–0 |
+| Xx OG FaZ xX | Unranked | 4–1 | 4.00 | 50.0% | 2–0 |
+| J2trappy____420 | Platinum II | 4–2 | 2.00 | 75.0% | 1–2 |
+| CEO_of_Idot | Emerald V | 2–4 | 0.50 | 50.0% | 0–0 |
+
+## 11. Proposed rulebook updates (not applied)
 - §1 map table: add 10.11 (Bank 2–2, Chalet 0–2 with attack 1/8, Kafe 2–3 with attack 5/15, Coastline 2–2, House off-pool).
 - §2 operators: Sanya Mute now 3/12, keep "stop"; Dima Grim 20/46 vs Rauora 9/20, the two are now level; Renat Azami 23/42 (55%).
 - §7 targets: deaths traded met (35%); add "attack: one named plan per map" as a process target.
@@ -181,7 +266,7 @@ Samples are 1–12 rounds per operator: signals, not verdicts.
 
 Данные: Tracker Network, сняты 10.11.2026 из истории матчей Димы. По каждому раунду: сторона, оперативник, K/D/A и результат, плюс полная лента убийств каждого раунда в 6 командных играх 10.11.
 Командные игры — unranked/ranked, где играли минимум 3 из 5 основных игроков. Разминочный Quick Match (House 0:3) не учитывается, как и 06.11. **Все шесть игр — нерейтинговые; рейтинговых игр не было, RP не изменился.**
-Никита не играл. Саня пропустил Chalet. Точек и банов в Tracker нет (раздел 9). Ранги соперников не собирались (нерейтинговые игры).
+Никита не играл. Саня пропустил Chalet. Точек и банов в Tracker нет (раздел 9). Ранги и составы соперников — раздел 10.
 
 | Блок | Игры | Состав |
 |---|---|---|
@@ -349,9 +434,94 @@ K/D по вечерам (19.10 › 23.10 › 26.10 › 30.10 › 02.11 › 06.11
 - **Почему сегодня только нерейтинг** — это было решение (правило стопа после 06.11)? Это меняет, как читать результат.
 - **Отсутствие Никиты** и рандомы: по одному в каждой игре, на Chalet — двое.
 - Bank 4:2: после Р3 двое соперников вышли, так что Р4–Р6 играли против троих.
-- Ранги соперников не собирались (нерейтинговые лобби). Лучшие у соперников: Bank 5:3 DEEPDO 11–6; Coastline groobshy_ 8–4; Chalet hypce 6–4 и Oddball_77 6–2; Kafe Elmo.OnMorphine 6–3 и Xx OG FaZ xX 4–1.
+- Лучшие у соперников (ранги и составы — раздел 10): Bank 5:3 DEEPDO 11–6; Coastline groobshy_ 8–4; Chalet hypce 6–4 и Oddball_77 6–2; Kafe Elmo.OnMorphine 6–3 и Xx OG FaZ xX 4–1.
 
-## 10. Предлагаемые изменения свода правил (не внесены)
+## 10. Соперники 10.11: ранги и K/D
+Источник: таблицы матчей Tracker. Все шесть игр нерейтинговые, поэтому ранг — текущий значок игрока за сезон на 10.11, а не ранг на момент матча. «Без ранга» — нет рейтинговых игр в этом сезоне, это не значит «слабый». K/D — за этот матч.
+
+Наши ранги на 10.11: Роман Gold III, Дима и Ренат Gold IV, Саня Copper IV.
+
+| # | Карта | Счёт | С рангом | Средний ранг (с рангом) | Высший | Наш средний | Лучший у них |
+|---|---|---|---|---|---|---|---|
+| 1 | Chalet | 2:4 | 3/5 | Gold IV | Gold I | Gold II | Oddball_77 (Gold IV) 6–2 |
+| 2 | Coastline | 2:4 | 3/5 | Gold II | Emerald IV | Silver II | groobshy_ (Platinum II) 8–4 |
+| 3 | House | 4:1 | 3/5 | Silver II | Gold I | Silver II | Googlyz (без ранга) 5–5 |
+| 4 | Bank | 5:3 | 5/5 | Silver II | Gold I | Silver II | DEEPDO (Gold II) 11–6 |
+| 5 | Bank (2) | 4:2 | 2/5 | Gold V | Gold II | Silver III | zFy62i (Gold II) 5–5 |
+| 6 | Kafe | 1:4 | 4/5 | **Platinum II** | Emerald IV | Silver III | Elmo.OnMorphine (Gold II) 6–3 |
+
+«Наш средний» — средний ранг игроков с рангом на нашей стороне, включая рандомов; Copper IV Сани тянет среднее вниз в играх 2–6.
+
+В таблицах 30 соперников: 20 с рангом (в среднем Gold IV), 10 без ранга. Ранги: Gold 7, Silver 5, Emerald 3, Platinum 2, Bronze 2, Copper 1. Высшие: F0lkrum.k0min (Emerald IV, Coastline) и speedhm07 (Emerald IV, Kafe). Средний ранг чуть ниже, чем 06.11 (Gold III), но разброс шире: три Emerald, а 06.11 не было ни одного.
+
+- **Kafe 1:4 — самое сильное лобби вечера с большим отрывом:** четверо с рангом, в среднем Platinum II (два Emerald и Platinum II). Xx OG FaZ xX (без ранга, 4–1) открыл оба наших раунда атаки. Это поражение в основном про уровень лобби.
+- **Coastline 2:4 — тоже сильное лобби:** groobshy_ (Platinum II) 8–4 и F0lkrum.k0min (Emerald IV) 4–3. Но два раунда атаки проиграны после выигранной первой дуэли, так что игру можно было взять.
+- **Chalet 2:4 — равное лобби** (соперники с рангом в среднем Gold IV, наша сторона Gold II), проиграно в атаке (0/3). Это на нас.
+- **Три победы — против более слабых лобби:** House и Bank в среднем Silver II, а в Bank (2) было лишь двое с рангом, и с Р4 соперник играл втроём. DEEPDO (Gold II) сыграл на Bank 11–6 и почти в одиночку тянул свою команду.
+
+### Составы соперников по матчам
+
+**1. Chalet 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Oddball_77 | Gold IV | 6–2 | 3.00 | 83.3% | 1–0 |
+| hypce | без ранга | 6–4 | 1.50 | 50.0% | 0–2 |
+| Frontkill_1996 | без ранга | 5–6 | 0.83 | 40.0% | 1–1 |
+| BatFlames | Gold I | 3–3 | 1.00 | 33.3% | 1–0 |
+| Dreamstate02 | Silver II | 3–3 | 1.00 | 66.7% | 0–0 |
+
+**2. Coastline 2:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| groobshy_ | Platinum II | 8–4 | 2.00 | 87.5% | 2–2 |
+| BagpipeSlayer | без ранга | 6–4 | 1.50 | 50.0% | 0–1 |
+| Barry_The_Carry | Bronze V | 5–2 | 2.50 | 40.0% | 0–0 |
+| F0lkrum.k0min | Emerald IV | 4–3 | 1.33 | 75.0% | 1–0 |
+| Miss__Marple | без ранга | 1–3 | 0.33 | 0.0% | 0–1 |
+
+**3. House 4:1**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Googlyz | без ранга | 5–5 | 1.00 | 60.0% | 3–1 |
+| AssultFishy | Bronze III | 3–5 | 0.60 | 33.3% | 0–0 |
+| rs.harry_ | без ранга | 3–4 | 0.75 | 33.3% | 0–0 |
+| fonzie445 | Gold I | 2–4 | 0.50 | 0.0% | 0–0 |
+| R1-fatty-55 | Silver III | 0–4 | 0.00 | 0.0% | 0–1 |
+
+**4. Bank 5:3**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| DEEPDO | Gold II | 11–6 | 1.83 | 36.4% | 2–1 |
+| TheQobad | Gold I | 4–6 | 0.67 | 50.0% | 1–0 |
+| Wild_Bafqi | Silver II | 3–6 | 0.50 | 100.0% | 0–0 |
+| HaSun1378 | Copper V | 1–6 | 0.17 | 100.0% | 0–2 |
+| Nezam_DooBarara | Silver II | 0–6 | 0.00 | 0.0% | 0–2 |
+
+**5. Bank (2) 4:2**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| zFy62i | Gold II | 5–5 | 1.00 | 60.0% | 1–1 |
+| Gucci7BrA | без ранга | 3–5 | 0.60 | 66.7% | 1–1 |
+| LJKS | без ранга | 2–2 | 1.00 | 50.0% | 0–0 |
+| C0reX. | Silver III | 2–3 | 0.67 | 0.0% | 0–0 |
+| MimonElGundi | без ранга | 1–5 | 0.20 | 100.0% | 1–1 |
+
+**6. Kafe 1:4**
+
+| Игрок | Ранг | Убийства–смерти | K/D | HS% | Первые убийства–смерти |
+|---|---|---|---|---|---|
+| Elmo.OnMorphine | Gold II | 6–3 | 2.00 | 50.0% | 0–0 |
+| speedhm07 | Emerald IV | 4–4 | 1.00 | 75.0% | 0–0 |
+| Xx OG FaZ xX | без ранга | 4–1 | 4.00 | 50.0% | 2–0 |
+| J2trappy____420 | Platinum II | 4–2 | 2.00 | 75.0% | 1–2 |
+| CEO_of_Idot | Emerald V | 2–4 | 0.50 | 50.0% | 0–0 |
+
+## 11. Предлагаемые изменения свода правил (не внесены)
 - §1 таблица карт: добавить 10.11 (Bank 2–2, Chalet 0–2 с атакой 1/8, Kafe 2–3 с атакой 5/15, Coastline 2–2, House вне пула).
 - §2 оперативники: Mute у Сани теперь 3/12 — «не брать» остаётся; Grim у Димы 20/46 против Rauora 9/20 — теперь вровень; Azami у Рената 23/42 (55%).
 - §7 цели: размены выполнены (35%); добавить «атака: один названный план на карту» как процессную цель.
