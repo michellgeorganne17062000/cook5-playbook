@@ -35,7 +35,7 @@ const WHO_RX={
 };
 /* short tab labels for review sections, matched on the heading text */
 const REV_TABS=[
- [/summary|выводы/i,["Overview","Обзор"]],[/compared|сравнение/i,["Compare","Сравнение"]],
+ [/summary|выводы/i,["Overview","Обзор"]],[/compared|сравнени/i,["Compare","Сравнение"]],
  [/match review|разбор матчей/i,["Matches","Матчи"]],[/^\d+\.\s*(maps|карты)/i,["Maps","Карты"]],
  [/operator|оператив/i,["Operators","Оперативники"]],[/mistakes|ошибки/i,["Mistakes","Ошибки"]],
  [/recommend|рекоменд/i,["Plan","План"]],[/objectives|цели/i,["Targets","Цели"]],
