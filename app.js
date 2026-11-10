@@ -353,6 +353,14 @@ window.addEventListener("hashchange",()=>route());
 
 /* ---------- Telegram ---------- */
 if(tg){try{tg.ready();tg.expand();
+  /* swiping down while scrolling must scroll the page, not minimise the mini app (Bot API 7.7+) */
+  if(tg.isVersionAtLeast&&tg.isVersionAtLeast("7.7")&&tg.disableVerticalSwipes)tg.disableVerticalSwipes();
+  /* fullscreen (Bot API 8.0+): keep the page below the status bar and Telegram's Back / ⌄ / ⋯ buttons.
+     telegram-web-app.js sets these vars too; set them here as well so older script versions still work */
+  const safe=()=>{const r=document.documentElement.style,a=tg.safeAreaInset||{},c=tg.contentSafeAreaInset||{};
+    if(a.top!=null)r.setProperty("--tg-safe-area-inset-top",a.top+"px");
+    if(c.top!=null)r.setProperty("--tg-content-safe-area-inset-top",c.top+"px")};
+  safe();["safeAreaChanged","contentSafeAreaChanged","fullscreenChanged","viewportChanged"].forEach(ev=>tg.onEvent&&tg.onEvent(ev,safe));
   if(tg.colorScheme)document.documentElement.dataset.theme=tg.colorScheme;
   const bg=tg.colorScheme==="dark"?"#0f1318":"#eef1f4";
   if(tg.isVersionAtLeast&&tg.isVersionAtLeast("6.1")){try{tg.setHeaderColor(bg);tg.setBackgroundColor(bg)}catch(e){}}

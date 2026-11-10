@@ -41,7 +41,11 @@
   --good:#5cc46c; --bad:#ee6b6b; --onfg:#0f1318; color-scheme:dark}
 *{box-sizing:border-box}[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 var(--body);padding:0 max(16px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+/* Telegram fullscreen: status bar + Telegram's own buttons sit on top of the page. --tg-* vars are set by
+   telegram-web-app.js (and by app.js as a fallback); outside Telegram they fall back to the phone's safe area. */
+:root{--safe-top:calc(var(--tg-safe-area-inset-top,env(safe-area-inset-top,0px)) + var(--tg-content-safe-area-inset-top,0px))}
+body::before{content:"";position:fixed;left:0;right:0;top:0;height:var(--safe-top);background:var(--bg);z-index:8;pointer-events:none}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 var(--body);overscroll-behavior-y:none;padding:var(--safe-top) max(16px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1080px;margin:0 auto}
 /* header */
@@ -54,7 +58,7 @@ h1 b{color:var(--def)}
 .ph .lang{position:absolute;right:0;top:14px}
 .ph.crumbed .lang{top:30px}
 /* tab bar */
-nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0;margin-top:4px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:4px}
+nav.tabs{position:sticky;top:var(--safe-top);z-index:5;background:var(--bg);padding:6px 0;margin-top:4px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:4px}
 nav.tabs a{font:600 1rem/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 10px;border-radius:6px;white-space:nowrap;cursor:pointer}
 nav.tabs a.on{color:var(--onfg);background:var(--fg)}
 nav.tabs a.atk.on{background:var(--atk);color:#fff} nav.tabs a.def.on{background:var(--def);color:#fff}
@@ -191,7 +195,7 @@ details.lg summary{font:600 .95rem/1 var(--display);text-transform:uppercase;let
 /* chrome */
 #topBtn{position:fixed;right:14px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9;border:0;width:42px;height:42px;border-radius:8px;background:var(--fg);color:var(--bg);font:700 18px var(--mono);box-shadow:0 4px 14px #0003;opacity:0;pointer-events:none;transition:.2s;cursor:pointer}
 #topBtn.show{opacity:1;pointer-events:auto}
-#lb{position:fixed;inset:0;z-index:20;background:rgba(5,8,12,.88);display:grid;place-items:center;padding:10px}
+#lb{position:fixed;inset:0;z-index:20;background:rgba(5,8,12,.88);display:grid;place-items:center;padding:calc(10px + var(--safe-top)) 10px 10px}
 #lb img{max-width:100%;max-height:86vh;border-radius:6px}#lb p{color:#e7ebf0;font:600 .85rem var(--mono);text-align:center;margin:8px 0 0}
 @media (prefers-reduced-motion:no-preference){section.pg{animation:in .18s ease-out}@keyframes in{from{opacity:.4;transform:translateY(4px)}}}
 </style>
