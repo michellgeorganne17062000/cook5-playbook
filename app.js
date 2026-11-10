@@ -109,8 +109,8 @@ function homeOv(){
   <div id="results" hidden></div>
   <div id="cards" style="display:grid;gap:14px">
   ${kpiTiles([["21–28",UI.k_games],["42%",UI.k_att,42,"a"],["55%",UI.k_def,55,"d"],["0–8",UI.k_last,0,"bad"]])}
-  <div class="box"><h3>${t(["Who does what","Кто что делает"])}</h3><div class="tw"><table><thead><tr><th>${t(UI.player)}</th><th>${t(UI.p_role)}</th><th>${t(UI.p_rank)}</th></tr></thead><tbody>
-   ${WHO.map(w=>`<tr><td><a href="#/p/${w}"><span class="p ${w}">${PN[w]}</span></a></td><td>${fmt(PROFILES[w].role)}</td><td>${esc(t(PROFILES[w].rank)).replace(/ \(.*/,"")}</td></tr>`).join("")}</tbody></table></div></div>
+  ${goalsBox()}
+  ${playersBox()}
   <div class="box acc"><h3>${t(["Latest review","Последний разбор"])}</h3><div class="rows">${revRow(last)}</div></div>
   <div class="box"><h3>${t(["Playbooks","Плейбуки"])}</h3><div class="rows">
    ${row("#/r",'<span class="ic">📘</span>',t(UI.g_rules),`${SECTIONS.filter(s=>s.group==="rules").length} ${t(UI.blocks)}`)}
@@ -118,6 +118,23 @@ function homeOv(){
    ${MAPS.map(m=>row("#/m/"+m.id,`<span class="ic">${m.icon}</span>`,m.name,`${t(m.sub)} · ${t(m.rec)}`)).join("")}
    ${row("#/h/rev",'<span class="ic">📊</span>',t(UI.g_rev),REVIEWS.map(r=>r.date).join(" · "))}
   </div></div></div>`}
+/* home: goals (reviews.js GOALS) and player cards (PROFILES + LAST_SEEN) */
+function goalCard(g){const met=g.dir==="min"?g.cur>=g.target:g.cur<=g.target;
+  return `<div class="goal ${g.lvl}"><div class="gh"><span class="tag ${g.lvl==="primary"?"a":""}">${t(g.lvl==="primary"?UI.g_primary:UI.g_secondary)}</span><b>${fmt(g.title)}</b></div>
+   <div class="gm"><span class="gv ${met?"good":"bad"}">${esc(g.now)}</span><span class="gt">→ ${esc(g.goal)}</span><span class="gl">${fmt(g.metric)}</span></div>
+   <div class="gbar"><i class="${met?"ok":""}" style="width:${Math.min(100,g.cur)}%"></i><u style="left:${g.target}%"></u></div>
+   <div class="gtr">${g.trend.map((x,i)=>`<span${i===g.trend.length-1?' class="cur"':""}>${x[0]} <b>${x[1]}</b></span>`).join("")}</div>
+   ${g.lvl==="primary"?`<p>${fmt(g.why)}</p>`:`<p class="note">${fmt(g.why)}</p>`}
+   <p class="ghow"><b>${t(UI.g_how)}:</b> ${fmt(g.how)}</p></div>`}
+function goalsBox(){return `<div class="box acc"><h3>🎯 ${t(UI.goals)}</h3>${GOALS.map(goalCard).join("")}<p class="note">${fmt(UI.g_note)} <a class="btn" href="#/s/r-goals">R7 ›</a></p></div>`}
+function miniSpark(v,w){if(!v)return "";const W=120,H=30,mx=Math.max(...v,1.2),mn=Math.min(...v,0.8),y=x=>H-3-(x-mn)/(mx-mn)*(H-6),pts=v.map((x,i)=>[3+i*(W-6)/(EVENINGS.length-1),y(x)]);
+  return `<svg class="ms" viewBox="0 0 ${W} ${H}" aria-hidden="true"><line x1="0" x2="${W}" y1="${y(1)}" y2="${y(1)}"/><polyline style="stroke:var(--${w})" points="${pts.map(p=>p.map(n=>n.toFixed(1)).join(",")).join(" ")}"/><circle style="fill:var(--${w})" cx="${pts[pts.length-1][0].toFixed(1)}" cy="${pts[pts.length-1][1].toFixed(1)}" r="3"/></svg>`}
+function playersBox(){
+  return `<div class="box"><h3>${t(UI.pl_t)}</h3><div class="pcs">${WHO.map(w=>{const P=PROFILES[w],L=P.last?{date:"06.11",row:P.last[0],trend:P.trend}:LAST_SEEN[w];
+    const r=L?L.row:null,kd=r?+r[2]:null;
+    return `<a class="pc ${w}" href="#/p/${w}"><span class="av ${w}">${PN[w][0]}</span><span class="pn"><b>${PN[w]}</b><small>${fmt(P.role)} · ${esc(t(P.rank)).replace(/ \(.*/,"")}</small></span>
+     ${r?`<span class="ps"><span><b class="${kd>=1?"good":"bad"}">${esc(r[2])}</b><i>${t(UI.pl_kd)} ${L.date}</i></span><span><b>${esc(r[3])}</b><i>${t(UI.pl_open)}</i></span><span><b>${esc(r[4])}</b><i>${t(UI.pl_first)}</i></span></span>${miniSpark(L.trend,w)}`:`<span class="note">—</span>`}
+     <span class="go">›</span></a>`}).join("")}</div><p class="note">${t(UI.pl_note)}</p></div>`}
 function homeRules(){const rs=SECTIONS.filter(s=>s.group==="rules");
   return `<p class="lead">${fmt(DOCS.rules.sub)}</p><div class="box"><div class="rows">${rs.map(s=>row("#/s/"+s.id,`<span class="num">${s.num}</span>`,t(s.title),t(TABL[s.id]),favs.includes("s:"+s.id)?'<span class="star">★</span>':"")).join("")}</div></div>`}
 function homeMaps(){

@@ -53,3 +53,32 @@ Object.assign(UI,{
   open_all:["Open","Открыть"], top5:["Top 5 rules","5 главных правил"], go:["Go to","Перейти"]
 });
 NEWS.unshift(["07 Nov","07 ноя",["New design (same as the HTML playbooks) · Reviews: 30.10, 02.11, 04.11 duo, 06.11 · personal review tab in every profile","Новый дизайн (как в HTML-плейбуках) · Разборы: 30.10, 02.11, дуо 04.11, 06.11 · вкладка «Личный разбор» в каждом профиле"]]);
+
+/* Home screen: 1 primary + 2 secondary goals. Values from the session reviews (team evenings only; the 04.11 duo
+   day is not counted). Targets = rulebook R7 (set after 06.11). cur/target are numbers for the bar; dir "max" = keep below. */
+const GOALS=[
+ {lvl:"primary",title:["Trade or don't fight","Размен — или не воюем"],metric:["Deaths traded (proxy)","Разменянные смерти (прокси)"],
+  cur:27,target:35,dir:"min",now:"27%",goal:"≥35%",trend:[["30.10","33%"],["02.11","29%"],["06.11","27%"]],
+  why:["Down three evenings in a row. On 06.11 we lost all 16 rounds where one enemy got 3+ kills, and 1v2 / 1v3 went 0 of 33.","Падает третий вечер подряд. 06.11 проиграли все 16 раундов, где один соперник взял 3+, а 1v2 / 1v3 — 0 из 33."],
+  how:["After the first pick nobody takes the next fight alone: the partner stays within one room (2 s to refrag), the IGL calls **collapse** or **hold**.","После первого фрага никто не берёт следующую дуэль один: напарник в пределах одной комнаты (2 с на размен), IGL зовёт **collapse** или **hold**."],
+  src:"2026-11-06"},
+ {lvl:"secondary",title:["Attack rounds","Раунды атаки"],metric:["Attack round win","Победы в раундах атаки"],
+  cur:34,target:45,dir:"min",now:"34%",goal:"≥45%",trend:[["30.10","38%"],["02.11","50%"],["06.11","34%"]],
+  why:["Attack is the weak side all period: 42% (64/152) against 55% on defence. 5 attack rounds on 06.11 were lost with players alive.","Атака — слабая сторона весь период: 42% (64/152) против 55% в защите. 06.11 пять раундов атаки проиграны с живыми игроками."],
+  how:["Openings go to Roman and Dima with a trade partner; plant by **0:45**.","Первый контакт — Роман и Дима с напарником на размен; плент до **0:45**."],
+  src:"2026-11-06"},
+ {lvl:"secondary",title:["Defence: first duel","Защита: первая дуэль"],metric:["Defence rounds where we lose the first duel","Раунды защиты с проигранной первой дуэлью"],
+  cur:55,target:45,dir:"max",now:"55%",goal:"≤45%",trend:[["02.11","45%"],["06.11","55%"]],
+  why:["16 of 29 on 06.11, and we won only 3 of those 16 rounds. Roman died first 8 times, 6 of them on defence.","06.11: 16 из 29, и из этих 16 раундов выиграли только 3. Роман погибал первым 8 раз, 6 — в защите."],
+  how:["No first-angle peeks before drone or utility info; after our first pick, **hold** and fall back to site.","Не пикать первый угол без инфы от дрона или гаджетов; после нашего первого фрага — **hold** и отход на точку."],
+  src:"2026-11-06"}
+];
+/* Sanya did not play on 06.11: his last team evening in the reviews is 02.11 (session review 02.11, per-player table). */
+const LAST_SEEN={sanya:{date:"02.11",row:["4","12–19","0.63","0–3","37%"],trend:[0.65,0.55,0.76,0.42,0.63]}};
+Object.assign(UI,{
+  goals:["Goals for the next evenings","Цели на ближайшие вечера"], g_primary:["Primary","Главная"], g_secondary:["Secondary","Второстепенная"],
+  g_now:["now","сейчас"], g_target:["target","цель"], g_how:["How","Как"],
+  g_note:["Team evenings only (the 04.11 duo day is not counted). Targets = rulebook R7. Plus the standing rule: 2 ranked losses in a row = stop.","Только командные вечера (дуо 04.11 не считается). Цели — свод правил R7. Плюс постоянное правило: 2 поражения в рейтинге подряд = стоп."],
+  pl_t:["Players","Игроки"], pl_kd:["K/D","K/D"], pl_open:["openings","первые дуэли"], pl_first:["first to die","умер первым"],
+  pl_note:["Last team evening each player played. K/D line = all team evenings 19.10 → 06.11.","Последний командный вечер, который игрок сыграл. Линия K/D — все командные вечера 19.10 → 06.11."]
+});
