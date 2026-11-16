@@ -262,7 +262,7 @@ function profile(w,tab){const P=PROFILES[w];if(!P)return home("players");
     ${P.trend?`<div class="box d"><h3>${t(UI.p_trend)}</h3>${spark(P.trend,P.trendDates)}</div>`:""}`;
   if(tab==="ops")body=`<div class="box"><h3>${t(UI.p_ops)}</h3><div class="tw"><table><tbody>${[[UI.att_main,o[0],"a"],[UI.att_back,o[1],"a"],[UI.def_main,o[2],"d"],[UI.def_back,o[3],"d"],[UI.stop,o[4],"bad"]].map(r=>`<tr><th><span class="tag ${r[2]}">${t(r[0])}</span></th><td>${fmt(r[1])}</td></tr>`).join("")}</tbody></table></div></div>`;
   if(tab==="strats"){
-    const ord=DOCS.nh.order.map(id=>SECTIONS.find(s=>s.id===id)).filter(x=>x.strats).flatMap(x=>x.strats.split(","));
+    const ord=DOCS.nh.order.map(id=>SECTIONS.find(x=>x.id===id)).filter(x=>x.strats).flatMap(x=>x.strats.split(","));
     const nh=ord.map(id=>STRATS.find(x=>x.id===id)).map(s=>[s,lineupOf(s).find(x=>x[0]===w)[1]]).filter(x=>x[1]!=="—");
     const kp=d=>kposSecs(d).map(sec=>[sec,KPOS[sec.blocks.find(b=>b.kpos).kpos].find(x=>x[0]===w)]).filter(x=>x[1]);
     body=`<div class="box"><h3>🌃 ${t(UI.p_nh)}</h3><div class="tw"><table><tbody>${nh.map(([s,op])=>`<tr><td><span class="tag ${s.side}">${sideL(s.side)}</span></td><td><a class="btn" style="text-transform:none;font:inherit;color:var(--def)" href="#/s/${secOf(s.id).id}/${s.id}">${t(secOf(s.id).title)} · ${sname(s.id)}</a></td><td><b>${esc(op)}</b></td></tr>`).join("")}</tbody></table></div></div>
