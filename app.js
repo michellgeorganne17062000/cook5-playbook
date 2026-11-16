@@ -96,11 +96,11 @@ function section(id){
 }
 
 /* ---------- home ---------- */
-const HOME_TABS=[["ov",UI.overview],["rules",UI.g_rules],["maps",UI.g_maps],["rev",UI.g_rev],["players",UI.players],["lineups",UI.lineups],["fav",UI.saved],["new",UI.news]];
+const HOME_TABS=[["ov",UI.overview],["rules",UI.g_rules],["maps",UI.g_maps],["rev",UI.g_rev],["games",UI.g_games],["players",UI.players],["lineups",UI.lineups],["fav",UI.saved],["new",UI.news]];
 function home(tab){
   tab=HOME_TABS.some(x=>x[0]===tab)?tab:"ov";
   const tabs=HOME_TABS.map(([k,l])=>[k==="ov"?"#/":"#/h/"+k,t(l),k===tab]);
-  const body={ov:homeOv,rules:homeRules,maps:homeMaps,rev:homeRev,players:homePlayers,lineups:lineups,fav:favourites,new:news}[tab]();
+  const body={ov:homeOv,rules:homeRules,maps:homeMaps,rev:homeRev,games:matchHome,players:homePlayers,lineups:lineups,fav:favourites,new:news}[tab]();
   return page({h1:RU()?"[COOK5] <b>Плейбук</b>":"[COOK5] <b>Playbook</b>",sub:esc(t(["D8 · Rainbow Six Siege · ","D8 · Rainbow Six Siege · "])+t(UI.updated)+" · "+t(UI.sub)),tabs,body});
 }
 function homeOv(){
@@ -116,6 +116,7 @@ function homeOv(){
    ${row("#/r",'<span class="ic">📘</span>',t(UI.g_rules),`${SECTIONS.filter(s=>s.group==="rules").length} ${t(UI.blocks)}`)}
    ${row("#/c",'<span class="ic">📣</span>',t(UI.g_calls),t(["6 call words · 16 attack plays","6 слов-коллов · 16 розыгрышей атаки"]))}
    ${MAPS.map(m=>row("#/m/"+m.id,`<span class="ic">${m.icon}</span>`,m.name,`${t(m.sub)} · ${t(m.rec)}`)).join("")}
+   ${row("#/g",'<span class="ic">📋</span>',t(UI.g_games),t(UI.g_sub))}
    ${row("#/h/rev",'<span class="ic">📊</span>',t(UI.g_rev),REVIEWS.map(r=>r.date).join(" · "))}
   </div></div></div>`}
 /* home: goals (reviews.js GOALS) and player cards (PROFILES + LAST_SEEN) */
@@ -261,7 +262,7 @@ function profile(w,tab){const P=PROFILES[w];if(!P)return home("players");
     ${P.trend?`<div class="box d"><h3>${t(UI.p_trend)}</h3>${spark(P.trend,P.trendDates)}</div>`:""}`;
   if(tab==="ops")body=`<div class="box"><h3>${t(UI.p_ops)}</h3><div class="tw"><table><tbody>${[[UI.att_main,o[0],"a"],[UI.att_back,o[1],"a"],[UI.def_main,o[2],"d"],[UI.def_back,o[3],"d"],[UI.stop,o[4],"bad"]].map(r=>`<tr><th><span class="tag ${r[2]}">${t(r[0])}</span></th><td>${fmt(r[1])}</td></tr>`).join("")}</tbody></table></div></div>`;
   if(tab==="strats"){
-    const ord=DOCS.nh.order.map(id=>SECTIONS.find(x=>x.id===id)).filter(x=>x.strats).flatMap(x=>x.strats.split(","));
+    const ord=DOCS.nh.order.map(id=>SECTIONS.find(s=>s.id===id)).filter(x=>x.strats).flatMap(x=>x.strats.split(","));
     const nh=ord.map(id=>STRATS.find(x=>x.id===id)).map(s=>[s,lineupOf(s).find(x=>x[0]===w)[1]]).filter(x=>x[1]!=="—");
     const kp=d=>kposSecs(d).map(sec=>[sec,KPOS[sec.blocks.find(b=>b.kpos).kpos].find(x=>x[0]===w)]).filter(x=>x[1]);
     body=`<div class="box"><h3>🌃 ${t(UI.p_nh)}</h3><div class="tw"><table><tbody>${nh.map(([s,op])=>`<tr><td><span class="tag ${s.side}">${sideL(s.side)}</span></td><td><a class="btn" style="text-transform:none;font:inherit;color:var(--def)" href="#/s/${secOf(s.id).id}/${s.id}">${t(secOf(s.id).title)} · ${sname(s.id)}</a></td><td><b>${esc(op)}</b></td></tr>`).join("")}</tbody></table></div></div>
@@ -339,6 +340,7 @@ function route(keepY){
   else if(k==="m"||k==="r"||k==="c"){const d=k==="r"?"rules":k==="c"?"calls":h[1];const id=DOCS[d]?DOCS[d].order[0]:null;if(id){location.replace("#/s/"+id);return}html=home("maps");doc="home"}
   else if(k==="v"){doc="v:"+h[1];html=review(h[1],h[2])}
   else if(k==="p"){doc="p:"+h[1];html=profile(h[1],h[2])}
+  else if(k==="g"){doc="g";html=matchesRoute(h[1],h[2])}
   else if(k==="h"){doc="home";html=home(h[1])}
   else if(k==="fav"||k==="new"||k==="lineups"){doc="home";html=home(k)}
   else {doc="home";html=home("ov")}

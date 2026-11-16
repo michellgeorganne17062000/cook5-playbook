@@ -1,6 +1,8 @@
 [COOK5] Playbook — Telegram Mini App
 ============================================
 1) HOST THE FOLDER (pick one)
+   GitHub Pages: repo Settings → Pages → Deploy from a branch → main / (root).
+   You get a link like https://michellgeorganne17062000.github.io/cook5-playbook/
    Netlify Drop: open https://app.netlify.com/drop, drag this whole folder in.
    You get a link like https://something.netlify.app — copy it.
    (Create a free Netlify account so the link doesn't expire; to update, open the
@@ -14,3 +16,11 @@
 4) SHARE
    Teammates open the bot and tap "Playbook". Language: RU/EN button top right.
    Favourites sync per Telegram account; checklists and dragged tokens save per device.
+
+MATCH TRACKER ("Матчи" tab)
+   Log every match: map, mode, score, rounds by side, per-player K/D and operator,
+   plus mistakes, takeaways and goals for the next matches. Stats tab aggregates
+   win rate, records by map and per-player K/D; Goals tab holds the team's targets.
+   The log saves on the device (localStorage + Telegram CloudStorage per account).
+   To share the log with the team: Log tab → Export → send the text to the chat —
+   teammates paste it and tap Import (entries merge, no duplicates).
