@@ -212,23 +212,6 @@ details.box:not([open])>summary h3::after{content:"▸"}
 details.lg summary{font:600 .95rem/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--def);cursor:pointer}
 #dragNote{font-size:.8rem;color:var(--muted);margin:0}
 #resetPos{justify-self:start;border:0;background:none;color:var(--def);font:600 .9rem/1 var(--display);text-transform:uppercase;letter-spacing:.06em;padding:0;cursor:pointer}
-/* match tracker: forms and player rows */
-.frow{display:grid;gap:6px;margin-bottom:10px}
-.frow:last-child{margin-bottom:0}
-.frow>.lab{font:600 .72rem/1 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
-.frow input[type=text],.frow input[type=date],.frow input[type=number],.frow textarea{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;color:inherit;outline:0;width:100%;min-width:0}
-.frow textarea{min-height:76px;resize:vertical}
-.frow input:focus,.frow textarea:focus{border-color:var(--def)}
-.scorein{display:flex;gap:10px;align-items:center}
-.scorein input{width:84px;text-align:center}
-.prow{display:grid;grid-template-columns:auto minmax(0,1fr) 62px 62px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
-.prow:last-of-type{border-bottom:0}
-.prow input{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;font:inherit;color:inherit;outline:0;min-width:0}
-.prow input:focus{border-color:var(--def)}
-.prow .pon{display:flex;gap:8px;align-items:center;cursor:pointer}
-.prow .pon input{width:18px;height:18px;accent-color:var(--def);flex:none}
-.savebar{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.btn.primary{background:var(--def);color:#fff;padding:10px 18px;border-radius:8px}
 /* chrome */
 #topBtn{position:fixed;right:14px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9;border:0;width:42px;height:42px;border-radius:8px;background:var(--fg);color:var(--bg);font:700 18px var(--mono);box-shadow:0 4px 14px #0003;opacity:0;pointer-events:none;transition:.2s;cursor:pointer}
 #topBtn.show{opacity:1;pointer-events:auto}
@@ -252,19 +235,18 @@ details.lg summary{font:600 .95rem/1 var(--display);text-transform:uppercase;let
  <details class="lg"><summary id="lgSum">Legend</summary><div id="legend"></div></details>
  <button id="resetPos">Reset</button>
 </div></div>
-<script src="data.js?v=20261117a"></script>
-<script src="data2.js?v=20261117a"></script>
-<script src="reviews.js?v=20261117a"></script>
-<script src="data3.js?v=20261117a"></script>
-<script src="calls.js?v=20261117a"></script>
-<script src="rv-1110.js?v=20261117a"></script>
-<script src="rv-1106.js?v=20261117a"></script>
-<script src="rv-1104.js?v=20261117a"></script>
-<script src="rv-1102.js?v=20261117a"></script>
-<script src="rv-1030.js?v=20261117a"></script>
-<script src="board.js?v=20261117a"></script>
-<script src="villa.js?v=20261117a"></script>
-<script src="matches.js?v=20261117a"></script>
-<script src="app.js?v=20261117a"></script>
+<script src="data.js?v=20261117b"></script>
+<script src="data2.js?v=20261117b"></script>
+<script src="reviews.js?v=20261117b"></script>
+<script src="data3.js?v=20261117b"></script>
+<script src="calls.js?v=20261117b"></script>
+<script src="rv-1110.js?v=20261117b"></script>
+<script src="rv-1106.js?v=20261117b"></script>
+<script src="rv-1104.js?v=20261117b"></script>
+<script src="rv-1102.js?v=20261117b"></script>
+<script src="rv-1030.js?v=20261117b"></script>
+<script src="board.js?v=20261117b"></script>
+<script src="villa.js?v=20261117b"></script>
+<script src="app.js?v=20261117b"></script>
 </body>
 </html>

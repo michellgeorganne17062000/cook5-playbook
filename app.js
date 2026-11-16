@@ -96,11 +96,11 @@ function section(id){
 }
 
 /* ---------- home ---------- */
-const HOME_TABS=[["ov",UI.overview],["rules",UI.g_rules],["maps",UI.g_maps],["rev",UI.g_rev],["games",UI.g_games],["players",UI.players],["lineups",UI.lineups],["fav",UI.saved],["new",UI.news]];
+const HOME_TABS=[["ov",UI.overview],["rules",UI.g_rules],["maps",UI.g_maps],["rev",UI.g_rev],["players",UI.players],["lineups",UI.lineups],["fav",UI.saved],["new",UI.news]];
 function home(tab){
   tab=HOME_TABS.some(x=>x[0]===tab)?tab:"ov";
   const tabs=HOME_TABS.map(([k,l])=>[k==="ov"?"#/":"#/h/"+k,t(l),k===tab]);
-  const body={ov:homeOv,rules:homeRules,maps:homeMaps,rev:homeRev,games:matchHome,players:homePlayers,lineups:lineups,fav:favourites,new:news}[tab]();
+  const body={ov:homeOv,rules:homeRules,maps:homeMaps,rev:homeRev,players:homePlayers,lineups:lineups,fav:favourites,new:news}[tab]();
   return page({h1:RU()?"[COOK5] <b>Плейбук</b>":"[COOK5] <b>Playbook</b>",sub:esc(t(["D8 · Rainbow Six Siege · ","D8 · Rainbow Six Siege · "])+t(UI.updated)+" · "+t(UI.sub)),tabs,body});
 }
 function homeOv(){
@@ -116,7 +116,6 @@ function homeOv(){
    ${row("#/r",'<span class="ic">📘</span>',t(UI.g_rules),`${SECTIONS.filter(s=>s.group==="rules").length} ${t(UI.blocks)}`)}
    ${row("#/c",'<span class="ic">📣</span>',t(UI.g_calls),t(["6 call words · 16 attack plays","6 слов-коллов · 16 розыгрышей атаки"]))}
    ${MAPS.map(m=>row("#/m/"+m.id,`<span class="ic">${m.icon}</span>`,m.name,`${t(m.sub)} · ${t(m.rec)}`)).join("")}
-   ${row("#/g",'<span class="ic">📋</span>',t(UI.g_games),t(UI.g_sub))}
    ${row("#/h/rev",'<span class="ic">📊</span>',t(UI.g_rev),REVIEWS.map(r=>r.date).join(" · "))}
   </div></div></div>`}
 /* home: goals (reviews.js GOALS) and player cards (PROFILES + LAST_SEEN) */
@@ -340,7 +339,6 @@ function route(keepY){
   else if(k==="m"||k==="r"||k==="c"){const d=k==="r"?"rules":k==="c"?"calls":h[1];const id=DOCS[d]?DOCS[d].order[0]:null;if(id){location.replace("#/s/"+id);return}html=home("maps");doc="home"}
   else if(k==="v"){doc="v:"+h[1];html=review(h[1],h[2])}
   else if(k==="p"){doc="p:"+h[1];html=profile(h[1],h[2])}
-  else if(k==="g"){doc="g";html=matchesRoute(h[1],h[2])}
   else if(k==="h"){doc="home";html=home(h[1])}
   else if(k==="fav"||k==="new"||k==="lineups"){doc="home";html=home(k)}
   else {doc="home";html=home("ov")}
