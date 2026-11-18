@@ -3,6 +3,10 @@
    KPI tiles below are copied from each review's executive summary. */
 const REV_MD={};
 const REVIEWS=[
+ {id:"2026-11-16",date:"16.11",kind:"team",title:["Evening 16.11","Вечер 16.11"],
+  line:["3–4 · ranked · rounds 22–30 · trades 25%","3–4 · рейтинг · раунды 22–30 · размены 25%"],
+  who:["Dima, Renat, Roman + 2 randoms every game","Дима, Ренат, Роман + 2 рандома в каждой игре"],
+  kpis:[["3–4",["games · ranked","игры · рейтинг"]],["42.3%",["rounds 22–30","раунды 22–30"]],["41%",["attack 9/22","атака 9/22"],41,"a"],["50%",["defence 10/20","защита 10/20"],50,"d"]]},
  {id:"2026-11-10",date:"10.11",kind:"team",title:["Evening 10.11","Вечер 10.11"],
   line:["3–3 · unranked · rounds 18–18 · trades 35%","3–3 · нерейтинг · раунды 18–18 · размены 35%"],
   who:["Dima, Renat, Roman, Sanya (+ randoms; no Nikita)","Дима, Ренат, Роман, Саня (+ рандомы; без Никиты)"],
@@ -51,9 +55,9 @@ Object.assign(UI,{
   rev_open:["Open full review","Открыть полный разбор"],
   rev_trend:["Evenings compared","Сравнение вечеров"],
   overview:["Overview","Обзор"], players:["Players","Игроки"], saved:["Saved","Сохранённое"],
-  strats_t:["Strats","Страты"], home:["[COOK5]","[COOK5]"], updated:["updated 10 Nov 2026","обновлено 10 ноября 2026"],
-  k_games:["games 19.10–10.11 (55)","игры 19.10–10.11 (55)"], k_att:["attack rounds (70/169)","раунды атаки (70/169)"],
-  k_def:["defence rounds (94/167)","раунды защиты (94/167)"], k_last:["last evening, 10.11 (unranked)","последний вечер, 10.11 (нерейтинг)"],
+  strats_t:["Strats","Страты"], home:["[COOK5]","[COOK5]"], updated:["updated 18 Nov 2026","обновлено 18 ноября 2026"],
+  k_games:["games 19.10–16.11 (62)","игры 19.10–16.11 (62)"], k_att:["attack rounds (79/191)","раунды атаки (79/191)"],
+  k_def:["defence rounds (104/187)","раунды защиты (104/187)"], k_last:["last evening, 16.11 (ranked)","последний вечер, 16.11 (рейтинг)"],
   open_all:["Open","Открыть"], top5:["Top 5 rules","5 главных правил"], go:["Go to","Перейти"]
 });
 NEWS.unshift(["07 Nov","07 ноя",["New design (same as the HTML playbooks) · Reviews: 30.10, 02.11, 04.11 duo, 06.11 · personal review tab in every profile","Новый дизайн (как в HTML-плейбуках) · Разборы: 30.10, 02.11, дуо 04.11, 06.11 · вкладка «Личный разбор» в каждом профиле"]]);
@@ -62,20 +66,20 @@ NEWS.unshift(["07 Nov","07 ноя",["New design (same as the HTML playbooks) · 
    day is not counted). Targets = rulebook R7 (set after 06.11). cur/target are numbers for the bar; dir "max" = keep below. */
 const GOALS=[
  {lvl:"primary",title:["Trade or don't fight","Размен — или не воюем"],metric:["Deaths traded (proxy)","Разменянные смерти (прокси)"],
-  cur:35,target:35,dir:"min",now:"35%",goal:"≥35%",trend:[["30.10","33%"],["02.11","29%"],["06.11","27%"],["10.11","35%"]],
-  why:["Met on 10.11 (39 of 112), after three evenings going down. Hold it: the late fights are still lost — 1v2 or worse 1 of 17, the core five 0 of 12.","Выполнено 10.11 (39 из 112) после трёх вечеров падения. Держим: концовки всё ещё проигрываем — 1 на 2 и хуже 1 из 17, основная пятёрка 0 из 12."],
+  cur:25,target:35,dir:"min",now:"25%",goal:"≥35%",trend:[["30.10","33%"],["02.11","29%"],["06.11","27%"],["10.11","35%"],["16.11","25%"]],
+  why:["16.11: back down to 25% (38 of 154) after 35% on 10.11. One enemy got 3+ kills in 12 rounds and we won 1 of them. With two randoms, the three of us stay within one room of each other.","16.11: снова 25% (38 из 154) после 35% 10.11. В 12 раундах один соперник взял 3+ убийства, выиграли 1 из них. С двумя рандомами мы втроём держимся в пределах одной комнаты друг от друга."],
   how:["After the first pick nobody takes the next fight alone: the partner stays within one room (2 s to refrag), the IGL calls **collapse** or **hold**.","После первого фрага никто не берёт следующую дуэль один: напарник в пределах одной комнаты (2 с на размен), IGL зовёт **collapse** или **hold**."],
-  src:"2026-11-10"},
+  src:"2026-11-16"},
  {lvl:"secondary",title:["Attack rounds","Раунды атаки"],metric:["Attack round win","Победы в раундах атаки"],
-  cur:35,target:45,dir:"min",now:"35%",goal:"≥45%",trend:[["30.10","38%"],["02.11","50%"],["06.11","34%"],["10.11","35%"]],
-  why:["10.11: 6/17. Every attack round on Chalet, Coastline and Kafe was lost (0/8); after losing the first duel on attack we won 1 of 9.","10.11: 6/17. Все раунды атаки на Chalet, Coastline и Kafe проиграны (0/8); после проигранной первой дуэли в атаке выиграли 1 из 9."],
-  how:["One named attack plan per map, called in the lobby (Calls sheet: Kafe *South Window*, Chalet *Mezz Clear*). Openings go to Roman and Dima with a trade partner; plant by **0:45**.","Один названный план атаки на карту, объявляем в лобби (лист коллов: Kafe *South Window*, Chalet *Mezz Clear*). Первый контакт — Роман и Дима с напарником; плент до **0:45**."],
-  src:"2026-11-10"},
+  cur:41,target:45,dir:"min",now:"41%",goal:"≥45%",trend:[["30.10","38%"],["02.11","50%"],["06.11","34%"],["10.11","35%"],["16.11","41%"]],
+  why:["16.11: 9/22, up from 35%. Bank 3/3 and Chalet 2/4, but Nighthaven 0/3 again (3/18 overall) and 5 of 10 won openings on attack were not converted.","16.11: 9/22, было 35%. Bank 3/3 и Chalet 2/4, но Nighthaven снова 0/3 (всего 3/18), и 5 из 10 выигранных первых дуэлей в атаке не реализованы."],
+  how:["One named attack plan per map, called in the lobby (Calls sheet: Kafe *South Window*, Chalet *Mezz Clear*). Openings go to Renat and Roman (Dima plays second) with a trade partner; plant by **0:45**.","Один названный план атаки на карту, объявляем в лобби (лист коллов: Kafe *South Window*, Chalet *Mezz Clear*). Первый контакт — Ренат и Роман (Дима вторым) с напарником; плент до **0:45**."],
+  src:"2026-11-16"},
  {lvl:"secondary",title:["Defence: first duel","Защита: первая дуэль"],metric:["Defence rounds where we lose the first duel","Раунды защиты с проигранной первой дуэлью"],
-  cur:47,target:45,dir:"max",now:"47%",goal:"≤45%",trend:[["02.11","45%"],["06.11","55%"],["10.11","47%"]],
-  why:["10.11: 9 of 19, better than 55%. When we won the first duel on defence we won the round 9 times out of 10.","10.11: 9 из 19 — лучше, чем 55%. Когда в защите мы выигрывали первую дуэль, раунд был наш 9 раз из 10."],
+  cur:50,target:45,dir:"max",now:"50%",goal:"≤45%",trend:[["02.11","45%"],["06.11","55%"],["10.11","47%"],["16.11","50%"]],
+  why:["16.11: 10 of 20. Lair defence 0/3 with the first duel lost every round; Consulate defence 7/7. After winning the first duel on defence we won 7 of 10 (90% on 10.11).","16.11: 10 из 20. Защита на Lair 0/3 — первая дуэль проиграна в каждом раунде; на Consulate — 7/7. После выигранной первой дуэли в защите выиграли 7 из 10 (10.11 — 90%)."],
   how:["No first-angle peeks before drone or utility info; after our first pick, **hold** and fall back to site.","Не пикать первый угол без инфы от дрона или гаджетов; после нашего первого фрага — **hold** и отход на точку."],
-  src:"2026-11-10"}
+  src:"2026-11-16"}
 ];
 /* Sanya did not play on 06.11: his last team evening in the reviews is 02.11 (session review 02.11, per-player table). */
 const LAST_SEEN={nikita:{date:"06.11",row:["6","32–34","0.94","3–4","11%"],trend:[1.06,0.97,0.70,1.10,1.00,0.94]}};
@@ -84,8 +88,9 @@ Object.assign(UI,{
   g_now:["now","сейчас"], g_target:["target","цель"], g_how:["How","Как"],
   g_note:["Team evenings only (the 04.11 duo day is not counted; quick-match warm-ups excluded). Targets = rulebook R7. Plus the standing rule: 2 ranked losses in a row = stop.","Только командные вечера (дуо 04.11 и разминочные quick match не считаются). Цели — свод правил R7. Плюс постоянное правило: 2 поражения в рейтинге подряд = стоп."],
   pl_t:["Players","Игроки"], pl_kd:["K/D","K/D"], pl_open:["openings","первые дуэли"], pl_first:["first to die","умер первым"],
-  pl_note:["Last team evening each player played. K/D line = all team evenings 19.10 → 10.11.","Последний командный вечер, который игрок сыграл. Линия K/D — все командные вечера 19.10 → 10.11."]
+  pl_note:["Last team evening each player played. K/D line = all team evenings 19.10 → 16.11.","Последний командный вечер, который игрок сыграл. Линия K/D — все командные вечера 19.10 → 16.11."]
 });
 
 NEWS.unshift(["10 Nov","10 ноя",["Review 10.11: 3–3, defence 63%, trades 35% (goal met) · attack still 35% · player cards and goals updated","Разбор 10.11: 3–3, защита 63%, размены 35% (цель выполнена) · атака всё ещё 35% · карточки игроков и цели обновлены"]]);
 NEWS.unshift(["10 Nov","10 ноя",["Opponents tab in every review: ranks, K/D, HS% and first kills of every enemy player, match by match (10.11: Kafe lobby averaged Platinum II)","Вкладка «Соперники» в каждом разборе: ранг, K/D, HS% и первые убийства каждого игрока соперника по матчам (10.11: лобби Kafe — в среднем Platinum II)"]]);
+NEWS.unshift(["18 Nov","18 ноя",["Review 16.11: 3–4 in ranked, rounds 22–30 · attack up to 41%, trades down to 25% · Roman 1v4 clutch · opponents averaged Gold V · goals and player cards updated","Разбор 16.11: 3–4 в рейтинге, раунды 22–30 · атака выросла до 41%, размены упали до 25% · клатч Романа 1 на 4 · соперники в среднем Gold V · цели и карточки игроков обновлены"]]);

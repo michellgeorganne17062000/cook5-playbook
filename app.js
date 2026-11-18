@@ -108,7 +108,7 @@ function homeOv(){
   return `<label class="search"><span>🔍</span><input id="q" type="search" placeholder="${esc(t(UI.search))}" autocomplete="off"></label>
   <div id="results" hidden></div>
   <div id="cards" style="display:grid;gap:14px">
-  ${kpiTiles([["24–31",UI.k_games],["41%",UI.k_att,41,"a"],["56%",UI.k_def,56,"d"],["3–3",UI.k_last]])}
+  ${kpiTiles([["27–35",UI.k_games],["41%",UI.k_att,41,"a"],["56%",UI.k_def,56,"d"],["3–4",UI.k_last]])}
   ${goalsBox()}
   ${playersBox()}
   <div class="box acc"><h3>${t(["Latest review","Последний разбор"])}</h3><div class="rows">${revRow(last)}</div></div>
